@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name worldSkillsApp.Language
+ * @name connectApp.Language
  * @description
  * # Language
- * Service in the worldSkillsApp.
+ * Service in the connectApp.
  */
-angular.module('worldSkillsApp')
+angular.module('connectApp')
   .service('Language', function () {
     // AngularJS will instantiate a singleton by calling "new" on this function
         // AngularJS will instantiate a singleton by calling "new" on this function

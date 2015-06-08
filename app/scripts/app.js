@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name worldSkillsApp
+ * @name connectApp
  * @description
- * # worldSkillsApp
+ * # connectApp
  *
  * Main module of the application.
  */
 angular
-  .module('worldSkillsApp', [
+  .module('connectApp', [
     'ngAnimate',
     'ngAria',
     'ngCookies',

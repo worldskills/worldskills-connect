@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('worldSkillsApp').provider('auth', function () {
+    angular.module('connectApp').provider('auth', function () {
 
         /**
          * Copied from angular.js

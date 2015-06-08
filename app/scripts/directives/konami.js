@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('worldSkillsApp')
+angular.module('connectApp')
   .directive('konami', function () {
     return {
     restrict: "AEC",

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('worldSkillsApp')
+angular.module('connectApp')
   .controller('MainCtrl', function ($scope, $state, $translate, Language) {
     $scope.selectedLanguage = Language.selectedLanguage;
   });

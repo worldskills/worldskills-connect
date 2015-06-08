@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('worldSkillsApp')
+angular.module('connectApp')
   .controller('TestcontrollerCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',

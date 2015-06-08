@@ -1,6 +1,6 @@
 {
-  "name": "world-skills",
-  "version": "0.0.0",
+  "name": "worldskills-connect",
+  "version": "0.0.1",
   "dependencies": {
     "angular": "^1.3.0",
     "bootstrap": "git@github.com:worldskills/bootstrap.git",
@@ -25,5 +25,5 @@
     "angular-mocks": "^1.3.0"
   },
   "appPath": "app",
-  "moduleName": "worldSkillsApp"
+  "moduleName": "connectApp"
 }

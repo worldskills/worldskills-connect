@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name worldSkillsApp.controller:TranslateCtrl
+ * @name connectApp.controller:TranslateCtrl
  * @description
  * # TranslateCtrl
- * Controller of the worldSkillsApp
+ * Controller of the connectApp
  */
-angular.module('worldSkillsApp')
+angular.module('connectApp')
   .controller('TranslateCtrl', function ($translate, $translateLocalStorage, $scope, Language) {
 
 		//get current language from local storage		
