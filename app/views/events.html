@@ -8,12 +8,12 @@
                 
                 <p>&nbsp;</p>                
 
-                <h3>Featured Events</h3>
+                <fieldset><legend>Featured Events</legend>
                 <div class='events cf'>
                     <div ng-repeat="i in [1, 2, 3] track by $index" class='event'>
                         <div><a ui-sref='event({eventId:1})'>WorldSkills Sao Paulo 2015</a></div>
                         <div class='event-image'>
-                            <a ui-sref='event({eventId:1})'><img src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' /></a>
+                            <a ui-sref='event({eventId:1})'><img class='thumbnail' src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' /></a>
                             <span>17 possible connections&nbsp;&nbsp;<a href='#'><span class='glyphicon glyphicon-question-sign'></span></a></span>
                         </div>
                         <div class='event-attendance text-center'>
@@ -21,13 +21,14 @@
                         </div>
                     </div>
                 </div>
+                </fieldset>
 
-                <h3>Upcoming Events</h3>
+                <fieldset><legend>Upcoming Events</legend>
                 <div class='events cf'>
                     <div ng-repeat="i in [1, 2] track by $index" class='event'>
                         <div><a ui-sref='event({eventId:1})'>Taitaja 2016 - Finnish nationals</a></div>
                         <div class='event-image'>
-                            <a ui-sref='event({eventId:1})'><img src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' /></a>
+                            <a ui-sref='event({eventId:1})'><img class='thumbnail' src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' /></a>
                             <span>17 possible connections&nbsp;&nbsp;<a href='#'><span class='glyphicon glyphicon-question-sign'></span></a></span>
                         </div>
                         <div class='event-attendance text-center'>
@@ -35,17 +36,25 @@
                         </div>
                     </div>
                 </div>
+                </fieldset>
             </div>
 
             <div class='col-xs-12 col-sm-2 sidebar'>
                 <h4 class='text-center'>Popular connections</h4>
 
                 <div class='popular-connection' ng-repeat="i in [1, 2, 3, 4, 5] track by $index">
-                    <div>Joni Aaltonen</div>
+<!--                     <div>Joni Aaltonen</div>
                     <div class='popular-connection-image'>
-                        <img src='http://lorempixel.com/150/150/city/' alt='Sao Paulo 2015' />                        
+                        <a ui-sref='user.profile({userId:1})'><img class='thumbnail' src='http://lorempixel.com/150/150/people/' alt='Sao Paulo 2015' /></a>
                     </div>
-                    <div>Finland</div>
+                    <div>Finland</div> -->
+                    <a ui-sref="user.profile({userId:1})" class='contactLink'>
+                        <div class="thumbnail">
+                            <img src='http://lorempixel.com/400/400/people/' alt='Joni Aaltonen' />
+                            <div class="caption"><strong>Joni Aaltonen</strong><br />
+                            WorldSkills International</div>
+                        </div>
+                    </a>
                 </div>
 
             </div>

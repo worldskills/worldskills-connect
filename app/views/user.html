@@ -1,0 +1,36 @@
+<div id='userActions'>
+<p class="pull-right">
+    <!-- <button ng-click="saveEvent()" class="btn btn-success" id="deleteEntry">Save changes<spinner ng-show="saveLoading" class="ng-hide"></spinner></button>
+    <button ng-click="saveEvent()" class="btn btn-warning" id="deleteEntry">Reset changes<spinner ng-show="saveLoading" class="ng-hide"></spinner></button> -->
+    <!-- <button ng-show="showActions" ng-disabled="!validateForm();" ng-click="save();" class="btn btn-success" id="saveEntry">Save all changes<spinner ng-show="loading.initial" class="ng-hide"></spinner></button>
+    <button ng-show="showActions" ng-click="reset();" class='btn btn-warning'>Reset</button> -->
+    <button class="btn btn-success" id="requestContact">Request Contact<spinner ng-show="loading.request" class="ng-hide"></spinner></button>
+</p>
+</div>
+
+<h1>Joni Aaltonen</h1>
+<hr />
+<div class='row'>
+	<div class="col-sm-3 col-md-2 sidebar-right">        
+		<div class="list-group">			      
+            
+            <div class='list-group-item profileImage'>
+                <img src='http://lorempixel.com/400/400/people' alt='user' />
+            </div>
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.profile'>My Profile</a>     	
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.inbox'>Inbox <span class="badge">4</span></a>   	 			
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.sent'>Sent requests</a>   
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.connections'>Connections</a>   	
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.events'>Events</a>   	 	
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.password'>Password</a>
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.privacy'>Privacy</a>   	 	     	 	
+    	 </div>
+     </div>
+    <!-- <ws-spinner ng-show='loading.initial'></ws-spinner> -->
+    <div class="col-sm-9 col-md-10" id="content" ui-view=""></div>            
+</div>
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr>

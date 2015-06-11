@@ -1,0 +1,47 @@
+
+                <h2>My Events</h2>
+                <p>By <b><i>attending</i></b> an event, you will be listed under the event, and other people can request your contact details.<br />
+                Please only do so if you are going to <b>physically attend</b> the event.</p>
+                
+                <p>&nbsp;</p>                
+
+                <fieldset><legend>Events I'm attending</legend>
+                <div class='events cf'>
+                    <div ng-repeat="i in [1, 2, 3] track by $index" class='event'>
+                        <div><a ui-sref='event({eventId:1})'>WorldSkills Sao Paulo 2015</a></div>
+                        <div class='event-image'>
+                            <a ui-sref='event({eventId:1})'><img class='thumbnail' src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' /></a>
+                            <span>17 possible connections&nbsp;&nbsp;<a href='#'><span class='glyphicon glyphicon-question-sign'></span></a></span>
+                        </div>
+                        <div class='event-attendance text-center'>
+                        	I will attend | <a>cancel</a>
+                        </div>
+                    </div>
+                </div>
+                </fieldset>
+
+                <fieldset><legend>All events (not attending)</legend>
+                <div class='events cf'>
+                    <div ng-repeat="i in [1, 2] track by $index" class='event'>
+                        <div><a ui-sref='event({eventId:1})'>Taitaja 2016 - Finnish nationals</a></div>
+                        <div class='event-image'>
+                            <a ui-sref='event({eventId:1})'><img class='thumbnail' src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' /></a>
+                            <span>17 possible connections&nbsp;&nbsp;<a href='#'><span class='glyphicon glyphicon-question-sign'></span></a></span>
+                        </div>
+                        <div class='event-attendance text-center'>
+                        	<a>Click here to attend <span class='glyphicon glyphicon-question-sign'></span></a>
+                        </div>
+                    </div>
+                </div>
+            	</fieldset>
+
+            
+           
+
+        <hr class="" />
+
+       
+
+        
+
+    

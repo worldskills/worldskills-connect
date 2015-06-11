@@ -48,24 +48,28 @@
                         </ul></li>
                 </ul> -->
                 <ul class="nav navbar-nav navbar-right">                    
-                    <li><a href="#">Login</a></li>                    
-                    <li><a href="#">Sign Up</a></li>
+                    <!-- <li><a href="#">Login</a></li>                    
+                    <li><a href="#">Sign Up</a></li> -->
 
-                    <!-- <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            John Doe <b class="caret"></b>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            John Doe&nbsp;<span class='badge red'>8</span>&nbsp;<b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Profile</a></li>
-                            <li><a href="#">Change Password</a></li>
-                            <li><a href="#">Logout</a></li>
-                    </ul></li> -->
+                            <li><a ui-sref-active='active' ui-sref='user.profile' href="#">Profile</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.inbox' href="#">Inbox <span class='badge red'>8</span></a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.sent' href="#">Sent requests</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.connections' href="#">Connections</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.events' href="#">Events</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.password' href="#">Password</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.privacy' href="#">Privacy</a></li>                            
+                    </ul></li>                    
                 </ul>
-                <form class="navbar-form    navbar-right" role="search">
+                <!-- <form class="navbar-form    navbar-right" role="search">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Login / Sign up to search">
                     </div>
                     <button type="submit" class="btn btn-default sr-only">Submit</button>
-                </form>
+                </form> -->
             </div>
         </div>
     </div>
@@ -172,6 +176,12 @@
         <script src="scripts/controllers/home.js"></script>
         <script src="scripts/controllers/events.js"></script>
         <script src="scripts/controllers/event.js"></script>
+        <script src="scripts/controllers/user.js"></script>
+        <script src="scripts/controllers/userprofile.js"></script>
+        <script src="scripts/controllers/userinbox.js"></script>
+        <script src="scripts/controllers/usersent.js"></script>
+        <script src="scripts/controllers/userconnections.js"></script>
+        <script src="scripts/controllers/userevents.js"></script>
         <!-- endbuild -->
 </body>
 </html>

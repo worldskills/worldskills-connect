@@ -1,0 +1,43 @@
+<fieldset><legend>Sent Connection Requests</legend>
+<p>Below are the connection requests you have sent, and which are still pending for acceptance by the other user.</p>
+<p>&nbsp;</p>
+<div class="media media-inbox" ng-repeat="i in [1, 2, 3, 4, 5] track by $index">
+	<div class='row'>
+		<div class='col-xs-12 col-sm-10'>
+  			<div class="media-left media-top">
+  			    <a ui-sref='user.profile({userId:1})'><img class="media-object" src="http://lorempixel.com/120/120/people" alt="name"></a>
+  			</div>
+  			<div class="media-body media-middle">
+  			  <h4 class="media-heading"><a ui-sref='user.profile({userId:1})'>Joni Aaltonen</a></h4>
+  			  	<div class='row contentRow'>
+					<div class='col-xs-4 col-md-3 col-lg-2'>
+						<strong>Company</strong>
+					</div>
+					<div class='col-xs-8 col-md-9 col-lg-10'>
+						WorldSkills International
+					</div>
+				</div>
+				<div class='row contentRow'>
+					<div class='col-xs-4 col-md-3 col-lg-2'>
+						<strong>Job Title</strong>
+					</div>
+					<div class='col-xs-8 col-md-9 col-lg-10'>
+						Senior Web Developer
+					</div>
+				</div>	
+				<div class='row contentRow'>
+					<div class='col-xs-4 col-md-3 col-lg-2'>
+						<strong>Country</strong>
+					</div>
+					<div class='col-xs-8 col-md-9 col-lg-10'>
+						Finland
+					</div>
+				</div>			
+  			</div>
+  		</div>
+  		<div class='inboxActions col-xs-12 col-sm-2'>
+  			<button class='fullWidth btn btn-warning btn-sm'>Cancel request</button>
+  		</div>
+  	</div>
+</div>
+</fieldset>

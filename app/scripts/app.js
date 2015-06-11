@@ -23,7 +23,7 @@ angular
     'pascalprecht.translate'
   ])
   //.config(function ($routeProvider) {
-    .config(function ($routeProvider, $translateProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
+    .config(function ($routeProvider, APP_ROLES, $translateProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
     
     $urlRouterProvider.otherwise('/');
 
@@ -74,53 +74,109 @@ angular
   // //index
     .state('index', {
       url: '/',
-      templateUrl: 'views/main.html'
+      templateUrl: 'views/main.html',
+      requireLoggedIn: false      
     })
 
    //personnel
    .state('events', {
      url: '/events',
      templateUrl: 'views/events.html',
-     controller: 'EventsCtrl'
+     controller: 'EventsCtrl',
+     requireLoggedIn: true,
+      requiredRoles: [
+        {code: 1800, role: APP_ROLES.ADMIN},
+        {code: 1800, role: APP_ROLES.MANAGER},
+        {code: 1800, role: APP_ROLES.USER}
+      ]
    })
 
    .state('event', {
       url: '/event/:eventId',
       templateUrl: 'views/event.html',
-      controller: 'EventCtrl'
+      controller: 'EventCtrl',
+      requireLoggedIn: true,
+      requiredRoles: [
+        {code: 1800, role: APP_ROLES.ADMIN},
+        {code: 1800, role: APP_ROLES.MANAGER},
+        {code: 1800, role: APP_ROLES.USER}
+      ]
    })
 
-   //assessment
-   .state('assessment', {
-     url: '/assessment',
-     templateUrl: 'views/assessment.html',
-     controller: 'AssessmentCtrl'
-   })
-
-  //Competition / assessment criteria
-  .state('assessmentCriteria', {
+   .state('user', {
+    url: '/user/{userId}',
+    templateUrl: 'views/user.html',
+    controller: 'UserCtrl',
     abstract: true,
-    url: '/assessmentCriteria',
-    templateUrl: 'views/assessmentCriteria.html'
-  })
+    requireLoggedIn: true,
+      requiredRoles: [
+        {code: 1800, role: APP_ROLES.ADMIN},
+        {code: 1800, role: APP_ROLES.MANAGER},
+        {code: 1800, role: APP_ROLES.USER}
+      ]
+   })
 
-  .state('assessmentCriteria.menu', {
-    url: '/assessmentCriteria/menu_:stepName',
+   .state('user.profile', {
+    url: '',
+    templateUrl: 'views/userprofile.html',
+    controller: 'UserProfileCtrl',
+    requireLoggedIn: true,
+      requiredRoles: [
+        {code: 1800, role: APP_ROLES.ADMIN},
+        {code: 1800, role: APP_ROLES.MANAGER},
+        {code: 1800, role: APP_ROLES.USER}
+      ]
+   })
 
-    views: {
-      'assessmentCriteriaMenu': assessmentCriteriaMenu,
-      'assessmentCriteriaContent':{
-        templateUrl: function ($stateParams){
-          return 'views/assessmentCriteria.' + $stateParams.stepName + '.html';
-        },
-        controllerProvider: ['$stateParams', function($stateParams){
-          //var ctrlName = $stateParams.stepID
-          var ctrlName = 'Assessmentcriteria' + $stateParams.stepName + 'Ctrl';
-          return ctrlName;
-        }]
-      }
-    }
-  });
+   .state('user.inbox', {
+    url: '/inbox',
+    templateUrl: 'views/userinbox.html',
+    controller: 'UserInboxCtrl',
+    requireLoggedIn: true,
+      requiredRoles: [
+        {code: 1800, role: APP_ROLES.ADMIN},
+        {code: 1800, role: APP_ROLES.MANAGER},
+        {code: 1800, role: APP_ROLES.USER}
+      ]
+   })
+
+   .state('user.sent', {
+    url: '/sent',
+    templateUrl: 'views/usersent.html',
+    controller: 'UserSentCtrl',
+    requireLoggedIn: true,
+    requiredRoles: [
+        {code: 1800, role: APP_ROLES.ADMIN},
+        {code: 1800, role: APP_ROLES.MANAGER},
+        {code: 1800, role: APP_ROLES.USER}
+      ]
+   })
+
+   .state('user.connections', {
+    url: '/connections',
+    controller: 'UserConnectionsCtrl',
+    templateUrl: 'views/userconnections.html',
+    requireLoggedIn: true,
+    requiredRoles: [
+        {code: 1800, role: APP_ROLES.ADMIN},
+        {code: 1800, role: APP_ROLES.MANAGER},
+        {code: 1800, role: APP_ROLES.USER}
+      ]
+   })
+
+  .state('user.events', {
+    url: '/events',
+    controller: 'UserEventsCtrl',
+    templateUrl: 'views/userevents.html',
+    requireLoggedIn: true,
+    requiredRoles: [
+        {code: 1800, role: APP_ROLES.ADMIN},
+        {code: 1800, role: APP_ROLES.MANAGER},
+        {code: 1800, role: APP_ROLES.USER}
+      ]
+   })
+
+   ;
 
   })
 .run(function($rootScope, $state, $stateParams){

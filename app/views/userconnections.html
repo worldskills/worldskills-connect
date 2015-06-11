@@ -1,0 +1,55 @@
+<fieldset><legend>My Connections</legend>
+<p>Below is a list of all of your accepted connections</p>
+<p><button class='btn btn-info btn-sm'>Download CSV - Excel</button> <button class='btn btn-info btn-sm'>Download VCF - Outlook</button></p>
+<p>&nbsp;</p>
+				  <form>
+				    <div class="form-group">
+				      <div class="input-group">
+				        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+				
+				        <input type="text" class="form-control" placeholder="Search name, company, position or country" ng-model="searchContact">
+				
+				      </div>      
+				    </div>
+				  </form>
+
+<div class="media media-inbox" ng-repeat="connection in contacts | filter:searchConnections">
+	<div class='row'>
+		<div class='col-xs-12 col-sm-10'>
+  			<div class="media-left media-top">
+  			    <a ui-sref='user.profile({userId:1})'><img class="media-object" src="http://lorempixel.com/120/120/people" alt="name"></a>
+  			</div>
+  			<div class="media-body">
+  			  <h4 class="media-heading"><a ui-sref='user.profile({userId:1})'>{{connection.name}}</a></h4>
+  			  	<div class='row contentRow'>
+					<div class='col-xs-4 col-md-3 col-lg-2'>
+						<strong>Company</strong>
+					</div>
+					<div class='col-xs-8 col-md-9 col-lg-10'>
+						{{connection.company}}
+					</div>
+				</div>
+				<div class='row contentRow'>
+					<div class='col-xs-4 col-md-3 col-lg-2'>
+						<strong>Job Title</strong>
+					</div>
+					<div class='col-xs-8 col-md-9 col-lg-10'>
+						{{connection.position}}
+					</div>
+				</div>	
+				<div class='row contentRow'>
+					<div class='col-xs-4 col-md-3 col-lg-2'>
+						<strong>Country</strong>
+					</div>
+					<div class='col-xs-8 col-md-9 col-lg-10'>
+						{{connection.country}}
+					</div>
+				</div>			
+  			</div>
+  		</div>
+  		<div class='inboxActions col-xs-12 col-sm-2'>
+  			<button class='fullWidth btn btn-danger btn-sm'>Remove Connection</button>
+  		</div>
+  	</div>
+</div>
+</fieldset>

@@ -9,4 +9,10 @@
     connectApp.constant('AUTHORIZE_URL', 'http://auth.diaz.worldskills.org/oauth/authorize');
     connectApp.constant('LOGOUT_URL', 'http://auth.diaz.worldskills.org/logout');
 
+    connectApp.constant('APP_ROLES', {
+        ADMIN: 'Admin',
+        MANAGER: 'Manager',
+        USER: 'User'        
+    });
+
 })();
