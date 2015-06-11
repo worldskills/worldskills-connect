@@ -1,7 +1,11 @@
 {
   "name": "worldskills",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "bower": "~1.4.1",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-compass": "~1.0.3"
+  },
   "repository": {},
   "devDependencies": {
     "grunt": "^0.4.5",
