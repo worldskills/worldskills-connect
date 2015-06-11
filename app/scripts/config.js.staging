@@ -1,8 +1,6 @@
 (function() {
     'use strict';
 
-    //TODO update values when integrating with API
-    
     var connectApp = angular.module('connectApp'); 
     connectApp.constant('API_CONNECT', 'https://staging-api.worldskills.org/connect');
     connectApp.constant('APP_ID', '1800');
