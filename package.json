@@ -1,8 +1,12 @@
 {
-  "name": "worldskills",
-  "version": "0.0.0",
-  "dependencies": {},
-  "repository": {},
+  "name": "worldskills-connect",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "bower": "~1.4.1",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-compass": "~1.0.3"
+  },
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^2.0.0",
