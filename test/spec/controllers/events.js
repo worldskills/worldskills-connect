@@ -1,19 +1,20 @@
 'use strict';
 
-describe('Controller: TranslateCtrl', function () {
+describe('Controller: EventsCtrl', function () {
 
   // load the controller's module
   beforeEach(module('connectApp'));
 
-  var TranslateCtrl,
+  var EventsCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    TranslateCtrl = $controller('TranslateCtrl', {
+    EventsCtrl = $controller('EventsCtrl', {
       $scope: scope
     });
   }));
+
 
 });

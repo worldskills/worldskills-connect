@@ -1,0 +1,128 @@
+        <div class="row">
+
+            <div class='col-xs-12 col-sm-10'>
+                <h2>WorldSkills Sao Paulo 2015</h2>
+                
+                <div class='event-highligh cf'>
+                	<img class='event-picture' src='http://lorempixel.com/300/150/city' alt='sao paulo' />
+                	
+                	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+                
+                <p>&nbsp;</p>                
+                <h4>Event Participants</h4>
+                <p>Find the participant you'd like to connect with, and click on "request contact".<br />
+                The person will be sent an email asking for approval, if they approve your request, you both get each others contact details</p>
+                
+                <p>&nbsp</p>
+                <!-- contacts -->
+				  <form>
+				    <div class="form-group">
+				      <div class="input-group">
+				        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+				
+				        <input type="text" class="form-control" placeholder="Search name, company, position or country" ng-model="searchContact">
+				
+				      </div>      
+				    </div>
+				  </form>
+ 				                  
+				  
+				  <table class="table table-responsive table-striped">				    
+				    <thead>
+				      <tr>
+				        <td>				        
+				            <a ng-click="sortType = 'name'; sortReverse = !sortReverse">
+				            Name
+				            <span ng-show="sortType == 'name' && !sortReverse" class="caret"></span>
+        					<span ng-show="sortType == 'name' && sortReverse" class="caret-reverse"></span>
+				             </a>
+				        </td>
+				        <td>
+				          <a ng-click="sortType = 'company'; sortReverse = !sortReverse">
+				            Company
+				             <span ng-show="sortType == 'company' && !sortReverse" class="caret"></span>
+        					<span ng-show="sortType == 'company' && sortReverse" class="caret-reverse"></span>
+				             </a>
+				        </td>
+				        <td>
+				          <a ng-click="sortType = 'position'; sortReverse = !sortReverse">
+				            Job title
+				             <span ng-show="sortType == 'position' && !sortReverse" class="caret"></span>
+        					<span ng-show="sortType == 'position' && sortReverse" class="caret-reverse"></span>
+				             </a>
+				        </td>
+				        <td>
+				          <a ng-click="sortType = 'country'; sortReverse = !sortReverse">
+				            Country
+				             <span ng-show="sortType == 'country' && !sortReverse" class="caret"></span>
+        					<span ng-show="sortType == 'country' && sortReverse" class="caret-reverse"></span>
+				             </a>
+				        </td>
+				        <td class='text-center'>
+				        <a ng-click="sortType = 'requestSent'; sortReverse = !sortReverse">
+				            Request status
+				             <span ng-show="sortType == 'requestSent' && !sortReverse" class="caret"></span>
+        					<span ng-show="sortType == 'requestSent' && sortReverse" class="caret-reverse"></span>
+				             </a>
+				        </td>
+				      </tr>
+				    </thead>
+				    
+				    <tbody>
+				      <tr ng-repeat="contact in contacts | orderBy:sortType:sortReverse | filter:search">
+				        <td>{{ contact.name }}</td>
+				        <td>{{ contact.company }}</td>
+				        <td>{{ contact.position }}</td>
+				        <td>{{ contact.country }}</td>
+				        <td class='text-center'>
+				        	<!-- <small ng-if="$index %2 == 0" ng-click=""><a>Request Contact</a></small>
+				        	<small ng-if="$index %2 != 0">Request sent | <a>cancel</a></small> -->
+				        	<small ng-if="!contact.requestSent"><a ng-click="contact.requestSent = !contact.requestSent">Request Contact</a></small>
+				        	<small ng-if="contact.requestSent">Request sent | <a ng-click="contact.requestSent = !contact.requestSent">cancel</a></small>
+				        </td>
+				      </tr>
+				    </tbody>
+				    
+				  </table>
+				  
+				  <pagination 
+                  	total-items="bigTotalItems" 
+                  	ng-model="bigCurrentPage" 
+                  	ng-change="pageChanged()"
+                  	items-per-page="itemsPerPage"
+                  	max-size="maxSize" 
+                  	class="pagination-sm pull-right" 
+                  	boundary-links="false" 
+                  	rotate="false" 
+                  	num-pages="numPages"></pagination>
+                    	
+                
+                <!-- contacts -->
+                
+        </div>
+        
+        <div class='col-xs-12 col-sm-2 sidebar'>
+            <h5 class='text-center'>Popular connections at<br /><small>WorldSkills Sao Paulo 2015</small></h5>
+            <div class='popular-connection' ng-repeat="i in [1, 2, 3, 4, 5] track by $index">
+                <div>Joni Aaltonen</div>
+                <div class='popular-connection-image'>
+                    <img src='http://lorempixel.com/150/150/city/' alt='Sao Paulo 2015' />                        
+                </div>
+                <div>Finland</div>
+            </div>
+        </div>       
+    </div>    
+
+        <hr class="" />
+
+       
+
+        
+
+    

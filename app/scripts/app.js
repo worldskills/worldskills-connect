@@ -27,18 +27,22 @@ angular
     
     $urlRouterProvider.otherwise('/');
 
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+    // $routeProvider
+    //   .when('/', {
+    //     templateUrl: 'views/main.html',
+    //     controller: 'MainCtrl'
+    //   })
+    //   .when('/events', {
+    //     templateUrl: 'views/events.html',
+    //     controller: 'EventsCtrl'
+    //   })
+    //   .when('/about', {
+    //     templateUrl: 'views/about.html',
+    //     controller: 'AboutCtrl'
+    //   })
+    //   .otherwise({
+    //     redirectTo: '/'
+    //   });
 
   $translateProvider.useStaticFilesLoader({
     prefix: 'languages/',
@@ -74,10 +78,16 @@ angular
     })
 
    //personnel
-   .state('personnel', {
-     url: '/personnel',
-     templateUrl: 'views/personnel.html',
-     controller: 'PersonnelCtrl'
+   .state('events', {
+     url: '/events',
+     templateUrl: 'views/events.html',
+     controller: 'EventsCtrl'
+   })
+
+   .state('event', {
+      url: '/event/:eventId',
+      templateUrl: 'views/event.html',
+      controller: 'EventCtrl'
    })
 
    //assessment

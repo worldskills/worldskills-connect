@@ -1,0 +1,61 @@
+        <div class="row">
+
+            <div class='col-xs-12 col-sm-10'>
+                <h2>WorldSkills Events</h2>
+                <p>Select an event to see registered participants.<br />
+                By "attending" an event, you will be listed under the event, and other people can request your contact details.<br />
+                Please only do so if you are going to physically attend the event.</p>
+                
+                <p>&nbsp;</p>                
+
+                <h3>Featured Events</h3>
+                <div class='events cf'>
+                    <div ng-repeat="i in [1, 2, 3] track by $index" class='event'>
+                        <div><a ui-sref='event({eventId:1})'>WorldSkills Sao Paulo 2015</a></div>
+                        <div class='event-image'>
+                            <a ui-sref='event({eventId:1})'><img src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' /></a>
+                            <span>17 possible connections&nbsp;&nbsp;<a href='#'><span class='glyphicon glyphicon-question-sign'></span></a></span>
+                        </div>
+                        <div class='event-attendance text-center'>
+                            <a>Click here to attend <span class='glyphicon glyphicon-question-sign'></span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Upcoming Events</h3>
+                <div class='events cf'>
+                    <div ng-repeat="i in [1, 2] track by $index" class='event'>
+                        <div><a ui-sref='event({eventId:1})'>Taitaja 2016 - Finnish nationals</a></div>
+                        <div class='event-image'>
+                            <a ui-sref='event({eventId:1})'><img src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' /></a>
+                            <span>17 possible connections&nbsp;&nbsp;<a href='#'><span class='glyphicon glyphicon-question-sign'></span></a></span>
+                        </div>
+                        <div class='event-attendance text-center'>
+                            I will attend | <a>cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='col-xs-12 col-sm-2 sidebar'>
+                <h4 class='text-center'>Popular connections</h4>
+
+                <div class='popular-connection' ng-repeat="i in [1, 2, 3, 4, 5] track by $index">
+                    <div>Joni Aaltonen</div>
+                    <div class='popular-connection-image'>
+                        <img src='http://lorempixel.com/150/150/city/' alt='Sao Paulo 2015' />                        
+                    </div>
+                    <div>Finland</div>
+                </div>
+
+            </div>
+        </div>
+           
+
+        <hr class="" />
+
+       
+
+        
+
+    

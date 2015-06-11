@@ -11,3 +11,141 @@ li.active a {
   display: none !important;
 }
 
+/*<div class='featured-event'>
+                    <span>WorldSkills Sao Paulo 2015</span>
+                    <div class='featured-event-image'>
+                        <img src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' />
+                        <span>17 possible connections&nbsp;<span class='glyphicon glyphicon-info-sign'></span>
+                    </div>
+                </div>*/
+
+
+.sidebar{
+	border-left: 1px solid #eee;
+}
+
+.featured-event{	
+	margin-bottom: 3em;
+}   
+
+.featured-event > div{
+	font-size: 85%;
+	margin-bottom: 4px;
+	font-weight: bold;
+}
+
+.featured-event-image{
+	height: auto;
+	width: 100%;
+	position: relative;
+	z-index: 4;
+}
+
+.featured-event-image > span{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 5;
+	border: 1px solid #fff;
+	background-color: #fff;
+	border: 2px;
+	font-weight: normal;
+	border-top-right-radius: 3px;
+	padding: 5px;
+	font-size: 85%;
+}
+
+.video-intro{
+	width: 560px;
+	height: 315px;
+	/*width="560" height="315"*/
+}
+
+.popular-connection{
+	margin-bottom: 2em;
+}
+
+.popular-connection > div{
+	font-size: 90%;
+	margin-bottom: 4px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.popular-connection-image{
+	height: auto;
+	width: 100%;
+}
+
+.events{ clear: both; }
+.event{	
+	margin-bottom: 3em;
+	float: left;
+	margin-right: 2em;	
+	border: 0;
+}   
+
+/*.event:first-of-type{ margin-left:;}*/
+
+.event > div{
+	font-size: 85%;
+	margin-bottom: 4px;
+	font-weight: bold;
+}
+
+.event > div:first-child > a{
+	font-size: 110%;
+}
+
+.event-image{
+	height: auto;
+	width: 100%;
+	position: relative;
+	z-index: 4;
+}
+
+.event-image > span{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 5;
+	border: 1px solid #fff;
+	background-color: #fff;
+	border: 2px;
+	font-weight: normal;
+	border-top-right-radius: 3px;
+	padding: 5px;
+	font-size: 85%;
+}
+
+.event-attendance, .event-attendance a{
+	margin-top: .5em;
+	font-size: 85%;
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+
+
+.event-picture{
+	float: right;
+	margin-left: 2em;
+	clear: right;
+}
+
+
