@@ -231,7 +231,7 @@ fieldset{ margin-bottom: 3em; }
 legend{ color: #003d56; }
 .contentRow{ padding-bottom: .5em; }
 .contentRow div:first-child{ text-align: right; font-weight: bold; color: #003d56; }
-
+.contentRow div:first-child.checkbox{ text-align: left; font-weight: normal; color: #000; }
 /* copied FROM people */
 
 a.eventLink > .thumbnail .caption{ font-size: 85%; font-weight: normal;}
@@ -247,4 +247,9 @@ a.eventLink:hover, a.contactLink:hover{ text-decoration: none; }
 	background-color: #337ab7;
 	color: #fff;
 	border-color: #337ab7;
+}
+
+/** popover */
+.popover-content{
+	font-size: 85%;
 }

@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="connectApp">
+  <body ng-app="connectApp" ng-controller="ApplicationCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -33,7 +33,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#" ng-cloak translate>APP_NAME</a>
+                <a class="navbar-brand" ui-sref='home' ng-cloak translate>APP_NAME</a>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <!-- <ul class="nav navbar-nav">
@@ -47,11 +47,11 @@
                             <li ui-sref-active="active"><a ui-sref="assessmentCriteria.menu({stepName:'02'})">Assessment Criteria</a></li>
                         </ul></li>
                 </ul> -->
-                <ul class="nav navbar-nav navbar-right">                    
-                    <!-- <li><a href="#">Login</a></li>                    
-                    <li><a href="#">Sign Up</a></li> -->
+                <ul class="nav navbar-nav navbar-right">                                
+                    <li ng-hide='auth.loggedIn'><a href='{{auth.loginUrl}}'>Login</a></li>                    
+                    <li ng-hide='auth.loggedIn'><a ui-sref="signup">Sign Up</a></li>
 
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <li ng-show='auth.loggedIn' class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">
                             John Doe&nbsp;<span class='badge red'>8</span>&nbsp;<b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
@@ -62,6 +62,7 @@
                             <li><a ui-sref-active='active' ui-sref='user.events' href="#">Events</a></li>
                             <li><a ui-sref-active='active' ui-sref='user.password' href="#">Password</a></li>
                             <li><a ui-sref-active='active' ui-sref='user.privacy' href="#">Privacy</a></li>                            
+                            <li><a ng-click="logout()">Logout</a></li>                            
                     </ul></li>                    
                 </ul>
                 <!-- <form class="navbar-form    navbar-right" role="search">
@@ -173,7 +174,6 @@
         <script src="scripts/controllers/assessmentcriteria02.js"></script>
         <script src="scripts/controllers/assessmentcriteriamenu.js"></script>
         <script src="scripts/directives/konami.js"></script>
-        <script src="scripts/controllers/home.js"></script>
         <script src="scripts/controllers/events.js"></script>
         <script src="scripts/controllers/event.js"></script>
         <script src="scripts/controllers/user.js"></script>
@@ -182,6 +182,11 @@
         <script src="scripts/controllers/usersent.js"></script>
         <script src="scripts/controllers/userconnections.js"></script>
         <script src="scripts/controllers/userevents.js"></script>
+        <script src="scripts/controllers/application.js"></script>
+        <script src="scripts/services/wsalert.js"></script>
+        <script src="scripts/directives/wsalert.js"></script>
+        <script src="scripts/controllers/signup.js"></script>
+        <script src="scripts/services/events.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -1,0 +1,86 @@
+<fieldset><legend>Description</legend>
+<textarea name="description" ng-minlength='10' rows='5' required class="form-control" placeholder='Lorem ipsum, dolor sit amet...'></textarea>	  
+</fieldset>
+
+<fieldset>	
+	<legend>Company Information</legend>	
+
+		<div class='row contentRow'>
+			<div class='col-xs-4 col-md-3 col-lg-2'>
+				<strong>Company</strong>
+			</div>
+			<div class='col-xs-8 col-md-9 col-lg-10'>
+				<input type='text' name='company' required placeholder="Company name" ng-model='tmp_user.company' class='form-control input-sm' />
+			</div>
+		</div>
+		<div class='row contentRow'>
+			<div class='col-xs-4 col-md-3 col-lg-2'>
+				<strong>Job Title</strong>
+			</div>
+			<div class='col-xs-8 col-md-9 col-lg-10'>
+				<input type='text' name='company' required placeholder="Job title" ng-model='tmp_user.job_title' class='form-control input-sm' />
+			</div>
+		</div>					
+</fieldset>
+
+
+<fieldset>	
+	<legend>Contact Details</legend>	
+		<div class='row contentRow'>
+			<div class='col-xs-4 col-md-3 col-lg-2'>
+				<strong>Email</strong>
+			</div>
+			<div class='col-xs-8 col-md-9 col-lg-10'>
+				<input type='text' name='company' required placeholder="firstname.lastname@domain.net" ng-model='tmp_user.job_title' class='form-control input-sm' />
+			</div>
+		</div>					
+		<div class='row contentRow'>
+			<div class='col-xs-4 col-md-3 col-lg-2'>
+				<strong>Phone</strong>
+			</div>
+			<div class='col-xs-8 col-md-9 col-lg-10'>
+				<input type='text' name='company' required placeholder="+358 123 4567" ng-model='tmp_user.job_title' class='form-control input-sm' />
+			</div>
+		</div>							
+</fieldset>
+
+<div class='row'>
+	<div class='xs-4 col-md-3 col-lg-2'></div>
+	<div class='col-xs-8 col-md-9 col-lg-10'>
+		<button class='btn btn-success btn-md'>Save profile</button>
+		<button class='btn btn-warning btn-md'>Cancel</button>
+	</div>
+</div>
+
+<fieldset><legend>Interests <span class='label label-small label-default'>beta</span></legend>
+<p>These interests are used by <b>WorldSkills Connect Facilitators</b> at the event to manually match you with people who have matching interests</p>
+
+		<div class='row contentRow'>
+			<div class='col-xs-4 col-md-3 col-lg-2'>
+				<strong>Days of visit WorldSkills São Paulo 2015</strong>
+			</div>
+			<div class='col-xs-8 col-md-9 col-lg-10'>
+				<div class="checkbox"><label><input type="checkbox" value="">11. August 2015</label></div>
+				<div class="checkbox"><label><input type="checkbox" value="">12. August 2015</label></div>
+				<div class="checkbox"><label><input type="checkbox" value="">13. August 2015</label></div>
+				<div class="checkbox"><label><input type="checkbox" value="">14. August 2015</label></div>
+				<div class="checkbox"><label><input type="checkbox" value="">15. August 2015</label></div>
+				<div class="checkbox"><label><input type="checkbox" value="">16. August 2015</label></div>
+			</div>
+		</div>	
+
+		<div class='row contentRow'>
+			<div class='col-xs-4 col-md-3 col-lg-2'>
+				<strong>Interest area (max 2)</strong>
+			</div>
+			<div class='col-xs-8 col-md-9 col-lg-10'>
+				<div class="checkbox"><label><input type="checkbox" value="">11. August 2015</label></div>
+				<div class="checkbox"><label><input type="checkbox" value="">12. August 2015</label></div>
+				<div class="checkbox"><label><input type="checkbox" value="">13. August 2015</label></div>
+				<div class="checkbox"><label><input type="checkbox" value="">14. August 2015</label></div>
+				<div class="checkbox"><label><input type="checkbox" value="">15. August 2015</label></div>
+				<div class="checkbox"><label><input type="checkbox" value="">16. August 2015</label></div>
+			</div>
+		</div>	
+
+</fieldset>

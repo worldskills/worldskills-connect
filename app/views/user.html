@@ -4,7 +4,9 @@
     <button ng-click="saveEvent()" class="btn btn-warning" id="deleteEntry">Reset changes<spinner ng-show="saveLoading" class="ng-hide"></spinner></button> -->
     <!-- <button ng-show="showActions" ng-disabled="!validateForm();" ng-click="save();" class="btn btn-success" id="saveEntry">Save all changes<spinner ng-show="loading.initial" class="ng-hide"></spinner></button>
     <button ng-show="showActions" ng-click="reset();" class='btn btn-warning'>Reset</button> -->
+    {{state}}
     <button class="btn btn-success" id="requestContact">Request Contact<spinner ng-show="loading.request" class="ng-hide"></spinner></button>
+    <button class="btn btn-primary" ui-sref="user.edit({userId:1})" id="requestContact">Edit my profile<spinner ng-show="loading.request" class="ng-hide"></spinner></button>
 </p>
 </div>
 

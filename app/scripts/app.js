@@ -20,29 +20,35 @@ angular
     'ngTouch',
     'ui.router',
     'ui.bootstrap',
-    'pascalprecht.translate'
+    'pascalprecht.translate',
+    'worldskills.utils'
   ])
   //.config(function ($routeProvider) {
-    .config(function ($routeProvider, APP_ROLES, $translateProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
+    .config(function ($routeProvider, APP_ROLES, $translateProvider, $stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
     
     $urlRouterProvider.otherwise('/');
 
-    // $routeProvider
-    //   .when('/', {
-    //     templateUrl: 'views/main.html',
-    //     controller: 'MainCtrl'
-    //   })
-    //   .when('/events', {
-    //     templateUrl: 'views/events.html',
-    //     controller: 'EventsCtrl'
-    //   })
-    //   .when('/about', {
-    //     templateUrl: 'views/about.html',
-    //     controller: 'AboutCtrl'
-    //   })
-    //   .otherwise({
-    //     redirectTo: '/'
-    //   });
+    $httpProvider.interceptors.push(['$q', 'WSAlert', '$timeout', function($q, WSAlert, $timeout) {
+    return {        
+      responseError: function(rejection) {
+        /*
+          Called when another XHR request returns with
+          an error status code.
+        */
+        if(rejection.status == 400 && rejection.data.code == "1800-1012"){
+          WSAlert.danger(rejection.data.user_msg + ". Redirecting to login...");
+          var refreshLogin = function(){ 
+            //FIXME - figure out a way to redirect to login directly without a refresh
+            window.history.go(0); 
+          };
+          //redirect to login after 2.5 second timeout
+          $timeout(refreshLogin, 2500);
+        }
+        return $q.reject(rejection);
+      }
+    };
+  }]);
+
 
   $translateProvider.useStaticFilesLoader({
     prefix: 'languages/',
@@ -72,35 +78,54 @@ angular
   $stateProvider
 
   // //index
-    .state('index', {
+    .state('home', {
       url: '/',
       templateUrl: 'views/main.html',
-      requireLoggedIn: false      
+      contoller: 'HomeCtrl',
+      data: {
+        requireLoggedIn: false    
+      }
     })
 
-   //personnel
+   //events
    .state('events', {
      url: '/events',
      templateUrl: 'views/events.html',
      controller: 'EventsCtrl',
-     requireLoggedIn: true,
-      requiredRoles: [
-        {code: 1800, role: APP_ROLES.ADMIN},
-        {code: 1800, role: APP_ROLES.MANAGER},
-        {code: 1800, role: APP_ROLES.USER}
-      ]
+     data: {
+      requireLoggedIn: true,
+      forbiddenCallback: function(auth, $state){
+        $state.go('signup');
+      },
+       requiredRoles: [
+         {code: 1800, role: APP_ROLES.ADMIN},
+         {code: 1800, role: APP_ROLES.MANAGER},
+         {code: 1800, role: APP_ROLES.USER}
+       ]
+     }
+   })
+
+   .state('signup', {
+    url: '/signup',
+    controller: 'SignupCtrl',
+    templateUrl: 'views/signup.html',
+    data: {
+      requireLoggedIn: false
+    }
    })
 
    .state('event', {
       url: '/event/:eventId',
       templateUrl: 'views/event.html',
       controller: 'EventCtrl',
-      requireLoggedIn: true,
-      requiredRoles: [
-        {code: 1800, role: APP_ROLES.ADMIN},
-        {code: 1800, role: APP_ROLES.MANAGER},
-        {code: 1800, role: APP_ROLES.USER}
-      ]
+      data: {
+        requireLoggedIn: true,
+        requiredRoles: [
+          {code: 1800, role: APP_ROLES.ADMIN},
+          {code: 1800, role: APP_ROLES.MANAGER},
+          {code: 1800, role: APP_ROLES.USER}
+        ]
+      }
    })
 
    .state('user', {
@@ -108,84 +133,111 @@ angular
     templateUrl: 'views/user.html',
     controller: 'UserCtrl',
     abstract: true,
-    requireLoggedIn: true,
-      requiredRoles: [
-        {code: 1800, role: APP_ROLES.ADMIN},
-        {code: 1800, role: APP_ROLES.MANAGER},
-        {code: 1800, role: APP_ROLES.USER}
-      ]
+    data: {
+      requireLoggedIn: true,
+        requiredRoles: [
+          {code: 1800, role: APP_ROLES.ADMIN},
+          {code: 1800, role: APP_ROLES.MANAGER},
+          {code: 1800, role: APP_ROLES.USER}
+        ]
+      }
    })
 
    .state('user.profile', {
     url: '',
     templateUrl: 'views/userprofile.html',
     controller: 'UserProfileCtrl',
-    requireLoggedIn: true,
-      requiredRoles: [
-        {code: 1800, role: APP_ROLES.ADMIN},
-        {code: 1800, role: APP_ROLES.MANAGER},
-        {code: 1800, role: APP_ROLES.USER}
-      ]
+    data: {
+      requireLoggedIn: true,
+        requiredRoles: [
+          {code: 1800, role: APP_ROLES.ADMIN},
+          {code: 1800, role: APP_ROLES.MANAGER},
+          {code: 1800, role: APP_ROLES.USER}
+        ]
+      }
+   })
+
+   .state('user.edit', {
+    url: '/edit',
+    templateUrl: 'views/userprofileedit.html',
+    controller: 'UserProfileCtrl',
+    data: {
+      requireLoggedIn: true,
+        requiredRoles: [
+          {code: 1800, role: APP_ROLES.ADMIN},
+          {code: 1800, role: APP_ROLES.MANAGER},
+          {code: 1800, role: APP_ROLES.USER}
+        ]
+      }
    })
 
    .state('user.inbox', {
     url: '/inbox',
     templateUrl: 'views/userinbox.html',
     controller: 'UserInboxCtrl',
-    requireLoggedIn: true,
-      requiredRoles: [
-        {code: 1800, role: APP_ROLES.ADMIN},
-        {code: 1800, role: APP_ROLES.MANAGER},
-        {code: 1800, role: APP_ROLES.USER}
-      ]
+    data: {
+      requireLoggedIn: true,
+        requiredRoles: [
+          {code: 1800, role: APP_ROLES.ADMIN},
+          {code: 1800, role: APP_ROLES.MANAGER},
+          {code: 1800, role: APP_ROLES.USER}
+        ]
+      }
    })
 
    .state('user.sent', {
     url: '/sent',
     templateUrl: 'views/usersent.html',
     controller: 'UserSentCtrl',
-    requireLoggedIn: true,
-    requiredRoles: [
-        {code: 1800, role: APP_ROLES.ADMIN},
-        {code: 1800, role: APP_ROLES.MANAGER},
-        {code: 1800, role: APP_ROLES.USER}
-      ]
+    data: {
+      requireLoggedIn: true,
+      requiredRoles: [
+          {code: 1800, role: APP_ROLES.ADMIN},
+          {code: 1800, role: APP_ROLES.MANAGER},
+          {code: 1800, role: APP_ROLES.USER}
+        ]
+      }
    })
 
    .state('user.connections', {
     url: '/connections',
     controller: 'UserConnectionsCtrl',
     templateUrl: 'views/userconnections.html',
-    requireLoggedIn: true,
-    requiredRoles: [
-        {code: 1800, role: APP_ROLES.ADMIN},
-        {code: 1800, role: APP_ROLES.MANAGER},
-        {code: 1800, role: APP_ROLES.USER}
-      ]
+    data: {
+      requireLoggedIn: true,
+      requiredRoles: [
+          {code: 1800, role: APP_ROLES.ADMIN},
+          {code: 1800, role: APP_ROLES.MANAGER},
+          {code: 1800, role: APP_ROLES.USER}
+        ]
+      }
    })
 
   .state('user.events', {
     url: '/events',
     controller: 'UserEventsCtrl',
     templateUrl: 'views/userevents.html',
-    requireLoggedIn: true,
-    requiredRoles: [
-        {code: 1800, role: APP_ROLES.ADMIN},
-        {code: 1800, role: APP_ROLES.MANAGER},
-        {code: 1800, role: APP_ROLES.USER}
-      ]
+    data: {
+      requireLoggedIn: true,
+      requiredRoles: [
+          {code: 1800, role: APP_ROLES.ADMIN},
+          {code: 1800, role: APP_ROLES.MANAGER},
+          {code: 1800, role: APP_ROLES.USER}
+        ]
+      }
    })
 
    ;
 
   })
-.run(function($rootScope, $state, $stateParams){
+.run(function($rootScope, $state, $stateParams, auth, WSAlert){
   //DEVELOPMENT API URL
-  $rootScope.api_url = "http://localhost:8080/glossary/";
+  $rootScope.api_url = "http://localhost:8080/connect/";
   $rootScope.available_languages = {"en_US":"English", "pt_BR":"Portuguese (Brazil)"};
 
   //PRODUCTION API URL
   //$rootScope.api_url = "http://beuk.worldskills.org/glossary/";
+  $rootScope.closeAlert = WSAlert.closeAlert;
 
   // It's very handy to add references to $state and $stateParams to the $rootScope
   // so that you can access them from any scope within your applications.For example,
