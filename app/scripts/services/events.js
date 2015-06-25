@@ -10,22 +10,21 @@
 angular.module('connectApp')
   .service('Events', function ($q, $http, API_CONNECT) {
     // AngularJS will instantiate a singleton by calling "new" on this function
-    return {
 
-    	list: function(featured){
-    		var Events = {};
-    		var deferred = $q.defer();
-    		var featuredOnly = (featured) ? "?featured=" + featured : "";
-    		
-    		$http.get(API_CONNECT + "/events" + featuredOnly).then(function(result){
-    			Events = result.data.connect_events;
-    			deferred.resolve(Events);
-    		},
-    		function(error){
-    			deferred.reject("Could not fetch events: " + error);
-    		});
+    var Events = {};    
 
-    		return deferred.promise;
-    	}
-    }    	
+    Events.init = function(){
+        var deferred = $q.defer();
+                
+        $http.get(API_CONNECT + "/events").then(function(result){
+            Events.data = result.data.connect_events;
+            deferred.resolve(Events.data);
+        },
+        function(error){
+            deferred.reject("Could not fetch events: " + error);
+        });
+        return deferred.promise;
+    };    
+
+    return Events;   	
   });

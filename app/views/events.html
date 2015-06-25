@@ -4,24 +4,31 @@
                 <h2>WorldSkills Events</h2>
                 <p>Select an event to see registered participants.<br />
                 By "attending" an event, you will be listed under the event, and other people can request your contact details.<br />
-                Please only do so if you are going to physically attend the event.</p>
-                
+                Please only do so if you are going to physically attend the event.</p>                
                 <p>&nbsp;</p>                
 
                 <fieldset><legend>Featured Events</legend>
                 <div class='events cf'>
-                    <div ng-repeat="event in events | filter : {featured: true}" class='event'>
+                    <div ng-repeat="event in events.data" class='event' ng-if="event.featured == true">
                         <div><a ui-sref='event({eventId:event.id})'>{{event.event.name}}</a></div>
                         <div class='event-image'>
                             <a ui-sref='event({eventId:event.id})'><img class='thumbnail' src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' /></a>
-                            <span>{{event.connection_count}} possible connections&nbsp;&nbsp;<a popover="{{event.connection_count}} people have said they are attending this event." popover-trigger="mouseenter" ><span class='glyphicon glyphicon-question-sign'></span></a></span>
-                        </div>
-                        <div class='event-attendance text-center'>
-                            <a ng-click='switchAttendance(event.id);'>
-                                <span>Click here to attend 
-                                    <span popover="Click here if only you are physically going to attend this event." popover-trigger="mouseenter" class='glyphicon glyphicon-question-sign'></span>
-                                </span>
-                            </a>
+                            <span>{{event.connection_count}} possible connections&nbsp;&nbsp;<a popover="{{event.connection_count}} people attending this event." popover-trigger="mouseenter" ><span class='glyphicon glyphicon-question-sign'></span></a></span>
+                        </div>                        
+                        <div class='event-attendance text-center'>                  
+                            <ws-spinner class='smallSpinner' ng-show='loading.events[event.id]'></ws-spinner>          
+                            <div class="btn-group" dropdown dropdown-append-to-body>
+                              <a href="#" ng-hide="loading.events[event.id]" tooltip="Click to change" tooltip-trigger="mouseenter" tooltip-placement="top" class="dropdown-toggle" dropdown-toggle>
+                                <span ng-show="user.data.subscriptions[event.id]">{{user.data.subscriptions[event.id].status.name.text}}</span>
+                                <span ng-hide="user.data.subscriptions[event.id]">Not attending</span>
+                                &nbsp;<span class="caret"></span> 
+                              </a>
+                              <ul class="dropdown-menu" role="menu">
+                                <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.YES}" ng-click="setAttendance(event.id, STATUS.YES, $event);">{{statuses.data[STATUS.YES].name.text}}</a></li>
+                                <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.MAYBE}" ng-click="setAttendance(event.id, STATUS.MAYBE, $event);">{{statuses.data[STATUS.MAYBE].name.text}}</a></li>
+                                <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.NO}" ng-click="setAttendance(event.id, STATUS.NO, $event);">{{statuses.data[STATUS.NO].name.text}}</a></li>
+                              </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -29,18 +36,26 @@
 
                 <fieldset><legend>Upcoming Events</legend>
                 <div class='events cf'>
-                    <div ng-repeat="event in events | filter : {featured: false}" class='event'>
+                    <div ng-repeat="event in events.data" class='event' ng-if="event.featured == false">
                         <div><a ui-sref='event({eventId:event.id})'>{{event.event.name}}</a></div>
                         <div class='event-image'>
                             <a ui-sref='event({eventId:event.id})'><img class='thumbnail' src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' /></a>
-                            <span>{{event.connection_count}} possible connections&nbsp;&nbsp;<a popover="{{event.connection_count}} people have said they are attending this event." popover-trigger="mouseenter" ><span class='glyphicon glyphicon-question-sign'></span></a></span>
+                            <span>{{event.connection_count}} possible connections&nbsp;&nbsp;<a popover="{{event.connection_count}} people attending this event." popover-trigger="mouseenter" ><span class='glyphicon glyphicon-question-sign'></span></a></span>
                         </div>
-                        <div class='event-attendance text-center'>
-                            <a ng-click='switchAttendance(event.id);'>
-                                <span>Click here to attend 
-                                    <span popover="Click here if only you are physically going to attend this event." popover-trigger="mouseenter" class='glyphicon glyphicon-question-sign'></span>
-                                </span>
-                            </a>
+                        <div class='event-attendance text-center'>                  
+                            <ws-spinner class='smallSpinner' ng-show='loading.events[event.id]'></ws-spinner>          
+                            <div class="btn-group" dropdown dropdown-append-to-body>
+                              <a href="#" ng-hide="loading.events[event.id]" tooltip="Click to change" tooltip-trigger="mouseenter" tooltip-placement="top" class="dropdown-toggle" dropdown-toggle>
+                                <span ng-show="user.data.subscriptions[event.id]">{{user.data.subscriptions[event.id].status.name.text}}</span>
+                                <span ng-hide="user.data.subscriptions[event.id]">Not attending</span>
+                                &nbsp;<span class="caret"></span> 
+                              </a>
+                              <ul class="dropdown-menu" role="menu">
+                                <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.YES}" ng-click="setAttendance(event.id, STATUS.YES, $event);">{{statuses.data[STATUS.YES].name.text}}</a></li>
+                                <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.MAYBE}" ng-click="setAttendance(event.id, STATUS.MAYBE, $event);">{{statuses.data[STATUS.MAYBE].name.text}}</a></li>
+                                <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.NO}" ng-click="setAttendance(event.id, STATUS.NO, $event);">{{statuses.data[STATUS.NO].name.text}}</a></li>
+                              </ul>
+                            </div>
                         </div>
                     </div>
                 </div>

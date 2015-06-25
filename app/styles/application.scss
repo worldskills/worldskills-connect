@@ -108,8 +108,8 @@ li.active a {
 }
 
 .event-image{
-	height: auto;
-	width: 100%;
+/*	height: auto;*/
+	/*width: 100%;*/
 	position: relative;
 	z-index: 4;
 }
@@ -248,6 +248,8 @@ a.eventLink:hover, a.contactLink:hover{ text-decoration: none; }
 	color: #fff;
 	border-color: #337ab7;
 }
+
+.blue{ color: #337ab7; }
 
 /** popover */
 .popover-content{

@@ -8,11 +8,13 @@
  * Controller of the connectApp
  */
 angular.module('connectApp')
-  .controller('EventCtrl', function ($scope, $http) {
+  .controller('EventCtrl', function ($scope, $http, Statuses) {
 	
 	$scope.sortType     = 'name'; // set the default sort type
 	$scope.sortReverse  = false;  // set the default sort order
 	$scope.searchContact   = '';     // set the default search/filter term
+	$scope.Statuses = Statuses;
+	$scope.STATUS = Statuses.status();
   
 	
 	$scope.contacts = [
