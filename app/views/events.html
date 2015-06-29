@@ -8,56 +8,14 @@
                 <p>&nbsp;</p>                
 
                 <fieldset><legend>Featured Events</legend>
-                <div class='events cf'>
-                    <div ng-repeat="event in events.data" class='event' ng-if="event.featured == true">
-                        <div><a ui-sref='event({eventId:event.id})'>{{event.event.name}}</a></div>
-                        <div class='event-image'>
-                            <a ui-sref='event({eventId:event.id})'><img class='thumbnail' src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' /></a>
-                            <span>{{event.connection_count}} possible connections&nbsp;&nbsp;<a popover="{{event.connection_count}} people attending this event." popover-trigger="mouseenter" ><span class='glyphicon glyphicon-question-sign'></span></a></span>
-                        </div>                        
-                        <div class='event-attendance text-center'>                  
-                            <ws-spinner class='smallSpinner' ng-show='loading.events[event.id]'></ws-spinner>          
-                            <div class="btn-group" dropdown dropdown-append-to-body>
-                              <a href="#" ng-hide="loading.events[event.id]" tooltip="Click to change" tooltip-trigger="mouseenter" tooltip-placement="top" class="dropdown-toggle" dropdown-toggle>
-                                <span ng-show="user.data.subscriptions[event.id]">{{user.data.subscriptions[event.id].status.name.text}}</span>
-                                <span ng-hide="user.data.subscriptions[event.id]">Not attending</span>
-                                &nbsp;<span class="caret"></span> 
-                              </a>
-                              <ul class="dropdown-menu" role="menu">
-                                <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.YES}" ng-click="setAttendance(event.id, STATUS.YES, $event);">{{statuses.data[STATUS.YES].name.text}}</a></li>
-                                <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.MAYBE}" ng-click="setAttendance(event.id, STATUS.MAYBE, $event);">{{statuses.data[STATUS.MAYBE].name.text}}</a></li>
-                                <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.NO}" ng-click="setAttendance(event.id, STATUS.NO, $event);">{{statuses.data[STATUS.NO].name.text}}</a></li>
-                              </ul>
-                            </div>
-                        </div>
-                    </div>
+                <div class='events cf'>                                
+                    <events ng-repeat="event in events.data" class='event' ng-if="event.featured == true"  />
                 </div>
                 </fieldset>
 
                 <fieldset><legend>Upcoming Events</legend>
                 <div class='events cf'>
-                    <div ng-repeat="event in events.data" class='event' ng-if="event.featured == false">
-                        <div><a ui-sref='event({eventId:event.id})'>{{event.event.name}}</a></div>
-                        <div class='event-image'>
-                            <a ui-sref='event({eventId:event.id})'><img class='thumbnail' src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' /></a>
-                            <span>{{event.connection_count}} possible connections&nbsp;&nbsp;<a popover="{{event.connection_count}} people attending this event." popover-trigger="mouseenter" ><span class='glyphicon glyphicon-question-sign'></span></a></span>
-                        </div>
-                        <div class='event-attendance text-center'>                  
-                            <ws-spinner class='smallSpinner' ng-show='loading.events[event.id]'></ws-spinner>          
-                            <div class="btn-group" dropdown dropdown-append-to-body>
-                              <a href="#" ng-hide="loading.events[event.id]" tooltip="Click to change" tooltip-trigger="mouseenter" tooltip-placement="top" class="dropdown-toggle" dropdown-toggle>
-                                <span ng-show="user.data.subscriptions[event.id]">{{user.data.subscriptions[event.id].status.name.text}}</span>
-                                <span ng-hide="user.data.subscriptions[event.id]">Not attending</span>
-                                &nbsp;<span class="caret"></span> 
-                              </a>
-                              <ul class="dropdown-menu" role="menu">
-                                <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.YES}" ng-click="setAttendance(event.id, STATUS.YES, $event);">{{statuses.data[STATUS.YES].name.text}}</a></li>
-                                <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.MAYBE}" ng-click="setAttendance(event.id, STATUS.MAYBE, $event);">{{statuses.data[STATUS.MAYBE].name.text}}</a></li>
-                                <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.NO}" ng-click="setAttendance(event.id, STATUS.NO, $event);">{{statuses.data[STATUS.NO].name.text}}</a></li>
-                              </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <events ng-repeat="event in events.data" class='event' ng-if="event.featured == false"  />
                 </div>
                 </fieldset>
             </div>
@@ -66,11 +24,6 @@
                 <h4 class='text-center'>Popular connections</h4>
 
                 <div class='popular-connection' ng-repeat="i in [1, 2, 3, 4, 5] track by $index">
-<!--                     <div>Joni Aaltonen</div>
-                    <div class='popular-connection-image'>
-                        <a ui-sref='user.profile({userId:1})'><img class='thumbnail' src='http://lorempixel.com/150/150/people/' alt='Sao Paulo 2015' /></a>
-                    </div>
-                    <div>Finland</div> -->
                     <a ui-sref="user.profile({userId:1})" class='contactLink'>
                         <div class="thumbnail">
                             <img src='http://lorempixel.com/400/400/people/' alt='Joni Aaltonen' />

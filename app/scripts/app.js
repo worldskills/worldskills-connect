@@ -94,7 +94,7 @@ angular
      controller: 'EventsCtrl',
      data: {
       requireLoggedIn: true,
-      forbiddenCallback: function(auth, $state){
+      unAuthenticatedCallback: function(auth, $state){
         $state.go('signup');
       },
        requiredRoles: [

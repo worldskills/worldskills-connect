@@ -8,13 +8,36 @@
  * Controller of the connectApp
  */
 angular.module('connectApp')
-  .controller('EventCtrl', function ($scope, $http, Statuses) {
+  .controller('EventCtrl', function ($scope, $http, Statuses, User, $state) {
 	
 	$scope.sortType     = 'name'; // set the default sort type
 	$scope.sortReverse  = false;  // set the default sort order
 	$scope.searchContact   = '';     // set the default search/filter term
 	$scope.Statuses = Statuses;
 	$scope.STATUS = Statuses.status();
+	$scope.loading.event = false;
+
+	$scope.eventId = $state.params.eventId;
+
+	$scope.setAttendance = function(status, e){        
+        e.preventDefault();
+        //e.stopPropagation(); 
+        
+  		$scope.loading.event = true;
+
+  		User.setAttendance($scope.eventId, status).then(function(res){
+  			//set status to UI  		
+  			if(typeof User.data.subscriptions[$scope.eventId] == 'undefined') //init
+  				User.data.subscriptions[$scope.eventId] = {};
+  			
+  			User.data.subscriptions[$scope.eventId].status = res.status;
+  			$scope.loading.event = false;
+  		},
+  		function(error){
+  			WSAlert.danger(error);
+  			$scope.loading.event = false;
+  		});
+  	};
   
 	
 	$scope.contacts = [

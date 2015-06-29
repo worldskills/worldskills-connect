@@ -1,10 +1,5 @@
 <fieldset><legend>Description</legend>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p>{{user.profile_description}}</p>
 </fieldset>
 
 <fieldset>	
@@ -15,7 +10,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				<strong>Company</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
-				WorldSkills International
+				{{user.company}}
 			</div>
 		</div>
 		<div class='row contentRow'>
@@ -23,7 +18,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				<strong>Job Title</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
-				Senior Web Developer
+				{{user.job_title}}
 			</div>
 		</div>					
 </fieldset>
@@ -31,23 +26,12 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
 <fieldset>	
 	<legend>Contact Details</legend>	
-
-		<div class='row contentRow'>
-			<div class='col-xs-4 col-md-3 col-lg-2'>
-				<strong>Address</strong>
-			</div>
-			<div class='col-xs-8 col-md-9 col-lg-10'>
-				Vattuniemenkatu 10 B 46<br />
-				00210 Helsinki<br />
-				Finland
-			</div>
-		</div>
 		<div class='row contentRow'>
 			<div class='col-xs-4 col-md-3 col-lg-2'>
 				<strong>Email</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
-				joni@joniaaltonen.info
+				{{user.email_address}}
 			</div>
 		</div>					
 		<div class='row contentRow'>
@@ -55,7 +39,7 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 				<strong>Phone</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
-				+358 40 700 5372
+				{{user.phone_number}}
 			</div>
 		</div>							
 </fieldset>

@@ -13,6 +13,7 @@ angular.module('connectApp')
   		  		      
   		$scope.loading.events = {};
       $scope.STATUS = Statuses.status();
+      $scope.email = 'testing';
 
   		$scope.setAttendance = function(eventId, status, e){        
         e.preventDefault();
@@ -33,4 +34,11 @@ angular.module('connectApp')
   				$scope.loading.events[eventId] = false;
   			});
   		};
-  });
+  })
+.directive('events', function(){
+  return {
+    restrict: 'E',    
+    replace: true,
+    templateUrl: 'views/directive.events.html'    
+  }
+});

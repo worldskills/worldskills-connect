@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('connectApp')
-  .controller('MainCtrl', function ($scope, $state, $rootScope, $translate, Language, User, Events, Statuses, auth) {
+  .controller('MainCtrl', function ($q, $scope, $state, $rootScope, $translate, Language, User, Events, Statuses, auth, WSAlert) {
     $scope.selectedLanguage = Language.selectedLanguage;    
 
     //redirect to events state - if logged in
@@ -17,8 +17,7 @@ angular.module('connectApp')
     $scope.statuses = Statuses;
     $scope.loading = {};
 
-    User.init().then(function(result){
-    	//console.log('user init');
+    $q.when(User.init()).then(function(result){
 		User.subscriptions($scope.user.data.id).then(function(res){
 			//console.log('subscriptions loaded');
 		},
