@@ -1,0 +1,29 @@
+<div class='event'> 
+	<div><a ui-sref='event({eventId:userevent.event.id})'>{{userevent.event.event.name}}</a></div>
+	<div class='event-image'>
+	    <a ui-sref='event({eventId:userevent.event.id})'><img class='thumbnail' src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' /></a>
+	    <span>{{userevent.event.connection_count}} possible connections&nbsp;&nbsp;<a popover="{{userevent.event.connection_count}} people attending this event." popover-trigger="mouseenter" ><span class='glyphicon glyphicon-question-sign'></span></a></span>
+	</div>
+	<div class='event-attendance text-center'>                  
+	    <ws-spinner class='smallSpinner' ng-show='loading.userevents[userevent.event.id]'></ws-spinner>          
+	    
+	    <div ng-if="!myProfile">
+	    	<!-- <a>	 -->      
+	        <span ng-show="profile.subscriptions[userevent.event.id]">{{profile.subscriptions[userevent.event.id].status.name.text}}</span>	        
+	        <span ng-hide="profile.subscriptions[userevent.event.id]">Not attending</span>	        
+	        <!-- </a> -->
+	    </div>
+	    <div ng-hide="loading.userevents[userevent.event.id]" ng-if="myProfile" class="btn-group" dropdown dropdown-append-to-body>
+	      <a href="#" tooltip="Click to change" tooltip-trigger="mouseenter" tooltip-placement="top" class="dropdown-toggle" dropdown-toggle>	      
+	        <span ng-show="profile.subscriptions[userevent.event.id]">{{profile.subscriptions[userevent.event.id].status.name.text}}</span>
+	        <span ng-hide="profile.subscriptions[userevent.event.id]">Not attending</span>
+	        &nbsp;<span class="caret"></span> 
+	      </a>
+	      <ul class="dropdown-menu" role="menu">
+	        <li><a href="#" ng-class="{'active': profile.subscriptions[userevent.event.id].status.id == STATUS.YES}" ng-click="setAttendance(userevent.event.id, STATUS.YES, $event);">{{statuses.data[STATUS.YES].name.text}}</a></li>
+	        <li><a href="#" ng-class="{'active': profile.subscriptions[userevent.event.id].status.id == STATUS.MAYBE}" ng-click="setAttendance(userevent.event.id, STATUS.MAYBE, $event);">{{statuses.data[STATUS.MAYBE].name.text}}</a></li>
+	        <li><a href="#" ng-class="{'active': profile.subscriptions[userevent.event.id].status.id == STATUS.NO}" ng-click="setAttendance(userevent.event.id, STATUS.NO, $event);">{{statuses.data[STATUS.NO].name.text}}</a></li>
+	      </ul>
+	    </div>
+	</div>
+</div>

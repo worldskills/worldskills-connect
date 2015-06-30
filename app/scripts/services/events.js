@@ -21,7 +21,7 @@ angular.module('connectApp')
             deferred.resolve(Events.data);
         },
         function(error){
-            deferred.reject("Could not fetch events: " + error);
+            deferred.reject("Could not fetch events: " + error.data.user_msg);
         });
         return deferred.promise;
     };    

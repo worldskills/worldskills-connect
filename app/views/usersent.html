@@ -1,6 +1,49 @@
 <fieldset><legend>Sent Connection Requests</legend>
 <p>Below are the connection requests you have sent, and which are still pending for acceptance by the other user.</p>
 <p>&nbsp;</p>
+<ws-spinner class='bigSpinner' ng-show='loading.sent'></ws-spinner>
+<div ng-hide='loading.sent' class="media media-inbox" ng-repeat="connection in user.data.sent.connections">
+	<ws-spinner ng-show='loading.sentItem[connection.id]'></ws-spinner>
+	<div class='row' ng-hide='loading.sentItem[connection.id]'>
+		<div class='col-xs-12 col-sm-10'>
+  			<div class="media-left media-top">
+  			    <a ui-sref='user.profile({userId:connection.from.id})'><img class="media-object" src="http://lorempixel.com/120/120/people" alt="name"></a>
+  			</div>
+  			<div class="media-body">
+  			  <h4 class="media-heading"><a ui-sref='user.profile({userId:connection.from.id})'>{{connection.from.first_name + " " + connection.from.first_name}}</a></h4>
+  			  	<div class='row contentRow'>
+					<div class='col-xs-4 col-md-3 col-lg-2'>
+						<strong>Company</strong>
+					</div>
+					<div class='col-xs-8 col-md-9 col-lg-10'>
+						{{connection.from.company}}
+					</div>
+				</div>
+				<div class='row contentRow'>
+					<div class='col-xs-4 col-md-3 col-lg-2'>
+						<strong>Job Title</strong>
+					</div>
+					<div class='col-xs-8 col-md-9 col-lg-10'>
+						{{connection.from.job_title}}
+					</div>
+				</div>	
+				<div class='row contentRow'>
+					<div class='col-xs-4 col-md-3 col-lg-2'>
+						<strong>Country</strong>
+					</div>
+					<div class='col-xs-8 col-md-9 col-lg-10'>
+						{{connection.from.country.name.text}}
+					</div>
+				</div>			
+  			</div>
+  		</div>
+  		<div class='inboxActions col-xs-12 col-sm-2'>
+  			<button ng-click="cancelRequest(connection.id, $index);" class='fullWidth btn btn-warning btn-sm'>Cancel request</button>
+  		</div>
+  	</div>
+</div>
+<hr />
+
 <div class="media media-inbox" ng-repeat="i in [1, 2, 3, 4, 5] track by $index">
 	<div class='row'>
 		<div class='col-xs-12 col-sm-10'>

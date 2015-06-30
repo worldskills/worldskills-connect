@@ -1,6 +1,9 @@
 <fieldset><legend>Inbox - Received Connection Requests</legend>
-<div class="media media-inbox" ng-repeat="connection in user.inbox.connections">
-	<div class='row'>
+{{loading.inbox}}
+<ws-spinner class='bigSpinner' ng-show='loading.inbox'></ws-spinner>  
+<div ng-hide='loading.inbox' class="media media-inbox" ng-repeat="connection in user.data.inbox.connections">
+	<ws-spinner ng-show='loading.inboxItem[connection.id]'></ws-spinner>
+	<div class='row' ng-hide='loading.inboxItem[connection.id]'>
 		<div class='col-xs-12 col-sm-10'>
   			<div class="media-left media-top">
   			    <a ui-sref='user.profile({userId:connection.from.id})'><img class="media-object" src="http://lorempixel.com/120/120/people" alt="name"></a>
@@ -34,8 +37,8 @@
   			</div>
   		</div>
   		<div class='inboxActions col-xs-12 col-sm-2'>
-  			<button ng-click="actionConnection(connection.id, true);" class='fullWidth btn btn-success btn-sm'>Accept</button>
-  			<button ng-click="actionConnection(connection.id, false);" class='fullWidth btn btn-danger btn-sm'>Deny</button>
+  			<button ng-click="actionConnection(connection.id, true, $index);" class='fullWidth btn btn-success btn-sm'>Accept</button>
+  			<button ng-click="actionConnection(connection.id, false, $index);" class='fullWidth btn btn-danger btn-sm'>Deny</button>
   		</div>
   	</div>
 </div>

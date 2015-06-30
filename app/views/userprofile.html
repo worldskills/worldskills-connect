@@ -1,5 +1,5 @@
 <fieldset><legend>Description</legend>
-<p>{{user.profile_description}}</p>
+<p>{{profile.profile_description}}</p>
 </fieldset>
 
 <fieldset>	
@@ -10,7 +10,7 @@
 				<strong>Company</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
-				{{user.company}}
+				{{profile.company}}
 			</div>
 		</div>
 		<div class='row contentRow'>
@@ -18,7 +18,7 @@
 				<strong>Job Title</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
-				{{user.job_title}}
+				{{profile.job_title}}
 			</div>
 		</div>					
 </fieldset>
@@ -26,21 +26,32 @@
 
 <fieldset>	
 	<legend>Contact Details</legend>	
-		<div class='row contentRow'>
-			<div class='col-xs-4 col-md-3 col-lg-2'>
-				<strong>Email</strong>
+		<div ng-show='!connectedAndAccepted'>
+			<div ng-show='connected'><p>You have sent this person a contact request, but they have not yet accepted it.<br />You will receive an email notification if this user accepts the request.</p><br />
+			<requestbtn></requestbtn></div>
+			<div ng-show='!connected'>
+				<p>You need to send a contact request to this person in order to view their contact details</p><br />
+				<requestbtn></requestbtn>
 			</div>
-			<div class='col-xs-8 col-md-9 col-lg-10'>
-				{{user.email_address}}
-			</div>
-		</div>					
-		<div class='row contentRow'>
-			<div class='col-xs-4 col-md-3 col-lg-2'>
-				<strong>Phone</strong>
-			</div>
-			<div class='col-xs-8 col-md-9 col-lg-10'>
-				{{user.phone_number}}
-			</div>
+
+		</div>
+		<div ng-hide='!connectedAndAccepted'>
+			<div class='row contentRow'>
+				<div class='col-xs-4 col-md-3 col-lg-2'>
+					<strong>Email</strong>
+				</div>
+				<div class='col-xs-8 col-md-9 col-lg-10'>
+					{{profile.email_address}}
+				</div>
+			</div>					
+			<div class='row contentRow'>
+				<div class='col-xs-4 col-md-3 col-lg-2'>
+					<strong>Phone</strong>
+				</div>
+				<div class='col-xs-8 col-md-9 col-lg-10'>
+					{{profile.phone_number}}
+				</div>
+			</div>							
 		</div>							
 </fieldset>
 

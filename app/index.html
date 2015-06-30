@@ -13,6 +13,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
+    <link rel="stylesheet" href="bower_components/angular-worldskills-utils/src/spinner.css" />
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
@@ -52,11 +53,11 @@
                     <li ng-hide='auth.loggedIn'><a ui-sref="signup">Sign Up</a></li>
 
                     <li ng-show='auth.loggedIn' class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">
-                            John Doe&nbsp;<span class='badge red'>8</span>&nbsp;<b class="caret"></b>
+                            John Doe&nbsp;<span ng-show="user.data.inbox.total_count > 0" class="label label-danger label-xs">{{user.data.inbox.total_count}}</span>&nbsp;<b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a ui-sref-active='active' ui-sref='user.profile' href="#">Profile</a></li>
-                            <li><a ui-sref-active='active' ui-sref='user.inbox' href="#">Inbox <span class='badge red'>8</span></a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.inbox' href="#">Inbox <span ng-show="user.data.inbox.total_count > 0" class="label label-danger">{{user.data.inbox.total_count}}</span></a></li>
                             <li><a ui-sref-active='active' ui-sref='user.sent' href="#">Sent requests</a></li>
                             <li><a ui-sref-active='active' ui-sref='user.connections' href="#">Connections</a></li>
                             <li><a ui-sref-active='active' ui-sref='user.events' href="#">Events</a></li>
@@ -76,6 +77,7 @@
     </div>
     <!-- <div class="appContainer" ng-view=""></div> -->    
     <div class='container' ng-controller='MainCtrl'>
+        <span id="alertScrollAnchor"></span>
         <alerts></alerts>
       <div ui-view></div>
     </div>

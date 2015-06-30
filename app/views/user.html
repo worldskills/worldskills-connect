@@ -4,30 +4,37 @@
     <button ng-click="saveEvent()" class="btn btn-warning" id="deleteEntry">Reset changes<spinner ng-show="saveLoading" class="ng-hide"></spinner></button> -->
     <!-- <button ng-show="showActions" ng-disabled="!validateForm();" ng-click="save();" class="btn btn-success" id="saveEntry">Save all changes<spinner ng-show="loading.initial" class="ng-hide"></spinner></button>
     <button ng-show="showActions" ng-click="reset();" class='btn btn-warning'>Reset</button> -->    
-    <!-- //TODO if not own profile -->
-    <button class="btn btn-success" id="requestContact">Request Contact<spinner ng-show="loading.request" class="ng-hide"></spinner></button>
-    <button class="btn btn-primary" ui-sref="user.edit({userId:1})" id="requestContact">Edit my profile<spinner ng-show="loading.request" class="ng-hide"></spinner></button>
+    <!-- //TODO if not own profile --> 
+    <requestbtn></requestbtn>
+    <button ng-show='editable' class="btn btn-primary" ui-sref="user.edit({userId:userId})">Edit my profile<spinner ng-show="loading.request" class="ng-hide"></spinner></button>
 </p>
 </div>
 
-<h1>{{user.first_name + " " + user.last_name}}</h1>
-<hr />
+<h1>{{profile.first_name + " " + profile.last_name}}</h1>
+<hr class='cb' />
 <div class='row'>
 	<div class="col-sm-3 col-md-2 sidebar-right">        
-		<div class="list-group">			      
-            
+		<div ng-show="myProfile" class="list-group">			                  
             <div class='list-group-item profileImage'>
                 <img src='http://lorempixel.com/400/400/people' alt='user' />
             </div>
-    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.profile'>My Profile</a>     	
-    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.inbox'>Inbox <span class="badge">4</span></a>   	 			
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.profile'>My Profile</a>
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.inbox'>Inbox <span ng-show="user.data.inbox.total_count > 0" class="badge">{{user.data.inbox.total_count}}</span></a>   	 			
     	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.sent'>Sent requests</a>   
     	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.connections'>Connections</a>   	
     	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.events'>Events</a>   	 	
     	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.password'>Password</a>
     	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.privacy'>Privacy</a>   	 	     	 	
     	 </div>
+         <div ng-hide="myProfile" class="list-group">                              
+            <div class='list-group-item profileImage'>
+                <img src='http://lorempixel.com/400/400/people' alt='user' />
+            </div>
+            <a ui-sref-active='active' class="list-group-item" ui-sref='user.profile'>Profile</a>                    
+            <a ui-sref-active='active' class="list-group-item" ui-sref='user.events'>Events</a>                        
+         </div>
      </div>
+
     <!-- <ws-spinner ng-show='loading.initial'></ws-spinner> -->
     <div class="col-sm-9 col-md-10" id="content" ui-view=""></div>            
 </div>

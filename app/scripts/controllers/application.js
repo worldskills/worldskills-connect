@@ -8,9 +8,10 @@
  * Controller of the connectApp
  */
 angular.module('connectApp')
-  .controller('ApplicationCtrl', function ($scope, $state, auth, WSAlert) {
+  .controller('ApplicationCtrl', function ($scope, $state, auth, WSAlert, User) {
 
     $scope.auth = auth;
+    $scope.user = User;
     
     $scope.logout = function (e) {
         auth.logout();

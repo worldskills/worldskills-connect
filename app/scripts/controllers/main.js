@@ -17,24 +17,52 @@ angular.module('connectApp')
     $scope.statuses = Statuses;
     $scope.loading = {};
 
-    $q.when(User.init()).then(function(result){
-		User.subscriptions($scope.user.data.id).then(function(res){
-			//console.log('subscriptions loaded');
-		},
-		function(error){
-			WSAlert("", error);
-		});
+    $q.when(User.init()).then(function(){
+
+        //load other resource
+        var promises = [];
+        promises.push(User.inbox());
+        promises.push(User.subscriptions(User.data.id));
+        promises.push(User.getConnections());
+
+        $q.all(promises).then(function(result){
+            //console.log('loaded external resources');
+            User.data.subscriptions = result[1];
+            User.data.connections = result[2];
+        },
+        function(error){
+            WSAlert.danger("Error loading user resources: " + error.data.user_msg);
+        });
+        //event subscriptions
+		//User.subscriptions($scope.user.data.id).then(function(res){
+		//	//console.log('subscriptions loaded');
+		//},
+		//function(error){
+		//	WSAlert.danger("", error);
+		//});
+
+        //load inbox        
+        //loaded in chain because it gets saved within the user var
+        //User.getInbox().then(function(result){
+        //    $scope.user.inbox = result;
+        //},
+        //function(error){
+        //    //fail silently
+        //});
     },
     function(error){
     	WSAlert.danger("", error);
     });
 
     //load events
+    $scope.loading.events_init = true;
     Events.init().then(function(result){
-    	//console.log("events init");    	
+    	//console.log("events init");   
+        $scope.loading.events_init = false; 	
     },
     function(error){
     	WSAlert.danger("", error);
+        $scope.loading.events_init = false;
     });
 
     //load events

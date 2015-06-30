@@ -6,8 +6,8 @@
 	</div>
 	<div class='event-attendance text-center'>                  
 	    <ws-spinner class='smallSpinner' ng-show='loading.events[event.id]'></ws-spinner>          
-	    <div class="btn-group" dropdown dropdown-append-to-body>
-	      <a href="#" ng-hide="loading.events[event.id]" tooltip="Click to change" tooltip-trigger="mouseenter" tooltip-placement="top" class="dropdown-toggle" dropdown-toggle>
+	    <div ng-hide="loading.events[event.id]" class="btn-group" dropdown dropdown-append-to-body>
+	      <a href="#" tooltip="Click to change" tooltip-trigger="mouseenter" tooltip-placement="top" class="dropdown-toggle" dropdown-toggle>
 	        <span ng-show="user.data.subscriptions[event.id]">{{user.data.subscriptions[event.id].status.name.text}}</span>
 	        <span ng-hide="user.data.subscriptions[event.id]">Not attending</span>
 	        &nbsp;<span class="caret"></span> 
