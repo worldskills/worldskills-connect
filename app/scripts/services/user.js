@@ -43,6 +43,17 @@ angular.module('connectApp')
 
         };        
 
+        User.saveProfile = function(){
+            var deferred = $q.defer();
+
+            var postData = {
+                
+            };
+            deferred.resolve(User.data);
+
+            return deferred.promise;
+        };
+
 
     	User.setAttendance = function(event, status){
             var deferred = $q.defer();
@@ -202,10 +213,11 @@ angular.module('connectApp')
             return connected;
         };
 
-        User.connectionExists = function(uid){
-            var connected = false;
-
+        User.connectionExists = function(uid){            
             var deferred = $q.defer();
+
+            //if self
+            if(uid == User.data.id) deferred.reject();
 
             $http.get(API_CONNECT + "/connections/user/" + User.data.id + "?include_pending=1").then(function(result){
                 //go through results

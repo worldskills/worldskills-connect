@@ -6,7 +6,7 @@
     <button ng-show="showActions" ng-click="reset();" class='btn btn-warning'>Reset</button> -->    
     <!-- //TODO if not own profile --> 
     <requestbtn></requestbtn>
-    <button ng-show='editable' class="btn btn-primary" ui-sref="user.edit({userId:userId})">Edit my profile<spinner ng-show="loading.request" class="ng-hide"></spinner></button>
+    <button ng-show='myProfile' class="btn btn-primary" ui-sref="user.edit({userId:userId})">Edit my profile<spinner ng-show="loading.request" class="ng-hide"></spinner></button>
 </p>
 </div>
 

@@ -12,7 +12,6 @@ angular.module('connectApp')
     $scope.loading = {};    
     $scope.userId = $state.params.userId;
     $scope.myProfile = false;
-    $scope.editable = false;    
     $scope.profile = {}; 
     $scope.connected = false;
     $scope.connectedAndAccepted = false;

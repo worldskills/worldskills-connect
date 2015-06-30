@@ -1,5 +1,52 @@
+<fieldset>	
+	<legend>Personal Information</legend>	
+		<div class='row contentRow'>
+			<div class='col-xs-4 col-md-3 col-lg-2'>
+				<strong>Name</strong>
+			</div>
+			<div class='col-xs-3 col-md-4 col-lg-4'>
+				<input type='text' name='first' required placeholder="First" ng-model='tmp_user.first_name' class='form-control input-sm' />
+			</div>
+			<div class='col-xs-5 col-md-5 col-lg-6'>
+				<input type='text' name='last' required placeholder="Last" ng-model='tmp_user.last_name' class='form-control input-sm' />
+			</div>
+		</div>
+		<div class='row contentRow'>
+			<div class='col-xs-4 col-md-3 col-lg-2'>
+				<strong>Gender</strong>
+			</div>
+			<div class='col-xs-8 col-md-9 col-lg-10'>
+				<div class="radio-inline">
+				  <label>
+				    <input type="radio" name="gender" value="M"> Male
+				  </label>
+				</div>
+				<div class="radio-inline">
+				  <label>
+				    <input type="radio" name="gender" value="F"> Female
+				  </label>
+				</div>
+			</div>
+		</div>	
+		<div class='row contentRow'>
+			<div class='col-xs-4 col-md-3 col-lg-2'>
+				<strong>Country</strong>
+			</div>
+			<div class='col-xs-8 col-md-9 col-lg-10'>				
+
+		        <ui-select ng-model="tmp_user.country" theme="bootstrap">
+		          <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.name.text}} - {{$select.selected.abbreviation}}</ui-select-match>
+		          <ui-select-choices repeat="country in countries | filter: $select.search">
+		            <div ng-bind-html="country.name.text | highlight: $select.search"></div>
+		            <small ng-bind-html="country.abbreviation | highlight: $select.search"></small>
+		          </ui-select-choices>
+		        </ui-select>
+			</div>
+		</div>					
+</fieldset>
+
 <fieldset><legend>Description</legend>
-<textarea name="description" ng-minlength='10' rows='5' required class="form-control" placeholder='Lorem ipsum, dolor sit amet...'></textarea>	  
+<textarea ng-model="user.data.profile_description" name="description" ng-minlength='10' rows='5' required class="form-control" placeholder='Lorem ipsum, dolor sit amet...'></textarea>	  
 </fieldset>
 
 <fieldset>	
@@ -47,8 +94,8 @@
 <div class='row'>
 	<div class='xs-4 col-md-3 col-lg-2'></div>
 	<div class='col-xs-8 col-md-9 col-lg-10'>
-		<button class='btn btn-success btn-md'>Save profile</button>
-		<button class='btn btn-warning btn-md'>Cancel</button>
+		<button ng-click='saveProfile()' class='btn btn-success btn-md'>Save profile</button>
+		<button ui-sref='user.profile({userId:userId})' class='btn btn-warning btn-md'>Cancel</button>
 	</div>
 </div>
 

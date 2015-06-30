@@ -1,5 +1,4 @@
 <fieldset><legend>Inbox - Received Connection Requests</legend>
-{{loading.inbox}}
 <ws-spinner class='bigSpinner' ng-show='loading.inbox'></ws-spinner>  
 <div ng-hide='loading.inbox' class="media media-inbox" ng-repeat="connection in user.data.inbox.connections">
 	<ws-spinner ng-show='loading.inboxItem[connection.id]'></ws-spinner>
@@ -39,47 +38,6 @@
   		<div class='inboxActions col-xs-12 col-sm-2'>
   			<button ng-click="actionConnection(connection.id, true, $index);" class='fullWidth btn btn-success btn-sm'>Accept</button>
   			<button ng-click="actionConnection(connection.id, false, $index);" class='fullWidth btn btn-danger btn-sm'>Deny</button>
-  		</div>
-  	</div>
-</div>
-
-<div class="media media-inbox" ng-repeat="i in [1, 2, 3, 4, 5] track by $index">
-	<div class='row'>
-		<div class='col-xs-12 col-sm-10'>
-  			<div class="media-left media-top">
-  			    <a ui-sref='user.profile({userId:1})'><img class="media-object" src="http://lorempixel.com/120/120/people" alt="name"></a>
-  			</div>
-  			<div class="media-body">
-  			  <h4 class="media-heading"><a ui-sref='user.profile({userId:1})'>Joni Aaltonen</a></h4>
-  			  	<div class='row contentRow'>
-					<div class='col-xs-4 col-md-3 col-lg-2'>
-						<strong>Company</strong>
-					</div>
-					<div class='col-xs-8 col-md-9 col-lg-10'>
-						WorldSkills International
-					</div>
-				</div>
-				<div class='row contentRow'>
-					<div class='col-xs-4 col-md-3 col-lg-2'>
-						<strong>Job Title</strong>
-					</div>
-					<div class='col-xs-8 col-md-9 col-lg-10'>
-						Senior Web Developer
-					</div>
-				</div>	
-				<div class='row contentRow'>
-					<div class='col-xs-4 col-md-3 col-lg-2'>
-						<strong>Country</strong>
-					</div>
-					<div class='col-xs-8 col-md-9 col-lg-10'>
-						Finland
-					</div>
-				</div>			
-  			</div>
-  		</div>
-  		<div class='inboxActions col-xs-12 col-sm-2'>
-  			<button class='fullWidth btn btn-success btn-sm'>Accept</button>
-  			<button class='fullWidth btn btn-danger btn-sm'>Deny</button>
   		</div>
   	</div>
 </div>

@@ -17,6 +17,7 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
+    'ui.select',
     'ngTouch',
     'ui.router',
     'ui.bootstrap',

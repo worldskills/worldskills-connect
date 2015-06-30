@@ -12,6 +12,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css" />
     <!-- endbower -->
     <link rel="stylesheet" href="bower_components/angular-worldskills-utils/src/spinner.css" />
     <!-- endbuild -->
@@ -53,7 +54,7 @@
                     <li ng-hide='auth.loggedIn'><a ui-sref="signup">Sign Up</a></li>
 
                     <li ng-show='auth.loggedIn' class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">
-                            John Doe&nbsp;<span ng-show="user.data.inbox.total_count > 0" class="label label-danger label-xs">{{user.data.inbox.total_count}}</span>&nbsp;<b class="caret"></b>
+                            {{user.data.first_name + " " + user.data.last_name}}&nbsp;<span ng-show="user.data.inbox.total_count > 0" class="label label-danger label-xs">{{user.data.inbox.total_count}}</span>&nbsp;<b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a ui-sref-active='active' ui-sref='user.profile' href="#">Profile</a></li>
@@ -162,6 +163,7 @@
     <script src="bower_components/angular-translate-storage-local/angular-translate-storage-local.js"></script>
     <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
     <script src="bower_components/angular-worldskills-utils/src/angular-worldskills-utils.js"></script>
+    <script src="bower_components/angular-ui-select/dist/select.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

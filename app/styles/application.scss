@@ -233,8 +233,8 @@ li.active a {
 fieldset{ margin-bottom: 3em; }
 legend{ color: #003d56; }
 .contentRow{ padding-bottom: .5em; }
-.contentRow div:first-child{ text-align: right; font-weight: bold; color: #003d56; }
-.contentRow div:first-child.checkbox{ text-align: left; font-weight: normal; color: #000; }
+.contentRow > div:first-child{ text-align: right; font-weight: bold; color: #003d56; }
+.contentRow > div:first-child.checkbox{ text-align: left; font-weight: normal; color: #000; }
 /* copied FROM people */
 
 a.eventLink > .thumbnail .caption{ font-size: 85%; font-weight: normal;}
