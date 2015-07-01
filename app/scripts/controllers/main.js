@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('connectApp')
-  .controller('MainCtrl', function ($q, $scope, $state, $rootScope, $translate, Language, User, Events, Statuses, auth, WSAlert) {
+  .controller('MainCtrl', function ($q, $scope, $state, $rootScope, $translate, Language, User, Events, Statuses, auth, WSAlert, Resources) {
     $scope.selectedLanguage = Language.selectedLanguage;    
 
     //redirect to events state - if logged in
@@ -16,6 +16,7 @@ angular.module('connectApp')
     $scope.events = Events;
     $scope.statuses = Statuses;
     $scope.loading = {};    
+    $scope.resources = Resources;
 
     $q.when(User.init()).then(function(){
 
@@ -25,6 +26,7 @@ angular.module('connectApp')
         promises.push(User.getSubscriptions());
         promises.push(User.getConnections());
         promises.push(User.getRequested());
+        promises.push(Resources.init());
 
         $q.all(promises).then(function(result){
             //console.log('loaded external resources');

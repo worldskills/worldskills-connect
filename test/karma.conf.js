@@ -44,6 +44,9 @@ module.exports = function(config) {
       'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
       'bower_components/angular-worldskills-utils/src/angular-worldskills-utils.js',
       'bower_components/angular-ui-select/dist/select.js',
+      'bower_components/moment/moment.js',
+      'bower_components/bootstrap-daterangepicker/daterangepicker.js',
+      'bower_components/angular-daterangepicker/js/angular-daterangepicker.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

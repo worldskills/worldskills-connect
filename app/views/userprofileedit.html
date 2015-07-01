@@ -18,12 +18,12 @@
 			<div class='col-xs-8 col-md-9 col-lg-10'>
 				<div class="radio-inline">
 				  <label>
-				    <input type="radio" name="gender" value="M"> Male
+				    <input ng-model="tmp_user.gender" type="radio" name="gender" value="M"> Male
 				  </label>
 				</div>
 				<div class="radio-inline">
 				  <label>
-				    <input type="radio" name="gender" value="F"> Female
+				    <input ng-model="tmp_user.gender" type="radio" name="gender" value="F"> Female
 				  </label>
 				</div>
 			</div>
@@ -78,7 +78,7 @@
 				<strong>Email</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
-				<input type='text' name='company' required placeholder="firstname.lastname@domain.net" ng-model='tmp_user.job_title' class='form-control input-sm' />
+				<input type='text' name='email' required placeholder="firstname.lastname@domain.net" ng-model='tmp_user.email_address' class='form-control input-sm' />
 			</div>
 		</div>					
 		<div class='row contentRow'>
@@ -86,7 +86,7 @@
 				<strong>Phone</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
-				<input type='text' name='company' required placeholder="+358 123 4567" ng-model='tmp_user.job_title' class='form-control input-sm' />
+				<input type='text' name='phone' required placeholder="+358 123 4567" ng-model='tmp_user.phone_number' class='form-control input-sm' />
 			</div>
 		</div>							
 </fieldset>

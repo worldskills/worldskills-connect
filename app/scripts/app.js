@@ -21,6 +21,7 @@ angular
     'ngTouch',
     'ui.router',
     'ui.bootstrap',
+    'daterangepicker',
     'pascalprecht.translate',
     'worldskills.utils'
   ])

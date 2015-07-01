@@ -18,6 +18,7 @@ angular.module('connectApp')
 
   		User.init = function(){
     		// var featuredOnly = (featured) ? "?featured=" + featured : "";
+            if(typeof User.data.promise == 'undefined') User.data = $q.defer();
 
             //wait for auth.user to resolve                    
             $q.when(auth.user.$promise).then(function(){
@@ -45,13 +46,33 @@ angular.module('connectApp')
 
         };        
 
-        User.saveProfile = function(){
+        User.saveProfile = function(userObj){
             var deferred = $q.defer();
 
-            var postData = {
-                
-            };
-            deferred.resolve(User.data);
+            $http.put(API_CONNECT + "/user/" + User.data.id, userObj).then(function(result){                
+                deferred.resolve(result);
+            },
+            function(error){
+                deferred.reject("Could not save profile: " + error);
+            });
+            // var postData = {
+            //   "first_name": "Jonia",
+            //   "last_name": "Aaltonen",
+            //   "gender": "M",
+            //   "country": {
+            //     "id": 1,
+            //     "abbreviation": "FI",
+            //     "name": {
+            //       "lang_code": "en",
+            //       "text": "Finland"
+            //     }
+            //   },
+            //   "email_address": "joni@joniaaltonen.info",
+            //   "phone_number": "+358407005372",
+            //   "company": "WorldSkills",
+            //   "job_title": "Senior Web Developer",
+            //   "profile_description": "This is my profile description. Lorem Ipsum and all that!"              
+            // };
 
             return deferred.promise;
         };
