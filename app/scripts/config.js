@@ -23,4 +23,10 @@
         USER: 'User'        
     });    
 
+    connectApp.constant("REQUEST_STATUS", {
+        NONE: 0,
+        REQUESTED: 1,
+        CONNECTED: 2
+    });
+
 })();

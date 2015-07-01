@@ -19,7 +19,9 @@
 	<div ng-hide="loading.connections[connection.connection_id]" class='row'>
 		<div class='col-xs-12 col-sm-10'>
   			<div class="media-left media-top">
-  			    <a ui-sref='user.profile({userId:connection.id})'><img class="media-object" src="http://lorempixel.com/120/120/people" alt="{{connection.first_name + " " + connection.last_name}}"></a>
+  			    <a ui-sref='user.profile({userId:connection.id})'>
+  			    	<img class="media-object" src="http://lorempixel.com/120/120/people" alt="{{connection.first_name + " " + connection.last_name}}" />
+  			    </a>
   			</div>
   			<div class="media-body">
   			  <h4 class="media-heading"><a ui-sref='user.profile({userId:connection.id})'>{{connection.first_name + " " + connection.last_name}}</a></h4>

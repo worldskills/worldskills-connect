@@ -14,8 +14,7 @@ angular.module('connectApp')
     $scope.myProfile = false;
     $scope.profile = {}; 
     $scope.connected = false;
-    $scope.connectedAndAccepted = false;
-
+    $scope.connectedAndAccepted = false;    
 
     $scope.init = function(){
         $scope.loading.user = true;
@@ -26,20 +25,29 @@ angular.module('connectApp')
             $scope.profile = result;
 
             //check if a connection exists between the users
-            $scope.loading.request_contact = true;
-            User.connectionExists($scope.userId).then(function(){
+            $scope.loading.request_contact = true;        
+            $q.all([User.connections.promise, User.requested.promise]).then(function(){
+                $scope.connected = User.isRequested($scope.userId);
+                $scope.connectedAndAccepted = User.isConnected($scope.userId);
                 $scope.loading.request_contact = false;
-                $scope.connected = true;
-            },
-            function(error){
-                //not really an error, but no connection here, stop loading
-                $scope.loading.request_contact = false;
-                $scope.connected = false;
             });
 
-            $q.when(User.connections.promise).then(function(){
-                $scope.connectedAndAccepted = User.isConnected($scope.userId);
-            });
+
+
+            
+            // User.connectionExists($scope.userId).then(function(){
+            //     $scope.loading.request_contact = false;
+            //     $scope.connected = true;
+            // },
+            // function(error){
+            //     //not really an error, but no connection here, stop loading
+            //     $scope.loading.request_contact = false;
+            //     $scope.connected = false;
+            // });
+
+            // $q.when(User.connections.promise).then(function(){
+            //     $scope.connectedAndAccepted = User.isConnected($scope.userId);
+            // });
             
         },
         function(error){
@@ -48,7 +56,7 @@ angular.module('connectApp')
         });
 
         //get user subscriptions
-        User.subscriptions($scope.userId).then(function(result){
+        User.getUserSubscriptions($scope.userId).then(function(result){
             $scope.profile.subscriptions = result;
         },
         function(error){

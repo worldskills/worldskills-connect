@@ -7,16 +7,16 @@
 	<div class='row' ng-hide='loading.sentItem[connection.id]'>
 		<div class='col-xs-12 col-sm-10'>
   			<div class="media-left media-top">
-  			    <a ui-sref='user.profile({userId:connection.from.id})'><img class="media-object" src="http://lorempixel.com/120/120/people" alt="name"></a>
+  			    <a ui-sref='user.profile({userId:connection.to.id})'><img class="media-object" src="http://lorempixel.com/120/120/people" alt="name"></a>
   			</div>
   			<div class="media-body">
-  			  <h4 class="media-heading"><a ui-sref='user.profile({userId:connection.from.id})'>{{connection.from.first_name + " " + connection.from.first_name}}</a></h4>
+  			  <h4 class="media-heading"><a ui-sref='user.profile({userId:connection.to.id})'>{{connection.to.first_name + " " + connection.to.first_name}}</a></h4>
   			  	<div class='row contentRow'>
 					<div class='col-xs-4 col-md-3 col-lg-2'>
 						<strong>Company</strong>
 					</div>
 					<div class='col-xs-8 col-md-9 col-lg-10'>
-						{{connection.from.company}}
+						{{connection.to.company}}
 					</div>
 				</div>
 				<div class='row contentRow'>
@@ -24,7 +24,7 @@
 						<strong>Job Title</strong>
 					</div>
 					<div class='col-xs-8 col-md-9 col-lg-10'>
-						{{connection.from.job_title}}
+						{{connection.to.job_title}}
 					</div>
 				</div>	
 				<div class='row contentRow'>
@@ -32,7 +32,7 @@
 						<strong>Country</strong>
 					</div>
 					<div class='col-xs-8 col-md-9 col-lg-10'>
-						{{connection.from.country.name.text}}
+						{{connection.to.country.name.text}}
 					</div>
 				</div>			
   			</div>

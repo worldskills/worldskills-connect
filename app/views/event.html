@@ -18,17 +18,17 @@
                 <ws-spinner ng-show='loading.event'></ws-spinner>
                 <div class="btn-group" dropdown dropdown-append-to-body>
                     <button ng-class="{
-                    'btn-success': user.data.subscriptions[eventId].status.id == STATUS.YES,
-                    'btn-warning': user.data.subscriptions[eventId].status.id == STATUS.MAYBE,
-                    'btn-danger': user.data.subscriptions[eventId].status.id == STATUS.NO}" type='button' class='btn btn-sm' href="#" ng-hide="loading.event" tooltip="Click to change" tooltip-trigger="mouseenter" tooltip-placement="top" class="dropdown-toggle" dropdown-toggle>
-                      <span ng-show="user.data.subscriptions[eventId]">{{user.data.subscriptions[eventId].status.name.text}}</span>
-                      <span ng-hide="user.data.subscriptions[eventId]">Not attending</span>
+                    'btn-success': user.subscriptions[eventId].status.id == STATUS.YES,
+                    'btn-warning': user.subscriptions[eventId].status.id == STATUS.MAYBE,
+                    'btn-danger': user.subscriptions[eventId].status.id == STATUS.NO}" type='button' class='btn btn-sm' href="#" ng-hide="loading.event" tooltip="Click to change" tooltip-trigger="mouseenter" tooltip-placement="top" class="dropdown-toggle" dropdown-toggle>
+                      <span ng-show="user.subscriptions[eventId]">{{user.subscriptions[eventId].status.name.text}}</span>
+                      <span ng-hide="user.subscriptions[eventId]">Not attending</span>
                       &nbsp;<span class="caret"></span> 
                     </button>
                     <ul class="dropdown-menu" role="menu">
-                      <li><a href="#" ng-class="{'active': user.data.subscriptions[eventId].status.id == STATUS.YES}" ng-click="setAttendance(STATUS.YES, $event);">{{statuses.data[STATUS.YES].name.text}}</a></li>
-                      <li><a href="#" ng-class="{'active': user.data.subscriptions[eventId].status.id == STATUS.MAYBE}" ng-click="setAttendance(STATUS.MAYBE, $event);">{{statuses.data[STATUS.MAYBE].name.text}}</a></li>
-                      <li><a href="#" ng-class="{'active': user.data.subscriptions[eventId].status.id == STATUS.NO}" ng-click="setAttendance(STATUS.NO, $event);">{{statuses.data[STATUS.NO].name.text}}</a></li>
+                      <li><a href="#" ng-class="{'active': user.subscriptions[eventId].status.id == STATUS.YES}" ng-click="setAttendance(STATUS.YES, $event);">{{statuses.data[STATUS.YES].name.text}}</a></li>
+                      <li><a href="#" ng-class="{'active': user.subscriptions[eventId].status.id == STATUS.MAYBE}" ng-click="setAttendance(STATUS.MAYBE, $event);">{{statuses.data[STATUS.MAYBE].name.text}}</a></li>
+                      <li><a href="#" ng-class="{'active': user.subscriptions[eventId].status.id == STATUS.NO}" ng-click="setAttendance(STATUS.NO, $event);">{{statuses.data[STATUS.NO].name.text}}</a></li>
                     </ul>
                 </div>
 
@@ -50,78 +50,85 @@
 				
 				      </div>      
 				    </div>
-				  </form>
- 				                  
-				  
+				  </form> 				                 
+
 				  <table class="table table-responsive table-striped">				    
 				    <thead>
 				      <tr>
 				        <td>				        
-				            <a ng-click="sortType = 'name'; sortReverse = !sortReverse">
+				            <a ng-click="sortType = 'user.last_name'; sortReverse = !sortReverse">
 				            Name
-				            <span ng-show="sortType == 'name' && !sortReverse" class="caret"></span>
-        					<span ng-show="sortType == 'name' && sortReverse" class="caret-reverse"></span>
+				            <span ng-show="sortType == 'user.last_name' && !sortReverse" class="caret"></span>
+        					<span ng-show="sortType == 'user.last_name' && sortReverse" class="caret-reverse"></span>
 				             </a>
 				        </td>
 				        <td>
-				          <a ng-click="sortType = 'company'; sortReverse = !sortReverse">
+				          <a ng-click="sortType = 'user.company'; sortReverse = !sortReverse">
 				            Company
-				             <span ng-show="sortType == 'company' && !sortReverse" class="caret"></span>
-        					<span ng-show="sortType == 'company' && sortReverse" class="caret-reverse"></span>
+				             <span ng-show="sortType == 'user.company' && !sortReverse" class="caret"></span>
+        					<span ng-show="sortType == 'user.company' && sortReverse" class="caret-reverse"></span>
 				             </a>
 				        </td>
 				        <td>
-				          <a ng-click="sortType = 'position'; sortReverse = !sortReverse">
+				          <a ng-click="sortType = 'user.job_title'; sortReverse = !sortReverse">
 				            Job title
-				             <span ng-show="sortType == 'position' && !sortReverse" class="caret"></span>
-        					<span ng-show="sortType == 'position' && sortReverse" class="caret-reverse"></span>
+				             <span ng-show="sortType == 'user.job_title' && !sortReverse" class="caret"></span>
+        					<span ng-show="sortType == 'user.job_title' && sortReverse" class="caret-reverse"></span>
 				             </a>
 				        </td>
 				        <td>
-				          <a ng-click="sortType = 'country'; sortReverse = !sortReverse">
+				          <a ng-click="sortType = 'user.country.name.text'; sortReverse = !sortReverse">
 				            Country
-				             <span ng-show="sortType == 'country' && !sortReverse" class="caret"></span>
-        					<span ng-show="sortType == 'country' && sortReverse" class="caret-reverse"></span>
+				             <span ng-show="sortType == 'user.country.name.text' && !sortReverse" class="caret"></span>
+        					<span ng-show="sortType == 'user.country.name.text' && sortReverse" class="caret-reverse"></span>
 				             </a>
 				        </td>
 				        <td class='text-center'>
-				        <a ng-click="sortType = 'requestSent'; sortReverse = !sortReverse">
+				        <a ng-click="sortType = 'requested'; sortReverse = !sortReverse">
 				            Request status
-				             <span ng-show="sortType == 'requestSent' && !sortReverse" class="caret"></span>
-        					<span ng-show="sortType == 'requestSent' && sortReverse" class="caret-reverse"></span>
+				             <span ng-show="sortType == 'requested' && !sortReverse" class="caret"></span>
+        					<span ng-show="sortType == 'requested' && sortReverse" class="caret-reverse"></span>
 				             </a>
 				        </td>
 				      </tr>
 				    </thead>
 				    
 				    <tbody>
-				      <tr ng-repeat="contact in contacts | orderBy:sortType:sortReverse | filter:search">
-				        <td><a ui-sref='user.profile({userId:1})'>{{ contact.name }}</a></td>
-				        <td>{{ contact.company }}</td>
-				        <td>{{ contact.position }}</td>
-				        <td>{{ contact.country }}</td>
+				      <tr ng-repeat="contact in subscriptions.subscriptions | orderBy:sortType:sortReverse | filter:search | startFrom:startFrom | limitTo:itemsPerPage track by contact.id" ng-if="contact.user.id != user.data.id">
+				        <td><a ui-sref='user.profile({userId:contact.user.id})'>{{ contact.user.first_name + " " + contact.user.last_name }}</a></td>
+				        <td>{{ contact.user.company }}</td>
+				        <td>{{ contact.user.job_title }}</td>
+				        <td>{{ contact.user.country.name.text }}</td>
 				        <td class='text-center'>
 				        	<!-- <small ng-if="$index %2 == 0" ng-click=""><a>Request Contact</a></small>
 				        	<small ng-if="$index %2 != 0">Request sent | <a>cancel</a></small> -->
-				        	<small ng-if="!contact.requestSent"><a ng-click="contact.requestSent = !contact.requestSent">Request Contact</a></small>
-				        	<small ng-if="contact.requestSent">Request sent | <a ng-click="contact.requestSent = !contact.requestSent">cancel</a></small>
+                            <ws-spinner class='smallSpinner' ng-show="loading.contact[contact.user.id]"></ws-spinner>
+                            <small ng-show="contact.user.request_status == REQUEST_STATUS.CONNECTED && !loading.contact[contact.user.id]">Connected | <a ui-sref="user.profile({userId:contact.user.id})">view profile</a></small>
+				        	<small ng-show="(contact.user.request_status == REQUEST_STATUS.NONE || !contact.user.request_status) && !loading.contact[contact.user.id]"><a ng-click="requestContact(contact.user.id, $index)">Request Contact</a></small>
+				        	<small ng-show="contact.user.request_status == REQUEST_STATUS.REQUESTED && !loading.contact[contact.user.id]">Request sent | <a ng-click="cancelRequest(contact.user.id, $index)">cancel</a></small>
 				        </td>
 				      </tr>
 				    </tbody>
 				    
 				  </table>
-				  
+
 				  <pagination 
-                  	total-items="bigTotalItems" 
-                  	ng-model="bigCurrentPage" 
-                  	ng-change="pageChanged()"
-                  	items-per-page="itemsPerPage"
-                  	max-size="maxSize" 
-                  	class="pagination-sm pull-right" 
-                  	boundary-links="false" 
-                  	rotate="false" 
-                  	num-pages="numPages"></pagination>
-                </fieldset>
+            total-items="totalItems" 
+            ng-model="bigCurrentPage" 
+            ng-change="pageChanged()"
+            items-per-page="itemsPerPage"
+            max-size="maxSize" 
+            class="pagination-sm pull-right" 
+            boundary-links="false"
+            rotate="false" 
+            num-pages="numPages"></pagination>
+        </fieldset>
+        <!-- START {{bigCurrentPage*itemsPerPage}}<hr>
+        S{{totalItems}}<hr />
+        {{bigCurrentPage}}<hr />
+        {{itemsPerPage}}<hr />
+        {{maxSize}}<hr />
+        {{numPages}} -->
                     	
                 
                 <!-- contacts -->

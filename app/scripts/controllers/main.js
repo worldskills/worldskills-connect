@@ -15,20 +15,22 @@ angular.module('connectApp')
     $scope.user = User;
     $scope.events = Events;
     $scope.statuses = Statuses;
-    $scope.loading = {};
+    $scope.loading = {};    
 
     $q.when(User.init()).then(function(){
 
         //load other resource
         var promises = [];
         promises.push(User.inbox());
-        promises.push(User.subscriptions(User.data.id));
+        promises.push(User.getSubscriptions());
         promises.push(User.getConnections());
+        promises.push(User.getRequested());
 
         $q.all(promises).then(function(result){
             //console.log('loaded external resources');
-            User.data.subscriptions = result[1];
-            User.data.connections = result[2];
+            //User.data.subscriptions = result[1];
+            //User.data.connections = result[2];
+            //User.data.requested = result[3];
         },
         function(error){
             WSAlert.danger("Error loading user resources: " + error.data.user_msg);

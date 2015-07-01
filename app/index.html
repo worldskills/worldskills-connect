@@ -57,13 +57,13 @@
                             {{user.data.first_name + " " + user.data.last_name}}&nbsp;<span ng-show="user.data.inbox.total_count > 0" class="label label-danger label-xs">{{user.data.inbox.total_count}}</span>&nbsp;<b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a ui-sref-active='active' ui-sref='user.profile' href="#">Profile</a></li>
-                            <li><a ui-sref-active='active' ui-sref='user.inbox' href="#">Inbox <span ng-show="user.data.inbox.total_count > 0" class="label label-danger">{{user.data.inbox.total_count}}</span></a></li>
-                            <li><a ui-sref-active='active' ui-sref='user.sent' href="#">Sent requests</a></li>
-                            <li><a ui-sref-active='active' ui-sref='user.connections' href="#">Connections</a></li>
-                            <li><a ui-sref-active='active' ui-sref='user.events' href="#">Events</a></li>
-                            <li><a ui-sref-active='active' ui-sref='user.password' href="#">Password</a></li>
-                            <li><a ui-sref-active='active' ui-sref='user.privacy' href="#">Privacy</a></li>                            
+                            <li><a ui-sref-active='active' ui-sref='user.profile({userId:user.data.id})' href="#">Profile</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.inbox({userId:user.data.id})' href="#">Inbox <span ng-show="user.data.inbox.total_count > 0" class="label label-danger">{{user.data.inbox.total_count}}</span></a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.sent({userId:user.data.id})' href="#">Sent requests</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.connections({userId:user.data.id})' href="#">Connections</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.events({userId:user.data.id})' href="#">Events</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.password({userId:user.data.id})' href="#">Password</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.privacy({userId:user.data.id})' href="#">Privacy</a></li>                            
                             <li><a ng-click="logout()">Logout</a></li>                            
                     </ul></li>                    
                 </ul>
@@ -195,6 +195,7 @@
         <script src="scripts/services/user.js"></script>
         <script src="scripts/services/statuses.js"></script>
         <script src="scripts/services/connections.js"></script>
+        <script src="scripts/filters/startfrom.js"></script>
         <!-- endbuild -->
 </body>
 </html>

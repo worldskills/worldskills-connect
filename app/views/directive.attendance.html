@@ -2,14 +2,14 @@
 	    <ws-spinner class='smallSpinner' ng-show='loading.events[event.id]'></ws-spinner>          
 	    <div class="btn-group" dropdown dropdown-append-to-body>
 	      <a href="#" ng-hide="loading.events[event.id]" tooltip="Click to change" tooltip-trigger="mouseenter" tooltip-placement="top" class="dropdown-toggle" dropdown-toggle>
-	        <span ng-show="user.data.subscriptions[event.id]">{{user.data.subscriptions[event.id].status.name.text}}</span>
-	        <span ng-hide="user.data.subscriptions[event.id]">Not attending</span>
+	        <span ng-show="user.subscriptions[event.id]">{{user.subscriptions[event.id].status.name.text}}</span>
+	        <span ng-hide="user.subscriptions[event.id]">Not attending</span>
 	        &nbsp;<span class="caret"></span> 
 	      </a>
 	      <ul class="dropdown-menu" role="menu">
-	        <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.YES}" ng-click="setAttendance(event.id, STATUS.YES, $event);">{{statuses.data[STATUS.YES].name.text}}</a></li>
-	        <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.MAYBE}" ng-click="setAttendance(event.id, STATUS.MAYBE, $event);">{{statuses.data[STATUS.MAYBE].name.text}}</a></li>
-	        <li><a href="#" ng-class="{'active': user.data.subscriptions[event.id].status.id == STATUS.NO}" ng-click="setAttendance(event.id, STATUS.NO, $event);">{{statuses.data[STATUS.NO].name.text}}</a></li>
+	        <li><a href="#" ng-class="{'active': user.subscriptions[event.id].status.id == STATUS.YES}" ng-click="setAttendance(event.id, STATUS.YES, $event);">{{statuses.data[STATUS.YES].name.text}}</a></li>
+	        <li><a href="#" ng-class="{'active': user.subscriptions[event.id].status.id == STATUS.MAYBE}" ng-click="setAttendance(event.id, STATUS.MAYBE, $event);">{{statuses.data[STATUS.MAYBE].name.text}}</a></li>
+	        <li><a href="#" ng-class="{'active': user.subscriptions[event.id].status.id == STATUS.NO}" ng-click="setAttendance(event.id, STATUS.NO, $event);">{{statuses.data[STATUS.NO].name.text}}</a></li>
 	      </ul>
 	    </div>
 	</div>

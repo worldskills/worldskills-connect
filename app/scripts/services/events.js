@@ -8,7 +8,7 @@
  * Service in the connectApp.
  */
 angular.module('connectApp')
-  .service('Events', function ($q, $http, API_CONNECT) {
+  .factory('Events', function ($q, $http, API_CONNECT) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     var Events = {};    
@@ -25,6 +25,19 @@ angular.module('connectApp')
         });
         return deferred.promise;
     };    
+
+    Events.getSubscriptions = function(eventId){
+        var deferred = $q.defer();
+
+        $http.get(API_CONNECT + "/subscriptions/events/" + eventId).then(function(result){
+            deferred.resolve(result.data);
+        },
+        function(error){
+            deferred.reject("Could not get event subscriptions: " + error.data.user_msg);
+        });
+
+        return deferred.promise;
+    };
 
     return Events;   	
   });

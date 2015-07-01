@@ -40,10 +40,13 @@ angular.module('connectApp')
 		if(confirm("Are you sure?")){
 		$scope.loading.connections[connectionId] = true;
 		User.deleteConnection(connectionId).then(function(res){		
+			console.log(User.connections);
+			console.log(User.connections.connections);
 			User.connections.connections.splice($index, 1);
 			User.connections.total_count -= 1;
 			User.connections.totalConnections -= 1;
 			$scope.contacts.splice($index, 1);
+
 			WSAlert.success("Connection deleted");
 			$scope.loading.connections[connectionId] = false;
 			
@@ -65,7 +68,6 @@ angular.module('connectApp')
 		}//if
 		else{
 			//console.log("needs refreshing");
-			User.connections = $q.defer();
 			User.getConnections().then(function(){
 				$scope.init();
 			});

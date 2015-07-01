@@ -11,7 +11,9 @@ angular.module('connectApp')
   .factory('User', function ($q, $http, API_CONNECT, $timeout, auth, APP_ID, APP_ROLES) {  	
   		var User = {
             data: $q.defer(),
-            connections: $q.defer()
+            connections: $q.defer(),
+            requested: $q.defer(),
+            subscriptions: $q.defer()
         };
 
   		User.init = function(){
@@ -93,6 +95,10 @@ angular.module('connectApp')
 
             $http.delete(API_CONNECT + "/connections/" + connectionId).then(function(res){
                 deferred.resolve(res);
+
+                //refresh connections
+                User.getConnections();
+                User.getRequested();
             }, function(error){
                 deferred.reject("Could not delete connection: " + error.data.user_msg);
             });
@@ -117,17 +123,51 @@ angular.module('connectApp')
         };
 
         User.getConnections = function(){       
-            //User.connections = $q.defer();     
+            //User.connections = $q.defer();  
+            if(typeof User.connections.promise == 'undefined') User.connections = $q.defer();   
 
-            $http.get(API_CONNECT + "/connections/user/" + User.data.id).then(function(result){
-                User.connections.resolve(result.data);
-                User.connections = result.data;
+            $http.get(API_CONNECT + "/connections/user/" + User.data.id).then(function(result){                            
+                //go through connections and set ids to an array to be used later in event.js, an easy list of all connected user.ids
+                var temp_connections = result.data;
+                temp_connections.connected_ids = [];
+                angular.forEach(temp_connections.connections, function(val, key){
+                    if(val.from.id == User.data.id) temp_connections.connected_ids.push(val.to.id);
+                    else if(val.to.id == User.data.id) temp_connections.connected_ids.push(val.from.id);
+                });            
+
+                User.connections.resolve(temp_connections);
+                User.connections = temp_connections;
+
+                //User.connections.resolve(result.data);
+                //User.connections = result.data;
             },
             function(error){
                 User.connections.reject("Could not fetch connections: " + error.data.user_msg);
             });
             
             return User.connections.promise;
+        };
+
+        User.getRequested = function(){
+            if(typeof User.requested.promise == 'undefined') User.requested = $q.defer();   
+
+            $http.get(API_CONNECT + "/connections/user/" + User.data.id + "?include_pending=1").then(function(result){                            
+                //go through connections and set ids to an array to be used later in event.js, an easy list of all connected user.ids
+                var temp_requests = result.data;
+                temp_requests.requested_ids = [];
+                angular.forEach(temp_requests.connections, function(val, key){
+                    if(val.from.id == User.data.id) temp_requests.requested_ids.push(val.to.id);
+                    else if(val.to.id == User.data.id) temp_requests.requested_ids.push(val.from.id);
+                });            
+
+                User.requested.resolve(temp_requests);
+                User.requested = temp_requests;
+            },
+            function(error){
+                User.requested.reject("Could not fetch connections: " + error.data.user_msg);
+            });
+            
+            return User.connections.promise;            
         };
 
         User.requestContact = function(uid){
@@ -146,6 +186,10 @@ angular.module('connectApp')
 
             $http.post(API_CONNECT + "/connections/", postData).then(function(result){
                 deferred.resolve(result);
+
+                //refresh connections
+                User.getConnections();
+                User.getRequested();
             },
             function(error){
                 deferred.reject("Could not send contact request: " + error.data.user_msg);
@@ -159,6 +203,10 @@ angular.module('connectApp')
 
             $http.delete(API_CONNECT + "/connections/" + connectionId).then(function(result){
                 deferred.resolve(result);
+
+                //refresh connections
+                User.getConnections();
+                User.getRequested();
             },
             function(error){
                 deferred.reject("Could not cancel request: " + error.data.user_msg);
@@ -171,10 +219,14 @@ angular.module('connectApp')
             var deferred = $q.defer();
 
             //get connection id
-            User.connectionExists(userId).then(function(result){
+            User.getConnectionByUserId(userId).then(function(result){
                 //remove connection
                 $http.delete(API_CONNECT + "/connections/" + result.id).then(function(result2){
                     deferred.resolve(result2);
+
+                    //refresh connections
+                    User.getConnections();
+                    User.getRequested();
                 },
                 function(error){
                     deferred.reject("Could not cancel request: " + error.data.user_msg);
@@ -202,18 +254,24 @@ angular.module('connectApp')
         };
 
         User.isConnected = function(uid){    
-            var connected = false;
+            return (User.connections.connected_ids.indexOf(parseInt(uid)) == -1) ? false : true;
+            //var connected = false;
                         
-            angular.forEach(User.connections.connections, function(val, key){                    
-                if(val.from.id == uid || val.to.id == uid){
-                    connected = true;
-                }
-            });            
+            //angular.forEach(User.connections.connections, function(val, key){                    
+            //    if(val.from.id == uid || val.to.id == uid){
+            //        connected = true;
+            //    }
+            //});            
 
-            return connected;
+            //return connected;
         };
 
-        User.connectionExists = function(uid){            
+        User.isRequested = function(uid){                      
+            return (User.requested.requested_ids.indexOf(parseInt(uid)) == -1) ? false : true;      
+        };
+
+        User.getConnectionByUserId = function(uid){
+            //todo optimize this, no need to return full connection list
             var deferred = $q.defer();
 
             //if self
@@ -233,37 +291,62 @@ angular.module('connectApp')
             return deferred.promise;
         };
 
+         User.getSubscriptions = function(){
+            if(typeof User.subscriptions.promise == 'undefined') User.subscriptions = $q.defer();   
 
+            $http.get(API_CONNECT + "/subscriptions/users/" + User.data.id).then(function(result){
 
-        //external resources        
-
-
-         User.subscriptions = function(uid){
-            var Subscriptions = {};
-            var deferred = $q.defer();
-            $http.get(API_CONNECT + "/subscriptions/users/" + uid).then(function(result){
-
-                Subscriptions = result.data;
+                //User.subscriptions = result.data;
                 //User.data.subscriptions = Subscriptions;
                 var temp_subscriptions = {};
 
                 //cleanup, go through all subs
-                angular.forEach(result.data.subscription, function(val, key){
+                angular.forEach(result.data.subscriptions, function(val, key){
                     temp_subscriptions[val.event.id] = val;     
                 });                
 
                 //User.data.subscriptions = temp_subscriptions;
-                Subscriptions = temp_subscriptions;
 
-                deferred.resolve(Subscriptions);
+                User.subscriptions.resolve(temp_subscriptions);
+                User.subscriptions = temp_subscriptions;
+            },
+            function(error){
+                User.subscriptions.reject("Could not fetch subscriptions: " + error.data.user_msg);
+            });
+
+            return User.subscriptions.promise;
+        };
+
+
+
+
+        //external resources  
+
+        User.getUserSubscriptions = function(uid){
+            var deferred = $q.defer();
+
+            $http.get(API_CONNECT + "/subscriptions/users/" + uid).then(function(result){
+
+                var temp_subscriptions = {};
+
+                //cleanup, go through all subs
+                angular.forEach(result.data.subscriptions, function(val, key){
+                    temp_subscriptions[val.event.id] = val;     
+                });                
+
+                //User.data.subscriptions = temp_subscriptions;
+
+                deferred.resolve(temp_subscriptions);                
             },
             function(error){
                 deferred.reject("Could not fetch subscriptions: " + error.data.user_msg);
             });
 
             return deferred.promise;
-        };
+        };      
 
+
+        
 
         User.getById = function(uid){
             var deferred = $q.defer();
