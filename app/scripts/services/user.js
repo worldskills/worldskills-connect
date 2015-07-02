@@ -21,12 +21,13 @@ angular.module('connectApp')
             if(typeof User.data.promise == 'undefined') User.data = $q.defer();
 
             //wait for auth.user to resolve                    
-            $q.when(auth.user.$promise).then(function(){
+            $q.when(auth.user.$promise).then(function(){                
                 $http.get(API_CONNECT + "/user/person/" + auth.user.person_id).then(function(result){                    
                     User.data.resolve();
                     User.data = result.data;                    
                 },
                 function(error){
+                    console.log(error);
                     User.data.reject("Could not fetch user: " + error.data.user_msg);
                 })
             });    		
