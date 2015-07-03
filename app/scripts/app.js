@@ -229,6 +229,20 @@ angular
       }
    })
 
+    .state('user.password', {
+    url: '/password',
+    controller: 'UserPasswordCtrl',
+    templateUrl: 'views/userpassword.html',
+    data: {
+      requireLoggedIn: true,
+      requiredRoles: [
+          {code: 1800, role: APP_ROLES.ADMIN},
+          {code: 1800, role: APP_ROLES.MANAGER},
+          {code: 1800, role: APP_ROLES.USER}
+        ]
+      }
+   })
+
    ;
 
   })
