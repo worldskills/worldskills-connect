@@ -5,6 +5,7 @@
     
     var connectApp = angular.module('connectApp'); 
     connectApp.constant('API_CONNECT', 'http://localhost:8080/connect');
+    connectApp.constant('API_PEOPLE', 'http://localhost:8080/people');
     connectApp.constant('APP_ID', '1800');
     connectApp.constant('API_IMAGES', 'http://localhost:8080/images');
     connectApp.constant('CLIENT_ID', 'd3fcf7217efc');
