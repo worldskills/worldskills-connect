@@ -8,7 +8,7 @@
  * Service in the connectApp.
  */
 angular.module('connectApp')
-  .factory('User', function ($q, $http, API_CONNECT, $timeout, auth, APP_ID, APP_ROLES) {  	
+  .factory('User', function ($q, $http, API_CONNECT, auth, APP_ID, APP_ROLES) {  	
   		var User = {
             data: $q.defer(),
             connections: $q.defer(),
@@ -27,7 +27,6 @@ angular.module('connectApp')
                     User.data = result.data;                    
                 },
                 function(error){
-                    console.log(error);
                     User.data.reject("Could not fetch user: " + error.data.user_msg);
                 })
             });    		
@@ -50,12 +49,30 @@ angular.module('connectApp')
         User.saveProfile = function(userObj){
             var deferred = $q.defer();
 
-            $http.put(API_CONNECT + "/user/" + User.data.id, userObj).then(function(result){                
+            var postData = {
+                'id': userObj.id,
+                'profile_description': userObj.profile_description,
+                'email_address': userObj.email_address,
+                'phone_number': userObj.phone_number,
+                'company': userObj.company,
+                'job_title': userObj.job_title
+            };
+
+            $http.put(API_CONNECT + "/user/" + User.data.id, postData).then(function(result){
                 deferred.resolve(result);
             },
             function(error){
-                deferred.reject("Could not save profile: " + error);
+                deferred.reject("Could not save user profile: " + error.data.user_msg);
             });
+
+
+
+            //$http.put(API_CONNECT + "/user/" + User.data.id, userObj).then(function(result){                
+            //    deferred.resolve(result);
+            //},
+            //function(error){
+            //    deferred.reject("Could not save profile: " + error);
+            //});
             // var postData = {
             //   "first_name": "Jonia",
             //   "last_name": "Aaltonen",

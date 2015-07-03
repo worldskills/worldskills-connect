@@ -8,7 +8,7 @@
  * Controller of the connectApp
  */
 angular.module('connectApp')
-  .controller('UserProfileCtrl', function ($scope, User, WSAlert, $q, $state, Resources) {
+  .controller('UserProfileCtrl', function ($scope, User, WSAlert, $q, $state, Resources, Person) {
 
   	$scope.tmp_user = {};
     $scope.countries = Resources.countries;
@@ -17,7 +17,8 @@ angular.module('connectApp')
       dates: { startDate: null, endDate: null}
     };
 
-  	$scope.init = function(){
+    //differently named init() for not to overwrite the user.js controller init() which is called on $scope.reloadProfile()
+  	$scope.initProfile = function(){
   		$q.when(User.data.promise).then(function(){
   			$scope.tmp_user = User.data;
   		});
@@ -28,22 +29,39 @@ angular.module('connectApp')
       });
   	};
 
-  	$scope.init();
+  	$scope.initProfile();
 
   	//edit
   	$scope.saveProfile = function(){
-  		User.saveProfile($scope.tmp_user).then(function(result){
-  			WSAlert.success("Profile information saved");
+
+      var promises = [];
+      //save profile in people
+      promises.push(Person.saveProfile(User.data.person_id, $scope.tmp_user));
+      //update primary email in people
+      promises.push(Person.updatePrimaryEmail(User.data.person_id, $scope.tmp_user.email_address));
+      //save the rest of the fields in connect user
+      promises.push(User.saveProfile($scope.tmp_user));
+
+      $q.all(promises).then(function(result){
         $scope.reloadProfile();
-  			$state.go('user.profile', {userId: $scope.userId});
-  		},
-  		function(error){
-  			WSAlert.danger(error);
-  		});
+        $state.go('user.profile', {userId: $scope.userId});
+      },
+      function(error){
+        WSAlert.danger(error);
+      });
+  		//User.saveProfile($scope.tmp_user).then(function(result){
+  		//	WSAlert.success("Profile information saved");
+      //  $scope.reloadProfile();
+  		//	$state.go('user.profile', {userId: $scope.userId});
+  		//},
+  		//function(error){
+  		//	WSAlert.danger(error);
+  		//});
   	};
 
     $scope.reloadProfile = function(){
-      $scope.$parent.init();
+      //reload
+      $scope.init();
     };
 
   });

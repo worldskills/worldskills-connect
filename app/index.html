@@ -64,7 +64,7 @@
                             <li><a ui-sref-active='active' ui-sref='user.connections({userId:user.data.id})' href="#">Connections</a></li>
                             <li><a ui-sref-active='active' ui-sref='user.events({userId:user.data.id})' href="#">Events</a></li>
                             <li><a ui-sref-active='active' ui-sref='user.password({userId:user.data.id})' href="#">Password</a></li>
-                            <li><a ui-sref-active='active' ui-sref='user.privacy({userId:user.data.id})' href="#">Privacy</a></li>                            
+                            <!-- <li><a ui-sref-active='active' ui-sref='user.privacy({userId:user.data.id})' href="#">Privacy</a></li>  -->                           
                             <li><a ng-click="logout()">Logout</a></li>                            
                     </ul></li>                    
                 </ul>
@@ -203,6 +203,7 @@
         <script src="scripts/services/resources.js"></script>
         <script src="scripts/controllers/userpassword.js"></script>
         <script src="scripts/services/auth.js"></script>
+        <script src="scripts/services/person.js"></script>
         <!-- endbuild -->
 </body>
 </html>
