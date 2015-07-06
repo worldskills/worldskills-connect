@@ -23,21 +23,8 @@
             </div>
 
             <div class='col-xs-12 col-sm-3 sidebar'>
-                <h4>Featured Events</h4>
-
-                <div class='featured-event' ng-repeat="i in [1, 2] track by $index">
-                    <!-- <div>WorldSkills Sao Paulo 2015</div>
-                    <div class='featured-event-image'>
-                        <a ui-sref="events"><img class='thumbnail' src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' /></a>
-                        <span>17 possible connections&nbsp;&nbsp;<a href='#'><span class='glyphicon glyphicon-question-sign'></span></a></span>
-                    </div> -->
-                    <a ui-sref="events" class='eventLink'>
-                        <div class="thumbnail">
-                        <img src='http://lorempixel.com/250/160/city/' alt='Sao Paulo 2015' />
-                        <div class="caption">WorldSkills Sao Paulo 2015</div>
-                        </div>
-                    </a>
-                </div>
+                <h4>Featured Events</h4>                
+                <featured ng-repeat="event in events.data"></featured>
 
             </div>
         </div>

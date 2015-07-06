@@ -96,9 +96,7 @@ angular
      controller: 'EventsCtrl',
      data: {
       requireLoggedIn: true,
-      unAuthenticatedCallback: function(auth, $state){
-        $state.go('signup');
-      },
+      unAuthenticatedCallback: function(auth, $state){ $state.go('signup'); },
        requiredRoles: [
          {code: 1800, role: APP_ROLES.ADMIN},
          {code: 1800, role: APP_ROLES.MANAGER},
@@ -122,6 +120,7 @@ angular
       controller: 'EventCtrl',
       data: {
         requireLoggedIn: true,
+        unAuthenticatedCallback: function(auth, $state){ $state.go('signup'); },
         requiredRoles: [
           {code: 1800, role: APP_ROLES.ADMIN},
           {code: 1800, role: APP_ROLES.MANAGER},

@@ -20,6 +20,7 @@ angular.module('connectApp')
 	$scope.loading.contact = {};
   $scope.subscriptions = {};
   $scope.REQUEST_STATUS = REQUEST_STATUS;
+  $scope.popularConnections = {};
 
 
   //Pagination
@@ -39,6 +40,14 @@ angular.module('connectApp')
       $scope.totalItems = ($scope.subscriptions.total_count - 1); //minus my own profile
 
       $scope.setActioned();
+    },
+    function(error){
+      WSAlert.danger(error);
+    });
+
+
+    User.getPopularByEvent($scope.eventId).then(function(result){
+      $scope.popularConnections = result;
     },
     function(error){
       WSAlert.danger(error);
@@ -138,8 +147,5 @@ angular.module('connectApp')
             $scope.loading.contact[userId] = false;
         });
     };
-
-
-
 
   });
