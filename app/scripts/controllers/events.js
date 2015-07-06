@@ -8,12 +8,24 @@
  * Controller of the connectApp
  */
 angular.module('connectApp')
-  .controller('EventsCtrl', function ($scope, $http, WSAlert, User, Statuses) {
+  .controller('EventsCtrl', function ($scope, $q, $http, WSAlert, User, Statuses) {
   	//  .controller('PersonCtrl', function ($scope, Auth, $timeout, $modal, $interval, $upload, API_IMAGES, Person, $rootScope, $http, $q, API_PEOPLE, APP_ROLES, $stateParams, $state, $translate, WSAlert, Language) {  	  	
   		  		      
   		$scope.loading.events = {};
       $scope.STATUS = Statuses.status();
       $scope.email = 'testing';
+      $scope.popularConnections = {};
+
+      $scope.init = function(){
+        User.getPopular().then(function(result){
+          $scope.popularConnections = result;
+        },
+        function(error){
+          WSAlert.danger(error);
+        });
+      };
+
+      $scope.init();
 
   		$scope.setAttendance = function(eventId, status, e){        
         e.preventDefault();
@@ -40,5 +52,12 @@ angular.module('connectApp')
     restrict: 'E',    
     replace: true,
     templateUrl: 'views/directive.events.html'    
+  }
+})
+.directive('popular', function(){
+  return {
+    restrict: 'E',    
+    replace: true,
+    templateUrl: 'views/directive.popularConnections.html'    
   }
 });

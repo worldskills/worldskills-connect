@@ -78,4 +78,11 @@ angular.module('connectApp')
     });
 
 
-  });
+  })
+.directive("featured", function(){
+  return {
+    restrict: 'E',    
+    replace: true,
+    templateUrl: 'views/directive.events-sidebar.html'    
+  }
+});

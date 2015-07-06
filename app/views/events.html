@@ -1,4 +1,4 @@
-        <ws-spinner class='bigSpinner' ng-show='loading.events_init'></ws-spinner>
+<ws-spinner class='bigSpinner' ng-show='loading.events_init'></ws-spinner>
         <div ng-hide="loading.events_init" class="row">
 
             <div class='col-xs-12 col-sm-10'>
@@ -24,15 +24,7 @@
             <div class='col-xs-12 col-sm-2 sidebar'>
                 <h4 class='text-center'>Popular connections</h4>
 
-                <div class='popular-connection' ng-repeat="i in [1, 2, 3, 4, 5] track by $index">
-                    <a ui-sref="user.profile({userId:1})" class='contactLink'>
-                        <div class="thumbnail">
-                            <img src='http://lorempixel.com/400/400/people/' alt='Joni Aaltonen' />
-                            <div class="caption"><strong>Joni Aaltonen</strong><br />
-                            WorldSkills International</div>
-                        </div>
-                    </a>
-                </div>
+                <popular ng-repeat='u in popularConnections'></popular>
 
             </div>
         </div>

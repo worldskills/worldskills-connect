@@ -137,15 +137,7 @@
         
         <div class='col-xs-12 col-sm-2 sidebar'>
             <h5 class='text-center'>Popular connections at<br /><small>WorldSkills Sao Paulo 2015</small></h5>
-            <div class='popular-connection' ng-repeat="i in [1, 2, 3, 4, 5] track by $index">
-                <a ui-sref="user.profile({userId:1})" class='contactLink'>
-                    <div class="thumbnail">
-                        <img src='http://lorempixel.com/400/400/people/' alt='Joni Aaltonen' />
-                        <div class="caption"><strong>Joni Aaltonen</strong><br />
-                        WorldSkills International</div>
-                    </div>
-                </a>
-            </div>
+            <popular ng-repeat='u in popularConnections'></popular>            
         </div>       
     </div>    
 

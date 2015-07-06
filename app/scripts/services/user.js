@@ -400,6 +400,32 @@ angular.module('connectApp')
             return deferred.promise;
         };
 
+        User.getPopular = function(){
+            var deferred = $q.defer();
+
+            $http.get(API_CONNECT + "/user/popular").then(function(result){
+                deferred.resolve(result.data.people);
+            },
+            function(error){
+                deferred.reject("Could not fetch popular connections: " + error.data.user_msg);
+            });
+
+            return deferred.promise;
+        };
+
+        User.getPopularByEvent = function(eventId){
+            var deferred = $q.defer();
+
+            $http.get(API_CONNECT + "/user/popular/" + eventId).then(function(result){
+                deferred.resolve(result.data.people);
+            },
+            function(error){
+                deferred.reject("Could not fetch popular connections: " + error.data.user_msg);
+            });
+
+            return deferred.promise;
+        };
+
 
   	return User;  
   });
