@@ -7,7 +7,11 @@ angular.module('connectApp')
     //redirect to events state - if logged in
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
     	if($state.current.name == 'home' && auth.loggedIn == true){
-    		$state.go('events');
+            //force WSC2015
+            $state.go('event', {eventId:1});
+
+            //normal behavior to list events
+    		//$state.go('events');
     	}
     });
 

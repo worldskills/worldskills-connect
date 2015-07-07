@@ -1,36 +1,35 @@
         <div class="row">
 
             <div class='col-xs-12 col-sm-10'>
-                <h2>WorldSkills Sao Paulo 2015</h2>
+                <h2>{{event.event.name}}</h2>
                     
                 
                 <div class='event-highligh cf'>
                 	<img class='event-picture-full thumbnail' src='http://lorempixel.com/800/150/city' alt='sao paulo' />
                 	
-                	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                	<p>{{event.event.description}}</p>
                 </div>
-
-                <ws-spinner ng-show='loading.event'></ws-spinner>
-                <div class="btn-group" dropdown dropdown-append-to-body>
-                    <button ng-class="{
-                    'btn-success': user.subscriptions[eventId].status.id == STATUS.YES,
-                    'btn-warning': user.subscriptions[eventId].status.id == STATUS.MAYBE,
-                    'btn-danger': user.subscriptions[eventId].status.id == STATUS.NO}" type='button' class='btn btn-sm' href="#" ng-hide="loading.event" tooltip="Click to change" tooltip-trigger="mouseenter" tooltip-placement="top" class="dropdown-toggle" dropdown-toggle>
-                      <span ng-show="user.subscriptions[eventId]">{{user.subscriptions[eventId].status.name.text}}</span>
-                      <span ng-hide="user.subscriptions[eventId]">Not attending</span>
-                      &nbsp;<span class="caret"></span> 
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#" ng-class="{'active': user.subscriptions[eventId].status.id == STATUS.YES}" ng-click="setAttendance(STATUS.YES, $event);">{{statuses.data[STATUS.YES].name.text}}</a></li>
-                      <li><a href="#" ng-class="{'active': user.subscriptions[eventId].status.id == STATUS.MAYBE}" ng-click="setAttendance(STATUS.MAYBE, $event);">{{statuses.data[STATUS.MAYBE].name.text}}</a></li>
-                      <li><a href="#" ng-class="{'active': user.subscriptions[eventId].status.id == STATUS.NO}" ng-click="setAttendance(STATUS.NO, $event);">{{statuses.data[STATUS.NO].name.text}}</a></li>
-                    </ul>
-                </div>
+                <p>&nbsp;</p>                
+                <fieldset><legend>My Attendance</legend>
+                    <p>By "attending" an event, you will be listed under the event, and other people can request your contact details.<br />
+                    Please only do so if you are going to physically attend the event.</p>                
+                    <ws-spinner ng-show='loading.event'></ws-spinner>
+                    <div class="btn-group" dropdown dropdown-append-to-body>
+                        <button ng-class="{
+                        'btn-success': user.subscriptions[eventId].status.id == STATUS.YES,
+                        'btn-warning': user.subscriptions[eventId].status.id == STATUS.MAYBE,
+                        'btn-danger': user.subscriptions[eventId].status.id == STATUS.NO}" type='button' class='btn btn-sm' href="#" ng-hide="loading.event" tooltip="Click to change" tooltip-trigger="mouseenter" tooltip-placement="top" class="dropdown-toggle" dropdown-toggle>
+                          <span ng-show="user.subscriptions[eventId]">{{user.subscriptions[eventId].status.name.text}}</span>
+                          <span ng-hide="user.subscriptions[eventId]">Not attending</span>
+                          &nbsp;<span class="caret"></span> 
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#" ng-class="{'active': user.subscriptions[eventId].status.id == STATUS.YES}" ng-click="setAttendance(STATUS.YES, $event);">{{statuses.data[STATUS.YES].name.text}}</a></li>
+                          <li><a href="#" ng-class="{'active': user.subscriptions[eventId].status.id == STATUS.MAYBE}" ng-click="setAttendance(STATUS.MAYBE, $event);">{{statuses.data[STATUS.MAYBE].name.text}}</a></li>
+                          <li><a href="#" ng-class="{'active': user.subscriptions[eventId].status.id == STATUS.NO}" ng-click="setAttendance(STATUS.NO, $event);">{{statuses.data[STATUS.NO].name.text}}</a></li>
+                        </ul>
+                    </div>
+                </fieldset>
 
 
                 
