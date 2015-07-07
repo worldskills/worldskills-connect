@@ -8,7 +8,7 @@
  * Service in the connectApp.
  */
 angular.module('connectApp')
-  .factory('User', function ($q, $http, API_CONNECT, auth, APP_ID, APP_ROLES) {  	
+  .factory('User', function ($q, $http, API_CONNECT, auth, APP_ID, APP_ROLES, $timeout) {  	
   		var User = {
             data: $q.defer(),
             connections: $q.defer(),
@@ -424,6 +424,44 @@ angular.module('connectApp')
             });
 
             return deferred.promise;
+        };
+
+        /** IMAGE FUNCTIONS **/
+        User.getImage =  function(){
+            var deferred = $q.defer;
+        
+            $http.get(API_CONNECT + "/user/" + $stateParams.User.data.id).then(function(result){
+                deferred.resolve(result.data);
+            },
+            function(error){
+                deferred.reject(error);
+            });
+              
+            return deferred.promise;
+        };
+
+        User.saveImage = function(profile, image){      
+          var imageId = (typeof profile.image.id =='undefined') ? '' : profile.image.id;
+    
+          var imageData = {
+            'id' : imageId,
+            'image_id': image.id,
+            'hash': image.thumbnail_hash
+          };
+    
+          var deferred = $q.defer();
+          $http.post(API_CONNECT + "/user/" + profile.id + "/image", imageData).then(function(result){
+            //timeout 1sec to give server time to process image types
+            $timeout(function(){
+              deferred.resolve(result.data)
+            }, 1000);
+            //deferred.resolve(result.data);
+          },
+          function(data, status, headers, config){
+            deferred.reject(data.data.user_msg);
+          });
+    
+          return deferred.promise;
         };
 
 

@@ -23,7 +23,8 @@ angular
     'ui.bootstrap',
     'daterangepicker',
     'pascalprecht.translate',
-    'worldskills.utils'
+    'worldskills.utils',
+    'angularFileUpload'
   ])
   //.config(function ($routeProvider) {
     .config(function ($routeProvider, APP_ROLES, $translateProvider, $stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
@@ -156,6 +157,20 @@ angular
           {code: 1800, role: APP_ROLES.USER}
         ]
       }
+   })
+
+  .state('user.image', {
+    url: '/image',
+    templateUrl: 'views/user.image.cropper.html',
+    controller: 'UserImageCropperCtrl',
+    data: {
+        requireLoggedIn: true,
+        requiredRoles: [
+          {code: 1800, role: APP_ROLES.ADMIN},
+          {code: 1800, role: APP_ROLES.MANAGER},
+          {code: 1800, role: APP_ROLES.USER}
+        ]
+    }
    })
 
    .state('user.edit', {

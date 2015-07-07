@@ -1,0 +1,111 @@
+<fieldset>
+	<legend>Profile picture cropper</legend>
+<div class='panel panel-default'>
+	<div class='panel-heading'>Current profile picture</div>
+	<div class='panel-body'>					
+		<form class="peopleForm form-horizontal" name="form.image" novalidate focus-error ng-submit="submit()">	
+		    <div class="form-group">
+		        <div class="col-md-9">
+		        	<legend>Image to crop</legend>
+		        	<ws-spinner class='bigSpinner' ng-show='loading.crop'></ws-spinner>
+		        	<div ng-show='loading.base64'>Loading, this might take a little longer than usual...<br />
+		        		<ws-spinner class='bigSpinner'></ws-spinner>
+		        	</div>
+
+		        	<div ng-show='!loading.crop' class='cropper-container'>	
+		        		<!-- <img onload="loadCropper()" ng-if='cropImage' ng-src="images/test.jpg" alt='' /> -->
+		        		<img onload='loadCropper()' ng-if='cropImage != false' ng-src="{{cropImage}}" alt='' />
+		        		<div class="docs-toolbar">
+				          <div class="btn-group">
+				            <button class="btn btn-primary" data-method="zoom" data-option="0.1" type="button" tooltip-placement='top' tooltip="Zoom In">
+				              <span class="docs-tooltip" data-toggle="tooltip" title="">
+				                <span class="glyphicon glyphicon-zoom-in"></span>
+				              </span>
+				            </button>
+				            <button class="btn btn-primary" data-method="zoom" data-option="-0.1" type="button" tooltip-placement='top' tooltip="Zoom Out">
+				              <span class="docs-tooltip" data-toggle="tooltip" title="">
+				                <span class="glyphicon glyphicon-zoom-out"></span>
+				              </span>
+				            </button>
+				            <!-- <button class="btn btn-primary" data-method="rotate" data-option="-90" ng-click="rotate(-90)" type="button" tooltip-placement='top' tooltip="Rotate Left">
+				              <span class="docs-tooltip" data-toggle="tooltip" title="">
+				                <span class="glyphicon glyphicon-share-alt icon-flipped"></span>
+				              </span>
+				            </button>
+				            <button class="btn btn-primary" data-method="rotate" data-option="90" ng-click="rotate(90);" type="button" tooltip-placement='top' tooltip="Rotate Right">
+				              <span class="docs-tooltip" data-toggle="tooltip" title="">
+				                <span class="glyphicon glyphicon-share-alt"></span>
+				              </span>
+				            </button>			            			             -->
+				            <button class='btn btn-warning' ng-click='cancel()'>
+				            	<span class='glyphicon glyphicon-remove'></span> Cancel
+				            </button>				            
+				            <button class='btn btn-success' ng-click='saveCrop()'>			            	
+				            	<span class='glyphicon glyphicon-ok'></span> Save
+				            </button>				            
+				          </div>
+				          	<input style='display: none;' type='text' id='dataX' ng-model='data.x' />
+				            <input style='display: none;' type='text' id='dataY' ng-model='data.y' />
+				            <input style='display: none;' type='text' id='dataWidth' ng-model='data.width' />
+				            <input style='display: none;' type='text' id='dataHeight' ng-model='data.height' />
+				            <input style='display: none;' type='text' id='dataRotate' ng-model='data.rotate' />
+				        </div>
+		        	</div>
+		        </div>
+		        <div class="col-md-3">
+		        	<legend>Preview</legend>
+		        	<div class='cropper-rectangular cropper-preview'></div>
+		        	<p>&nbsp;</p>
+		        	<!-- <legend>Circle Preview</legend>
+		        	<div class='cropper-circle cropper-preview img-circle'></div> -->
+		        </div>
+		    </div>		
+		</form>	
+	</div>
+</div>	   	
+</fieldset>
+
+<script>
+	var $image = false;
+	
+	function loadCropper(){
+      $image = jQuery('.cropper-container > img');
+      setTimeout(function(){
+      	$image.cropper({
+      	  aspectRatio: .75,
+      	  preview: ".cropper-preview",
+      	  modal: true,
+      	  movable: true,
+      	  resizable: true,
+      	  zoomable: true, //?
+      	  rotatable: true,
+      	  minWidth: 800,
+      	  minHeight: 600,
+      	  dashed: true,
+      	  autoCrop: true, 
+      	  autoCropArea: 0.5,
+      	  dragCrop: true,
+      	  data:{
+      	  	x: jQuery('#dataX').val(),
+      	  	y: jQuery('#dataY').val(),
+      	  	width: jQuery('#dataWidth').val(),
+      	  	height: jQuery('#dataHeight').val(),
+      	  },
+      	  done: function(data) {
+      	    jQuery('#dataX').val(data.x).trigger('change');          
+      	    jQuery('#dataY').val(data.y).trigger('change');
+      	    jQuery('#dataWidth').val(data.width).trigger('change');
+      	    jQuery('#dataHeight').val(data.height).trigger('change');                  
+      	  }
+      	}); //croper
+      }, 200); //200ms delay to allow browser to catch up
+	}    
+
+	jQuery(document).on("click", "[data-method]", function () {
+      var data = $(this).data();
+
+      if (data.method) {      
+        $image.cropper(data.method, data.option);
+      }
+    });
+</script>

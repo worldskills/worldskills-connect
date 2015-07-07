@@ -21,3 +21,17 @@
 .app-show-hide.ng-hide-remove.ng-hide-remove-active {
   opacity:1;
 }
+
+/** PROFILE IMAGE */
+.profileImage .actions > span{
+    -webkit-transition:all linear 0.2s;
+  -moz-transition:all linear 0.2s;
+  -o-transition:all linear 0.2s;
+  transition:all linear 0.2s;
+  display:block!important;
+  opacity: 0;
+}
+
+.profileImage:hover .actions > span{
+  opacity: 0.5;
+}

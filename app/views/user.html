@@ -15,9 +15,32 @@
 <div class='row'>
 	<div class="col-sm-3 col-md-2 sidebar-right">        
 		<div ng-show="myProfile" class="list-group">			                  
-            <div class='list-group-item profileImage'>
+
+            <!-- <div class='list-group-item profileImage'>
                 <img src='http://lorempixel.com/400/400/people' alt='user' />
+            </div> -->
+
+            <!-- profile image -->            
+            <div ng-if="stateName == 'user.image'" class='uploadProgress center'>
+                <span ng-show='!loading.crop'>Cropping</span>
+                <ws-spinner class='bigSpinner' ng-show='loading.crop'></ws-spinner>
+            </div>        
+            <div ng-if="stateName != 'user.image'" class='list-group-item profileImage' ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="profileImageUploadHover">    
+                <div class='imageWarning' ng-if="(role.name == app_roles.ADMIN || role.name == app_roles.MANAGER) && imageWarning && !uploading"><span tooltip-placement="bottom" tooltip-html-unsafe="{{sizeWarning}}" class='glyphicon glyphicon-warning-sign'></span></div><!-- {{state}} -->
+                <div ng-show='uploading' class='uploadProgress center'>
+                    <span ng-if='!loading.processing'>{{progress}}</span>
+                    <ws-spinner class='bigSpinner' ng-if="loading.processing"></ws-spinner>
+                </div>
+                <img ng-if="!uploading && !profileImage" src='images/user.png' alt='No Image' />                
+                <img ng-if='!uploading && profileImage' ng-src="{{profileImage}}" alt="User Image" />
+                <div ng-if='!uploading' class='actions'>
+                    <span ng-if="canUploadImages === false" ng-click="restrictedUploadWarning()">upload</span>
+                    <span ng-if="canUploadImages" ng-file-select="onFileSelect($files)">upload</span>
+                    <span ng-click="reCrop($event);">crop image</span>
+                </div>
             </div>
+            <!-- /profile image -->
+
     	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.profile'>My Profile</a>
     	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.inbox'>Inbox <span ng-show="user.data.inbox.total_count > 0" class="badge">{{user.data.inbox.total_count}}</span></a>   	 			
     	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.sent'>Sent requests</a>   
