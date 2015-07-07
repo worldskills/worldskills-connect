@@ -21,7 +21,7 @@ angular.module('connectApp')
   $scope.subscriptions = {};
   $scope.REQUEST_STATUS = REQUEST_STATUS;
   $scope.popularConnections = {};
-
+  $scope.event = {};
 
   //Pagination
   $scope.totalItems = 0 //Total number of items in all pages
@@ -34,6 +34,14 @@ angular.module('connectApp')
 	$scope.eventId = $state.params.eventId;
 
   $scope.init = function(){
+    //get the event
+    $q.when(Events.data.promise).then(function(){
+      angular.forEach($scope.events.data, function(val, key){
+        if(val.id == $scope.eventId)
+          $scope.event = val;
+      });
+    });
+
     Events.getSubscriptions($scope.eventId).then(function(result){
       $scope.subscriptions = result;  
 

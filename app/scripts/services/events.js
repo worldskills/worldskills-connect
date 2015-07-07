@@ -11,19 +11,20 @@ angular.module('connectApp')
   .factory('Events', function ($q, $http, API_CONNECT) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
-    var Events = {};    
+    var Events = { data: $q.defer() };    
 
     Events.init = function(){
-        var deferred = $q.defer();
+        //var deferred = $q.defer();
+        if(typeof Events.data.promise == 'undefined') Events.data = $q.defer();
                 
         $http.get(API_CONNECT + "/events").then(function(result){
+            Events.data.resolve(result.data.connect_events);
             Events.data = result.data.connect_events;
-            deferred.resolve(Events.data);
         },
         function(error){
-            deferred.reject("Could not fetch events: " + error.data.user_msg);
+            Events.data.reject("Could not fetch events: " + error.data.user_msg);
         });
-        return deferred.promise;
+        return Events.data.promise;
     };    
 
     Events.getSubscriptions = function(eventId){
