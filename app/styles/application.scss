@@ -258,3 +258,26 @@ a.eventLink:hover, a.contactLink:hover{ text-decoration: none; }
 .popover-content{
 	font-size: 85%;
 }
+
+
+/** CROPPER **/
+.cropper-container{ position: relative; }
+.cropper-container .docs-toolbar{
+	position: absolute; 
+	top: 10px; 
+	left: 10px; 
+	z-index: 9999;
+}
+
+.cropper-rectangular{
+	width: 150px; height: 200px; overflow: hidden;
+}
+
+.cropper-circle{
+	width: 150px !important; height: 150px !important; overflow: hidden; position: relative;
+}
+
+.cropper-circle img{
+	position: absolute;
+	top: -25px; /* Formula: 150 / 3 / = 25px */
+}
