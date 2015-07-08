@@ -107,15 +107,16 @@ angular.module('connectApp')
         	);
     };
 
-    $scope.downloadCSV = function(){
-    	alert("Not yet implemented...");
+    $scope.downloadXLSX = function(){
+    	User.getConnectionsSpreadsheet();
     };
 
     $scope.downloadVCF = function(){
     	alert("Not yet implemented...");
     };
 
-    $scope.download = function(userId){
-    	alert("Not yet implemented...");
+    $scope.download = function(connectionId, firstName, lastName){
+    	
+    	User.getConnectionVCF(connectionId, firstName + ' ' + lastName);
     };
   });
