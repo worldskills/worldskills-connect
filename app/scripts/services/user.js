@@ -8,7 +8,7 @@
  * Service in the connectApp.
  */
 angular.module('connectApp')
-  .factory('User', function ($q, $http, API_CONNECT, auth, APP_ID, APP_ROLES, $timeout) {  	
+  .factory('User', function ($q, $http, API_CONNECT, auth, APP_ID, APP_ROLES, $timeout, Downloader) {  	
   		var User = {
             data: $q.defer(),
             connections: $q.defer(),
@@ -186,6 +186,19 @@ angular.module('connectApp')
             
             return User.connections.promise;
         };
+        
+        User.getConnectionsSpreadsheet = function() {
+        	$http({url: API_CONNECT + "/connections/user/" + User.data.id, method: "GET", params: { s: "xlsx" }, responseType : "blob"})
+    		.success( function(data, status, headers) {
+    			
+    			var filename = 'connections.xlsx';
+    			Downloader.handleDownload(data, status, headers, filename);
+    			
+    		})
+    	    .error(function(data, status) {
+    	        console.log("Request failed with status: " + status);
+    	    });
+        }
 
         User.getRequested = function(){
             if(typeof User.requested.promise == 'undefined') User.requested = $q.defer();   
@@ -328,6 +341,20 @@ angular.module('connectApp')
             });
 
             return deferred.promise;
+        };
+        
+        User.getConnectionVCF = function(connectionId, name) {
+        	$http({url: API_CONNECT + "/connections/" + connectionId, method: "GET", params: { s: "vcf" }})
+    		.success( function(data, status, headers) {
+    			
+    			var filename = name || 'connection.vcf';
+    			filename = filename.replace(/\s/g, '_');
+    			Downloader.handleDownload(data, status, headers, filename);
+    			
+    		})
+    	    .error(function(data, status) {
+    	        console.log("Request failed with status: " + status);
+    	    });
         };
 
          User.getSubscriptions = function(){
