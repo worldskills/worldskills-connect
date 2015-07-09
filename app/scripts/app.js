@@ -115,6 +115,15 @@ angular
     }
    })
 
+    .state('signupExisting', {
+    url: '/signupWS',
+    controller: 'SignupExistingCtrl',
+    templateUrl: 'views/signupexisting.html',
+    data: {
+      requireLoggedIn: false
+    }
+   })
+
    .state('event', {
       url: '/event/:eventId',
       templateUrl: 'views/event.html',

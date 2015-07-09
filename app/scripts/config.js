@@ -12,7 +12,9 @@
     connectApp.constant('API_AUTH', 'http://localhost:8080/auth');
     connectApp.constant('AUTHORIZE_URL', 'http://localhost:10100/oauth/authorize');
     connectApp.constant('LOGOUT_URL', 'http://localhost:10100/logout');
-
+    connectApp.constant('SIGNUP_URL', 'http://localhost:10100/registration/connect');
+    connectApp.constant('ROLE_ID_CONNECT_USER', 45);
+    
     connectApp.constant('DATE_FORMAT', 'yyyy-MM-ddThh:mm:ssZ');
     connectApp.constant('WORLDSKILLS_CLIENT_ID', 'd3fcf7217efc');
     connectApp.constant('WORLDSKILLS_API_AUTH', 'http://localhost:8080/auth');

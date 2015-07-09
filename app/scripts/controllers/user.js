@@ -25,7 +25,7 @@ angular.module('connectApp')
     $scope.MIN_WIDTH = 600;
     $scope.MIN_HEIGHT = 800;
     $scope.sizeWarning = "Warning: Picture is too small (minimum size: " + $scope.MIN_WIDTH + " x " + $scope.MIN_HEIGHT + ") px";
-    $scope.uploadWarning = "Notice: Please contact your Technical Delegate if you wish to change your picture.";
+    $scope.uploadWarning = "Warning: You don't have permissions to upload an image";
     $scope.cropImage = false;
     /** IMAGE DATA */
 

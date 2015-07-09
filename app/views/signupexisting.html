@@ -1,0 +1,73 @@
+        <div class="row">
+
+            <div class='col-xs-12 col-sm-9'>
+                <h2>We need some more information</h2>
+                <p>We need you to include some extra information in order to use WorldSkills Connect.<br/>Please fill in the details below.</p>
+                <p>&nbsp;</p>
+                <form class="peopleForm form-horizontal" name="form.extra" novalidate focus-error>
+                <fieldset>	
+					<legend>Connect related information</legend>	
+										
+					<div class='row contentRow'>
+						<div class='col-xs-4 col-md-3 col-lg-2'>
+							<strong>Phone <span class="required">*</span></strong>
+						</div>
+						<div class='col-xs-6 col-md-6 col-lg-5'>
+							<input type='text' name='phone_number' required placeholder="+358 123 4567" ng-model='tmp_user.phone_number' class='form-control input-sm' />
+						</div>
+					</div>							
+			
+					<div class='row contentRow'>
+						<div class='col-xs-4 col-md-3 col-lg-2'>
+							<strong>Company <span class="required">*</span></strong>
+						</div>
+						<div class='col-xs-6 col-md-6 col-lg-5'>
+							<input type='text' name='company' required placeholder="Company name" ng-model='tmp_user.company' class='form-control input-sm' />
+						</div>
+					</div>
+					<div class='row contentRow'>
+						<div class='col-xs-4 col-md-3 col-lg-2'>
+							<strong>Job Title <span class="required">*</span></strong>
+						</div>
+						<div class='col-xs-6 col-md-6 col-lg-5'>
+							<input type='text' name='job_title' required placeholder="Job title" ng-model='tmp_user.job_title' class='form-control input-sm' />
+						</div>
+					</div>
+					<!-- <div class='row contentRow'>
+						<div class='col-xs-4 col-md-3 col-lg-2'>
+							<strong>Profile description</strong>
+						</div>
+						<div class='col-xs-6 col-md-6 col-lg-5'>
+							<textarea name='description' placeholder="" rows='5' ng-model='tmp_user.description' class='form-control input-sm' />
+						</div>
+					</div>	 -->								
+					<div class='row contentRow'>
+						<div class='col-xs-4 col-md-3 col-lg-2'>
+							<!-- <strong>Job Title</strong> -->
+						</div>
+						<div class='col-xs-6 col-md-6 col-lg-5'>
+						<br />
+							<button ng-disabled="form.extra.$invalid" ng-click="saveExtra()" class='btn btn-sm btn-success'>Create a Connect profile</button>
+						</div>
+					</div>
+					</form>	
+				</fieldset>				
+				</form>
+				
+                <p>&nbsp;</p>                
+            </div>
+
+            <div class='col-xs-12 col-sm-3 sidebar'>
+                <h4>Featured Events</h4>                
+                <featured ng-repeat="event in events.data"></featured>
+            </div>
+        </div>
+           
+
+        <hr class="" />
+
+       
+
+        
+
+    
