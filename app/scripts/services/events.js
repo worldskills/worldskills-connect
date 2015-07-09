@@ -22,7 +22,7 @@ angular.module('connectApp')
             Events.data = result.data.connect_events;
         },
         function(error){
-            Events.data.reject("Could not fetch events: " + error.data.user_msg);
+            Events.data.reject("Could not fetch events");
         });
         return Events.data.promise;
     };    

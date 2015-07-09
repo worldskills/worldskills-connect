@@ -28,7 +28,7 @@ angular.module('connectApp')
     		deferred.resolve(Statuses.data);
     	},
     	function(error){
-    		deferred.reject("Could not fetch statuses: " + error);
+    		deferred.reject("Could not fetch statuses");
     	});
 
     	return deferred.promise;

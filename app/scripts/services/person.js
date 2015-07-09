@@ -31,6 +31,19 @@ angular.module('connectApp')
     		return deferred.promise;
     	},
 
+        getProfile: function(pid){
+            var deferred = $q.defer();
+
+            $http.get(API_PEOPLE + "/person/" + pid).then(function(result){
+                deferred.resolve(result.data);
+            },
+            function(error){
+                deferred.reject("Could not get people profile: " + error);
+            });
+
+            return deferred.promise;
+        },
+
     	updatePrimaryEmail: function(pid, email){
     		var deferred = $q.defer();
 

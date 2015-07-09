@@ -8,7 +8,8 @@
  * Service in the connectApp.
  */
 angular.module('connectApp')
-  .factory('User', function ($q, $http, API_CONNECT, auth, APP_ID, APP_ROLES, $timeout, Downloader) {  	
+  .factory('User', function ($q, $http, API_CONNECT, auth, APP_ID, APP_ROLES, $timeout, API_AUTH, ROLE_ID_CONNECT_USER, Downloader) {  	
+
   		var User = {
             data: $q.defer(),
             connections: $q.defer(),
@@ -64,33 +65,6 @@ angular.module('connectApp')
             function(error){
                 deferred.reject("Could not save user profile: " + error.data.user_msg);
             });
-
-
-
-            //$http.put(API_CONNECT + "/user/" + User.data.id, userObj).then(function(result){                
-            //    deferred.resolve(result);
-            //},
-            //function(error){
-            //    deferred.reject("Could not save profile: " + error);
-            //});
-            // var postData = {
-            //   "first_name": "Jonia",
-            //   "last_name": "Aaltonen",
-            //   "gender": "M",
-            //   "country": {
-            //     "id": 1,
-            //     "abbreviation": "FI",
-            //     "name": {
-            //       "lang_code": "en",
-            //       "text": "Finland"
-            //     }
-            //   },
-            //   "email_address": "joni@joniaaltonen.info",
-            //   "phone_number": "+358407005372",
-            //   "company": "WorldSkills",
-            //   "job_title": "Senior Web Developer",
-            //   "profile_description": "This is my profile description. Lorem Ipsum and all that!"              
-            // };
 
             return deferred.promise;
         };
@@ -490,6 +464,47 @@ angular.module('connectApp')
     
           return deferred.promise;
         };
+
+        User.create = function(person, extra){
+            var deferred = $q.defer();
+
+            //find primary email
+            var primary_email = "";
+            angular.forEach(person.email_addresses, function(val, key){
+                if(val.type.id == 1) primary_email = val.email_address;
+            });
+
+            var userData = {
+                'person_id'     :   person.id,
+                'first_name'    :   person.first_name,
+                'last_name'     :   person.last_name,
+                'country'       :   {'id': person.country.id },
+                'email_address' :   primary_email,
+                'phone_number'  :   extra.phone_number,
+                'company'       :   extra.company,
+                'job_title'     :   extra.job_title 
+            };
+
+            var roleData = {
+                'role_id': ROLE_ID_CONNECT_USER
+            };
+
+            $http.post(API_CONNECT + "/user/", userData).then(function(result){
+                //add auth permissions
+                $http.post(API_AUTH + "/users/" + auth.user.id + "/roles", roleData).then(function(result2){
+                    deferred.resolve(result2);
+                },
+                function(error2){
+                    deferred.reject("Could not save auth role: " + error2);
+                });
+            },
+            function(error){
+                deferred.reject("Could not create new connect user: " + error.data.user_msg);
+            });
+
+            return deferred.promise;
+        };
+
 
 
   	return User;  

@@ -55,6 +55,7 @@
                     <li ng-hide='auth.loggedIn'><a href='{{auth.loginUrl}}'>Login</a></li>                    
                     <li ng-hide='auth.loggedIn'><a ui-sref="signup">Sign Up</a></li>
 
+                    <li ng-show='auth.loggedIn'><a ui-sref="event({eventId:1})">Home</a></li>
                     <li ng-show='auth.loggedIn' class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">
                             {{user.data.first_name + " " + user.data.last_name}}&nbsp;<span ng-show="user.data.inbox.total_count > 0" class="label label-danger label-xs">{{user.data.inbox.total_count}}</span>&nbsp;<b class="caret"></b>
                         </a>
@@ -210,6 +211,7 @@
         <script src="scripts/services/person.js"></script>
         <script src="scripts/controllers/userimagecropper.js"></script>
         <script src="scripts/services/downloader.js"></script>
+        <script src="scripts/controllers/signupexisting.js"></script>
         <!-- endbuild -->
 </body>
 </html>

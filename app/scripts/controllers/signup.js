@@ -8,6 +8,7 @@
  * Controller of the connectApp
  */
 angular.module('connectApp')
-  .controller('SignupCtrl', function ($scope) {
+  .controller('SignupCtrl', function ($scope, SIGNUP_URL) {
+  	$scope.SIGNUP_URL = SIGNUP_URL;
     
   });

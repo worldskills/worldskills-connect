@@ -1,7 +1,8 @@
 <div class='popular-connection'>
     <a ui-sref="user.profile({userId:u.id})" class='contactLink'>
         <div class="thumbnail">
-            <img src='http://lorempixel.com/400/400/people/' alt='{{u.first_name + " " + u.last_name}}' />
+
+            <img src='{{getProfileImage(u.image, "accreditation")}}' alt='{{u.first_name + " " + u.last_name}}' />
             <div class="caption"><strong>{{u.first_name + " " + u.last_name}}</strong><br />
             <small><i>{{u.job_title}}</i><br />
             {{u.company}}</small></div>

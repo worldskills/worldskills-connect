@@ -8,8 +8,9 @@ angular.module('connectApp')
     activeRole: function(){
       var retval = false;
         angular.forEach(auth.user.roles, function(val, key){
-             if(val.role_application.application_code == APP_ID)              
-               retval = val;
+             if(val.role_application.application_code == APP_ID){
+               retval = val.name;
+             }
          });
         return retval;
     },
