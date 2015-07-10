@@ -179,11 +179,13 @@ module.exports = function (grunt) {
     wiredep: {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
-        ignorePath:  /\.\.\//
+        ignorePath:  /\.\.\//,
+        exclude: ['bower_components/bootstrap/dist']
       },
       test: {
         devDependencies: true,
         src: '<%= karma.unit.configFile %>',
+        exclude: ['bower_components/bootstrap/dist'],
         ignorePath:  /\.\.\//,
         fileTypes:{
           js: {
@@ -389,7 +391,8 @@ module.exports = function (grunt) {
           src: ['generated/*']
         }, {
           expand: true,
-          cwd: 'bower_components/bootstrap/dist',
+          //cwd: 'bower_components/bootstrap/dist',
+          cwd: 'bower_components/worldskills-bootstrap/dist',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
         }]

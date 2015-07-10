@@ -8,7 +8,7 @@
  * Controller of the connectApp
  */
 angular.module('connectApp')
-  .controller('SignupExistingCtrl', function ($scope, User, $state, Person, auth, WSAlert, API_PEOPLE) {
+  .controller('SignupExistingCtrl', function ($scope, User, $state, Person, auth, WSAlert, API_PEOPLE, FORCED_EVENT_ID) {
   	
   $scope.tmp_user = {};
 
@@ -17,8 +17,7 @@ angular.module('connectApp')
   	Person.getProfile(auth.user.person_id).then(function(result){
   		User.create(result, $scope.tmp_user).then(function(result2){
         WSAlert.success("Connect User created");
-        console.log(result2);
-        //$state.go('events');
+        $state.go('event', {'eventId': FORCED_EVENT_ID});
   		},
   		function(error){
   			WSAlert.danger(error);
