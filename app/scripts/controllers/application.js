@@ -8,7 +8,7 @@
  * Controller of the connectApp
  */
 angular.module('connectApp')
-  .controller('ApplicationCtrl', function ($q, Auth, $scope, $state, auth, WSAlert, User) {
+  .controller('ApplicationCtrl', function ($q, Auth, $scope, $state, auth, WSAlert, User, FORCED_EVENT_ID) {
 
     $scope.auth = auth;
     $scope.user = User;
@@ -29,7 +29,7 @@ angular.module('connectApp')
                     $scope.allow_init = false;
                 }
                 else{
-                    $state.go('event', {eventId:1});
+                    $state.go('event', {'eventId':FORCED_EVENT_ID});
                 }
                 //force WSC2015
             }

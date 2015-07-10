@@ -34,7 +34,7 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
-      'bower_components/bootstrap/dist/js/bootstrap.js',
+      'bower_components/worldskills-bootstrap/dist/js/bootstrap.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/json3/lib/json3.js',
       'bower_components/angular-translate/angular-translate.js',
