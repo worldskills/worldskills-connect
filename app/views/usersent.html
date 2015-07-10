@@ -7,7 +7,7 @@
 	<div class='row' ng-hide='loading.sentItem[connection.id]'>
 		<div class='col-xs-12 col-sm-10'>
   			<div class="media-left media-top">
-  			    <a ui-sref='user.profile({userId:connection.to.id})'><img class="media-object" src="http://lorempixel.com/120/120/people" alt="name"></a>
+  			    <a ui-sref='user.profile({userId:connection.to.id})'><img class="listImage media-object" ng-src='{{getProfileImage(connection.to.image, "portrait")}}'  alt="name"></a>
   			</div>
   			<div class="media-body">
   			  <h4 class="media-heading"><a ui-sref='user.profile({userId:connection.to.id})'>{{connection.to.first_name + " " + connection.to.first_name}}</a></h4>
