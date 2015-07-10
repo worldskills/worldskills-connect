@@ -22,6 +22,7 @@ angular.module('connectApp')
   $scope.REQUEST_STATUS = REQUEST_STATUS;
   $scope.popularConnections = {};
   $scope.event = {};
+  $scope.eventImage = false;
 
   //Pagination
   $scope.totalItems = 0 //Total number of items in all pages
@@ -39,6 +40,7 @@ angular.module('connectApp')
       angular.forEach($scope.events.data, function(val, key){
         if(val.id == $scope.eventId)
           $scope.event = val;
+          $scope.eventImage = $scope.getImage($scope.event.image);
       });
     });
 

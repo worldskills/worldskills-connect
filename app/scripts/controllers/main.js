@@ -88,6 +88,18 @@ angular.module('connectApp')
         return retval;
     };
 
+    $scope.getImage = function(image){
+        var retval = false;
+
+        if(typeof image.links == 'undefined') return false;        
+        angular.forEach(image.links, function(val, key){
+            if(val.rel == 'alternate'){ 
+                retval = val.href;
+            }
+        });
+        return retval;
+    };
+
 
   })
 .directive("featured", function(){
