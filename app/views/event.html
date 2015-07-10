@@ -5,7 +5,7 @@
                     
                 
                 <div class='event-highligh cf'>
-                	<img class='event-picture-full thumbnail' src='http://lorempixel.com/800/150/city' alt='sao paulo' />
+                	<img ng-if="eventImage != false" class='event-picture-full thumbnail' ng-src="{{eventImage}}" alt='sao paulo' />
                 	
                 	<p>{{event.event.description}}</p>
                 </div>
