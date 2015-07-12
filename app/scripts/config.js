@@ -13,7 +13,6 @@
     connectApp.constant('AUTHORIZE_URL', 'http://localhost:10100/oauth/authorize');
     connectApp.constant('LOGOUT_URL', 'http://localhost:10100/logout');
     connectApp.constant('SIGNUP_URL', 'http://localhost:10100/registration/connect');
-    connectApp.constant('ROLE_ID_CONNECT_USER', 45);
     connectApp.constant('FORCED_EVENT_ID', 1);
 
     connectApp.constant('DATE_FORMAT', 'yyyy-MM-ddThh:mm:ssZ');

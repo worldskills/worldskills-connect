@@ -16,7 +16,7 @@ angular.module('connectApp')
   	//get data from people
   	Person.getProfile(auth.user.person_id).then(function(result){
   		User.create(result, $scope.tmp_user).then(function(result2){
-        WSAlert.success("Connect User created");
+        WSAlert.success("Connect profile created successfully");
         $state.go('event', {'eventId': FORCED_EVENT_ID});
   		},
   		function(error){

@@ -1,7 +1,7 @@
 <div class='event'> 
 	<div><a ui-sref='event({eventId:event.id})'>{{event.event.name}}</a></div>
 	<div class='event-image'>
-	    <a ui-sref='event({eventId:event.id})'><img class='thumbnail' ng-src="{{getImage(event.icon)}}" ng-if="event.icon" alt='Sao Paulo 2015' /></a>
+	    <a ui-sref='event({eventId:event.id})'><img class='thumbnail' ng-src="{{getImage(event.icon)}}" ng-if="event.icon" alt='{{event.event.name}}' /></a>
 	    <span>{{event.connection_count}} possible connections&nbsp;&nbsp;<a popover="{{event.connection_count}} people attending this event." popover-trigger="mouseenter" ><span class='glyphicon glyphicon-question-sign'></span></a></span>
 	</div>
 	<div class='event-attendance text-center'>                  
