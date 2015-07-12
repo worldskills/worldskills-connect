@@ -8,7 +8,7 @@
  * Service in the connectApp.
  */
 angular.module('connectApp')
-  .factory('User', function ($q, $http, API_CONNECT, auth, APP_ID, APP_ROLES, $timeout, API_AUTH, ROLE_ID_CONNECT_USER, Downloader) {  	
+  .factory('User', function ($q, $http, API_CONNECT, auth, APP_ID, APP_ROLES, $timeout, API_AUTH, Downloader) {  	
 
   		var User = {
             data: $q.defer(),
@@ -485,18 +485,9 @@ angular.module('connectApp')
                 'job_title'     :   extra.job_title 
             };
 
-            var roleData = {
-                'role_id': ROLE_ID_CONNECT_USER
-            };
 
-            $http.post(API_CONNECT + "/user/", userData).then(function(result){
-                //add auth permissions
-                $http.post(API_AUTH + "/users/" + auth.user.id + "/roles", roleData).then(function(result2){
-                    deferred.resolve(result2);
-                },
-                function(error2){
-                    deferred.reject("Could not save auth role: " + error2);
-                });
+            $http.post(API_CONNECT + "/user/", userData).then(function(result){              
+                deferred.resolve(result);               
             },
             function(error){
                 deferred.reject("Could not create new connect user: " + error.data.user_msg);

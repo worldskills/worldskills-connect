@@ -33,7 +33,7 @@ angular.module('connectApp')
                 //User.data.requested = result[3];
             },
             function(error){
-                WSAlert.danger("Error loading user resources: " + error.data.user_msg);
+                WSAlert.danger("Error loading user resources: " + error);
             });
             //event subscriptions
     		//User.subscriptions($scope.user.data.id).then(function(res){
