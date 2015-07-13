@@ -16,32 +16,11 @@ angular.module('connectApp')
 	$scope.contacts = [];
 	$scope.loading.connections = {};
   
-	// $scope.contacts = [
-	//   { 'id': 1, name: 'Joni Aaltonen', 	company: 'WorldSkills', position: 'Position 1', country: 'Finland', requestSent: true},
-	//   { 'id': 1, name: 'John Cox', 			company: 'WorldSkills', position: 'Position 2', country: 'Australia', requestSent: false},
-	//   { 'id': 1, name: 'Adam Walsh', 		company: 'WorldSkills', position: 'Position 3', country: 'Australia', requestSent: true},
-	//   { 'id': 1, name: 'Fabian Vogler', 	company: 'WorldSkills', position: 'Position 4', country: 'Switzerland' , requestSent: true},
-	//   { 'id': 1, name: 'Joni Aaltonen', 	company: 'WorldSkills', position: 'Position 1', country: 'Finland', requestSent: false},
-	//   { 'id': 1, name: 'John Cox', 			company: 'WorldSkills', position: 'Position 2', country: 'Australia', requestSent: false},
-	//   { 'id': 1, name: 'Adam Walsh', 		company: 'WorldSkills', position: 'Position 3', country: 'Australia', requestSent: true},
-	//   { 'id': 1, name: 'Fabian Vogler', 	company: 'WorldSkills', position: 'Position 4', country: 'Switzerland' , requestSent: false},
-	//   { 'id': 1, name: 'Joni Aaltonen', 	company: 'WorldSkills', position: 'Position 1', country: 'Finland', requestSent: true},
-	//   { 'id': 1, name: 'John Cox', 			company: 'WorldSkills', position: 'Position 2', country: 'Australia', requestSent: true},
-	//   { 'id': 1, name: 'Adam Walsh', 		company: 'WorldSkills', position: 'Position 3', country: 'Australia', requestSent: false},
-	//   { 'id': 1, name: 'Fabian Vogler', 	company: 'WorldSkills', position: 'Position 4', country: 'Switzerland' , requestSent: false},
-	//   { 'id': 1, name: 'Joni Aaltonen', 	company: 'WorldSkills', position: 'Position 1', country: 'Finland', requestSent: true},
-	//   { 'id': 1, name: 'John Cox', 			company: 'WorldSkills', position: 'Position 2', country: 'Australia', requestSent: false},
-	//   { 'id': 1, name: 'Adam Walsh', 		company: 'WorldSkills', position: 'Position 3', country: 'Australia', requestSent: false},
-	//   { 'id': 1, name: 'Fabian Vogler', 	company: 'WorldSkills', position: 'Position 4', country: 'Switzerland' , requestSent: false}
-	// ];
-
 
 	$scope.removeConnection = function(connectionId, $index){
 		if(confirm("Are you sure?")){
 		$scope.loading.connections[connectionId] = true;
 		User.deleteConnection(connectionId).then(function(res){		
-			console.log(User.connections);
-			console.log(User.connections.connections);
 			User.connections.connections.splice($index, 1);
 			User.connections.total_count -= 1;
 			User.connections.totalConnections -= 1;
