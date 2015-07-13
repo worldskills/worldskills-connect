@@ -107,11 +107,11 @@ angular.module('connectApp')
             var deferred = $q.defer();
 
             $http.delete(API_CONNECT + "/connections/" + connectionId).then(function(res){
-                deferred.resolve(res);
 
                 //refresh connections
-                User.getConnections();
-                User.getRequested();
+                var promises = [User.getConnections(), User.getRequested()];
+                $q.all(promises).then(function(){ deferred.resolve(); });
+
             }, function(error){
                 deferred.reject("Could not delete connection: " + error.data.user_msg);
             });
