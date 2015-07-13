@@ -228,7 +228,7 @@ angular.module('connectApp')
     $scope.getImageThumbnail = function(type){
         var retval = false;
 
-        if(typeof $scope.profile.image.links == 'undefined') return false;
+        if(typeof $scope.profile.image == 'undefined' || typeof $scope.profile.image.links == 'undefined') return false;
         type = (typeof type == 'undefined') ? "" : "_"+type;
         angular.forEach($scope.profile.image.links, function(val, key){
             if(val.rel == 'alternate'){ 
@@ -267,7 +267,7 @@ angular.module('connectApp')
 
     $scope.checkExistingDimensions = function(){
         //FIXME remove this in the future when it's clear all pictures are big enough, this is really here only for old pictures, new ones are always big enough
-        if(typeof $scope.profile.image.image_id == 'undefined') return;
+        if(typeof $scope.profile.image == 'undefined' || typeof $scope.profile.image.image_id == 'undefined') return;
 
         $http.get(API_IMAGES+"/"+$scope.profile.image.image_id+"/"+$scope.profile.image.hash).then(function(data){
             $scope.imageData = data.data;

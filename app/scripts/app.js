@@ -115,6 +115,15 @@ angular
     }
    })
 
+   .state('signupConfirmed', {
+    url: '/signupConfirmed',
+    controller: 'SignupConfirmedCtrl',
+    templateUrl: 'views/signupconfirmed.html',
+    data: {
+      requireLoggedIn: false
+    }
+   })
+
     .state('signupExisting', {
     url: '/signupWS',
     controller: 'SignupExistingCtrl',
