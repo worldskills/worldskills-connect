@@ -15,6 +15,8 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  var env = grunt.option('env') || 'dev';
+
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
@@ -180,7 +182,7 @@ module.exports = function (grunt) {
       app: {
         src: ['<%= yeoman.app %>/index.html'],
         ignorePath:  /\.\.\//,
-        exclude: ['bower_components/bootstrap/dist']
+        exclude: ['bower_components/bootstrap/dist', 'bower_components/xdomain']
       },
       test: {
         devDependencies: true,
@@ -389,7 +391,19 @@ module.exports = function (grunt) {
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
+        },
+        {
+          expand: true,
+          cwd: '<%= yeoman.app %>/bower_components/xdomain',
+          dest: '<%= yeoman.dist %>/bower_components/xdomain',
+          src: [
+            '**'
+          ]
         }, {
+          src: '<%= yeoman.app %>/xdomain/xdomain.js.' + env,
+          dest: '<%= yeoman.dist %>/xdomain/xdomain.js'
+        },
+         {
           expand: true,
           //cwd: 'bower_components/bootstrap/dist',
           cwd: 'bower_components/worldskills-bootstrap/dist',
@@ -402,6 +416,10 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      config: {
+        src: '<%= yeoman.app %>/scripts/config.js.' + env,
+        dest: '<%= yeoman.app %>/scripts/config.js'
       }
     },
 
