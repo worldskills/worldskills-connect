@@ -8,7 +8,7 @@
  * Service in the connectApp.
  */
 angular.module('connectApp')
-  .factory('User', function ($q, $http, API_CONNECT, auth, APP_ID, APP_ROLES, $timeout, API_AUTH, Downloader) {  	
+  .factory('User', function ($q, $http, API_CONNECT, auth, APP_ID, APP_ROLES, $timeout, API_AUTH, Downloader, REQUEST_STATUS) {  	
 
   		var User = {
             data: $q.defer(),
@@ -180,10 +180,22 @@ angular.module('connectApp')
             $http.get(API_CONNECT + "/connections/user/" + User.data.id + "?include_pending=1").then(function(result){                            
                 //go through connections and set ids to an array to be used later in event.js, an easy list of all connected user.ids
                 var temp_requests = result.data;
-                temp_requests.requested_ids = [];
+                temp_requests.request_status = {};
                 angular.forEach(temp_requests.connections, function(val, key){
-                    if(val.from.id == User.data.id) temp_requests.requested_ids.push(val.to.id);
-                    else if(val.to.id == User.data.id) temp_requests.requested_ids.push(val.from.id);
+                    var status = false;
+
+                    if(val.accepted == 1) status = REQUEST_STATUS.CONNECTED;
+                    else if(val.denied == 1) status = REQUEST_STATUS.DENIED;
+                    else if(val.from.id == User.data.id) status = REQUEST_STATUS.RECEIVED;
+                    else if(val.to.id == User.data.id) status = REQUEST_STATUS.REQUESTED;                            
+                    
+                    if(status !== false){
+                        if(val.to.id == User.data.id)
+                            temp_requests.request_status[val.from.id] = status;
+                        else if(val.from.id == User.data.id)
+                            temp_requests.request_status[val.to.id] = status;
+                    }
+
                 });            
 
                 User.requested.resolve(temp_requests);
@@ -279,22 +291,11 @@ angular.module('connectApp')
             return deferred.promise;
         };
 
-        User.isConnected = function(uid){    
-            return (User.connections.connected_ids.indexOf(parseInt(uid)) == -1) ? false : true;
-            //var connected = false;
-                        
-            //angular.forEach(User.connections.connections, function(val, key){                    
-            //    if(val.from.id == uid || val.to.id == uid){
-            //        connected = true;
-            //    }
-            //});            
-
-            //return connected;
+        User.getRequestStatus = function(uid){
+            if(typeof User.requested.request_status[uid] == 'undefined') return REQUEST_STATUS.NONE;
+            else return User.requested.request_status[uid];
         };
 
-        User.isRequested = function(uid){                      
-            return (User.requested.requested_ids.indexOf(parseInt(uid)) == -1) ? false : true;      
-        };
 
         User.getConnectionByUserId = function(uid){
             //todo optimize this, no need to return full connection list

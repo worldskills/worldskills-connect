@@ -8,13 +8,14 @@
  * Controller of the connectApp
  */
 angular.module('connectApp')
-  .controller('UserCtrl', function ($q, $http, $scope, $upload, $state, $interval, Language, Auth, APP_ROLES, API_IMAGES, $timeout, User, auth, WSAlert) {
+  .controller('UserCtrl', function ($q, $http, $scope, $upload, $state, $interval, Language, Auth, APP_ROLES, API_IMAGES, $timeout, User, auth, WSAlert, REQUEST_STATUS) {
     $scope.loading = {};    
     $scope.userId = $state.params.userId;
     $scope.myProfile = false;
     $scope.profile = {}; 
-    $scope.connected = false;
-    $scope.connectedAndAccepted = false;    
+    
+    $scope.request_status = false;  
+    $scope.REQUEST_STATUS = REQUEST_STATUS;  
 
     /** IMAGE DATA */
     $scope.canUploadImages = false;
@@ -48,28 +49,10 @@ angular.module('connectApp')
             //check if a connection exists between the users
             $scope.loading.request_contact = true;        
             $q.all([User.connections.promise, User.requested.promise]).then(function(){
-                $scope.connected = User.isRequested($scope.userId);
-                $scope.connectedAndAccepted = User.isConnected($scope.userId);
+                $scope.request_status = (User.getRequestStatus($scope.userId));
+
                 $scope.loading.request_contact = false;
-            });
-
-
-
-            
-            // User.connectionExists($scope.userId).then(function(){
-            //     $scope.loading.request_contact = false;
-            //     $scope.connected = true;
-            // },
-            // function(error){
-            //     //not really an error, but no connection here, stop loading
-            //     $scope.loading.request_contact = false;
-            //     $scope.connected = false;
-            // });
-
-            // $q.when(User.connections.promise).then(function(){
-            //     $scope.connectedAndAccepted = User.isConnected($scope.userId);
-            // });
-            
+            });            
         },
         function(error){
             WSAlert.danger(error);
