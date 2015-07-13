@@ -29,7 +29,9 @@
     connectApp.constant("REQUEST_STATUS", {
         NONE: 0,
         REQUESTED: 1,
-        CONNECTED: 2
+        CONNECTED: 2,
+        RECEIVED: 3,
+        DENIED: 4
     });
 
 })();

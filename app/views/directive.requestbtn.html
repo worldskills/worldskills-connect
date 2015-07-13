@@ -1,6 +1,5 @@
-
 <div>
 	<ws-spinner class='smallSpinner' ng-show='loading.request_contact'></ws-spinner>    
-	<button ng-click="requestContact(userId);" ng-hide="myProfile || connected || loading.request_contact" class="btn btn-success">Request Contact</button>
-	<button ng-show='connected && !connectedAndAccepted' ng-click="cancelRequest(userId);" class='btn btn-warning'>Cancel request</button>
+	<button ng-click="requestContact(userId);" ng-hide="myProfile || request_status !== REQUEST_STATUS.NONE || loading.request_contact" class="btn btn-success">Request Contact</button>
+	<button ng-show='request_status == REQUEST_STATUS.RECEIVED' ng-click="cancelRequest(userId);" class='btn btn-warning'>Cancel request</button>
 </div>

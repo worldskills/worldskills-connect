@@ -26,15 +26,17 @@
 <fieldset>	
 	<legend>Contact Details</legend>	
 		<div ng-show='!connectedAndAccepted'>
-			<div ng-show='connected && !myProfile'><p>You have sent this person a contact request, but they have not yet accepted it.<br />You will receive an email notification if this user accepts the request.</p><br />
-			<requestbtn></requestbtn></div>
-			<div ng-show='!connected && !myProfile'>
+			<div ng-show='request_status == REQUEST_STATUS.REQUESTED && !myProfile'><p>You have received a contact request from this user, but you haven't accepted it yet.<br /><a ui-sref='user.inbox({userId: user.data.id})'>Go to your inbox</a></p></div>
+			<div ng-show='request_status == REQUEST_STATUS.RECEIVED && !myProfile'><p>You have sent this person a contact request, but they have not yet accepted it.<br />You will receive an email notification if this user accepts the request.</p><br />
+				<requestbtn></requestbtn>
+			</div>
+			<div ng-show='request_status == REQUEST_STATUS.NONE && !myProfile'>
 				<p>You need to send a contact request to this person in order to view their contact details</p><br />
 				<requestbtn></requestbtn>
 			</div>
 
 		</div>
-		<div ng-hide='!connectedAndAccepted && !myProfile'>
+		<div ng-show='request_status == REQUEST_STATUS.CONNECTED || myProfile'>
 			<div class='row contentRow'>
 				<div class='col-xs-4 col-md-3 col-lg-2'>
 					<strong>Email</strong>

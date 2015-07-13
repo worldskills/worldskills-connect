@@ -116,16 +116,9 @@ angular.module('connectApp')
         //skip if not a record
         if(typeof $scope.subscriptions.subscriptions[i] == 'undefined') continue;
 
-        if(User.isRequested($scope.subscriptions.subscriptions[i].user.id)) $scope.subscriptions.subscriptions[i].user.request_status = REQUEST_STATUS.REQUESTED;
-        if(User.isConnected($scope.subscriptions.subscriptions[i].user.id)) $scope.subscriptions.subscriptions[i].user.request_status = REQUEST_STATUS.CONNECTED;
-        else $scope.subscriptions.subscriptions[i].user.requested = REQUEST_STATUS.NONE;
-
-        //if(User.requested.requested_ids.indexOf($scope.subscriptions.subscriptions[i].user.id) != -1){
-        //  //user is connected
-        //  $scope.subscriptions.subscriptions[i].user.requested = true;
-        //}
-        //else 
-        //  $scope.subscriptions.subscriptions[i].user.requested = false;
+        if(typeof User.requested.request_status[$scope.subscriptions.subscriptions[i].user.id] != 'undefined')
+          $scope.subscriptions.subscriptions[i].user.request_status = User.requested.request_status[$scope.subscriptions.subscriptions[i].user.id];
+        else $scope.subscriptions.subscriptions[i].user.request_status = REQUEST_STATUS.NONE;        
       }
     });
   };
