@@ -26,7 +26,7 @@
                 <ws-spinner class='bigSpinner' ng-show='loading.crop'></ws-spinner>
             </div>        
             <div ng-if="stateName != 'user.image'" class='list-group-item profileImage' ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="profileImageUploadHover">    
-                <div class='imageWarning' ng-if="(role.name == app_roles.ADMIN || role.name == app_roles.MANAGER) && imageWarning && !uploading"><span tooltip-placement="bottom" tooltip-html-unsafe="{{sizeWarning}}" class='glyphicon glyphicon-warning-sign'></span></div><!-- {{state}} -->
+                <div class='imageWarning' ng-if="(role.name == app_roles.ADMIN || role.name == app_roles.MANAGER) && imageWarning && !uploading"><span tooltip-placement="bottom" tooltip-html="{{sizeWarning}}" class='glyphicon glyphicon-warning-sign'></span></div><!-- {{state}} -->
                 <div ng-show='uploading' class='uploadProgress center'>
                     <span ng-if='!loading.processing'>{{progress}}</span>
                     <ws-spinner class='bigSpinner' ng-if="loading.processing"></ws-spinner>
@@ -56,7 +56,7 @@
                 <ws-spinner class='bigSpinner' ng-show='loading.crop'></ws-spinner>
             </div>        
             <div ng-if="stateName != 'user.image'" class='list-group-item profileImage' ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="profileImageUploadHover">    
-                <div class='imageWarning' ng-if="(role.name == app_roles.ADMIN || role.name == app_roles.MANAGER) && imageWarning && !uploading"><span tooltip-placement="bottom" tooltip-html-unsafe="{{sizeWarning}}" class='glyphicon glyphicon-warning-sign'></span></div><!-- {{state}} -->
+                <div class='imageWarning' ng-if="(role.name == app_roles.ADMIN || role.name == app_roles.MANAGER) && imageWarning && !uploading"><span tooltip-placement="bottom" tooltip-html="{{sizeWarning}}" class='glyphicon glyphicon-warning-sign'></span></div><!-- {{state}} -->
                 <div ng-show='uploading' class='uploadProgress center'>
                     <span ng-if='!loading.processing'>{{progress}}</span>
                     <ws-spinner class='bigSpinner' ng-if="loading.processing"></ws-spinner>

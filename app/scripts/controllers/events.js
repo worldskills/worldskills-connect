@@ -58,6 +58,6 @@ angular.module('connectApp')
   return {
     restrict: 'E',    
     replace: true,
-    templateUrl: 'views/directive.popularConnections.html'    
+    templateUrl: 'views/directive.popularconnections.html'    
   }
 });
