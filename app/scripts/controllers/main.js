@@ -67,7 +67,7 @@ angular.module('connectApp')
         $scope.loading.events_init = false; 	
     },
     function(error){
-    	WSAlert.danger("", error);
+    	//WSAlert.danger("", error);
         $scope.loading.events_init = false;
     });
 
@@ -76,7 +76,7 @@ angular.module('connectApp')
         //console.log("statuses init");       
     },
     function(error){
-        WSAlert.danger("", error);
+        WSAlert.danger("", "Could not fetch resources, please refresh or try again later.");
     });
 
     $scope.getProfileImage = function(image, type){
