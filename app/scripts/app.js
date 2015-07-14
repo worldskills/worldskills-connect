@@ -55,7 +55,7 @@ angular
       responseError: function(rejection) {
         /*
           Called when another XHR request returns with
-          an error status code.
+          an error status code.          
         */
         if(rejection.status == 400 && rejection.data.code == "1800-1012"){
           WSAlert.danger(rejection.data.user_msg + ". Redirecting to login...");

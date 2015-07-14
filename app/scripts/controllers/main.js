@@ -11,10 +11,11 @@ angular.module('connectApp')
     
     
     
-    
+    $scope.reloadUser = function(){
         //loading scope variables that can be used throughout the app
         $scope.user = User;        
         $scope.resources = Resources;
+
     
         $q.when(User.init()).then(function(){
     
@@ -33,15 +34,15 @@ angular.module('connectApp')
                 //User.data.requested = result[3];
             },
             function(error){
-                WSAlert.danger("Error loading user resources: " + error);
+                WSAlert.danger("Error loading user resources, please refresh your browser: " + error);
             });
             //event subscriptions
-    		//User.subscriptions($scope.user.data.id).then(function(res){
-    		//	//console.log('subscriptions loaded');
-    		//},
-    		//function(error){
-    		//	WSAlert.danger("", error);
-    		//});
+            //User.subscriptions($scope.user.data.id).then(function(res){
+            //  //console.log('subscriptions loaded');
+            //},
+            //function(error){
+            //  WSAlert.danger("", error);
+            //});
     
             //load inbox        
             //loaded in chain because it gets saved within the user var
@@ -53,8 +54,11 @@ angular.module('connectApp')
             //});
         },
         function(error){
-        	//WSAlert.danger("", error);
+            //WSAlert.danger("", error);
         });
+    };     
+
+    $scope.reloadUser();   
     
     //load events
     $scope.loading.events_init = true;
