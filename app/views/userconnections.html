@@ -20,7 +20,8 @@
 		<div class='col-xs-12 col-sm-10'>
   			<div class="media-left media-top">
   			    <a ui-sref='user.profile({userId:connection.id})'>
-  			    	<img class="listImage media-object" ng-src='{{getProfileImage(connection.image, "portrait")}}' alt="{{connection.first_name + " " + connection.last_name}}" />
+  			    	<img ng-if="connection.image" class="listImage media-object" ng-src='{{getProfileImage(connection.image, "portrait")}}' alt="{{connection.first_name + " " + connection.last_name}}" />
+  			    	<img ng-if='!connection.image' class="listImage media-object" ng-src='images/user.png' alt="name">
   			    </a>
   			</div>
   			<div class="media-body">
