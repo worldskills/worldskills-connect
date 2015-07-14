@@ -25,9 +25,10 @@
 
 <fieldset>	
 	<legend>Contact Details</legend>	
-		<div ng-show='!connectedAndAccepted'>
-			<div ng-show='request_status == REQUEST_STATUS.REQUESTED && !myProfile'><p>You have received a contact request from this user, but you haven't accepted it yet.<br /><a ui-sref='user.inbox({userId: user.data.id})'>Go to your inbox</a></p></div>
-			<div ng-show='request_status == REQUEST_STATUS.RECEIVED && !myProfile'><p>You have sent this person a contact request, but they have not yet accepted it.<br />You will receive an email notification if this user accepts the request.</p><br />
+		<div>
+			<div class='alert-success alert' ng-show='request_status == REQUEST_STATUS.REQUESTED && !myProfile'><span class='glyphicon glyphicon-ok-circle'></span>&nbsp;You have received a contact request from this user, but you haven't accepted it yet.<br /><a ui-sref='user.inbox({userId: user.data.id})'>Go to your inbox</a></div>
+			<div class='alert-danger alert' ng-show='request_status == REQUEST_STATUS.DENIED && !myProfile'><span class='glyphicon glyphicon-ban-circle'></span>&nbsp;Previous connection request has been denied.</div>
+			<div class='alert-warning alert' ng-show='request_status == REQUEST_STATUS.RECEIVED && !myProfile'><p>You have sent this person a contact request, but they have not yet accepted it.<br />You will receive an email notification if this user accepts the request.</p><br />
 				<requestbtn></requestbtn>
 			</div>
 			<div ng-show='request_status == REQUEST_STATUS.NONE && !myProfile'>
