@@ -2,7 +2,8 @@
     <a ui-sref="user.profile({userId:u.id})" class='contactLink'>
         <div class="thumbnail">
 
-            <img ng-src='{{getProfileImage(u.image, "portrait")}}' alt='{{u.first_name + " " + u.last_name}}' />
+            <img ng-if="u.image" ng-src='{{getProfileImage(u.image, "portrait")}}' alt='{{u.first_name + " " + u.last_name}}' />
+            <img ng-if="!u.image" ng-src='images/user.png' alt='{{u.first_name + " " + u.last_name}}' />
             <div class="caption"><strong>{{u.first_name + " " + u.last_name}}</strong><br />
             <small><i>{{u.job_title}}</i><br />
             {{u.company}}</small></div>

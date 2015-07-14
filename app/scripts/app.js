@@ -31,6 +31,25 @@ angular
     
     $urlRouterProvider.otherwise('/');
 
+      $urlRouterProvider.otherwise(function ($injector, $location) {
+      // check for existing redirect
+      var $state = $injector.get('$state');
+      var redirectToState = sessionStorage.getItem('redirect_to_state');
+      var redirectToParams = sessionStorage.getItem('redirect_to_params');
+      sessionStorage.removeItem('redirect_to_state');
+      sessionStorage.removeItem('redirect_to_params');
+      if (redirectToState) {
+          if (redirectToParams) {
+              redirectToParams = angular.fromJson(redirectToParams);
+          } else {
+              redirectToParams = {};
+          }
+          $state.go(redirectToState, redirectToParams);
+      } else {
+          $state.go('home');
+      }
+  });
+
     $httpProvider.interceptors.push(['$q', 'WSAlert', '$timeout', function($q, WSAlert, $timeout) {
     return {        
       responseError: function(rejection) {
