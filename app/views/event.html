@@ -103,7 +103,7 @@
 				        	<small ng-if="$index %2 != 0">Request sent | <a>cancel</a></small> -->
                             <ws-spinner class='smallSpinner' ng-show="loading.contact[contact.user.id]"></ws-spinner>
                             <small ng-show="contact.user.request_status == REQUEST_STATUS.CONNECTED && !loading.contact[contact.user.id]">Connected | <a ui-sref="user.profile({userId:contact.user.id})">view profile</a></small>
-				        	<small ng-show="(contact.user.request_status == REQUEST_STATUS.NONE || !contact.user.request_status) && !loading.contact[contact.user.id]"><a ng-click="requestContact(contact.user.id, $index)">Request Contact</a></small>
+				        	<small ng-show="(contact.user.request_status == REQUEST_STATUS.NONE || !contact.user.request_status) && !loading.contact[contact.user.id]"><a class='ch' ng-click="requestContact(contact.user.id, $index)">Request Contact</a></small>
                             <small ng-show="contact.user.request_status == REQUEST_STATUS.REQUESTED && !loading.contact[contact.user.id]">Request received | <a ui-sref="user.inbox({userId:user.data.id})">Inbox</a></small>
                             <small ng-show="contact.user.request_status == REQUEST_STATUS.RECEIVED && !loading.contact[contact.user.id]">Request sent | <a ng-click="cancelRequest(contact.user.id, $index)">cancel</a></small>
 				        	<small ng-show="contact.user.request_status == REQUEST_STATUS.DENIED && !loading.contact[contact.user.id]">Request denied</small>
