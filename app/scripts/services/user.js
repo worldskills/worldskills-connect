@@ -230,7 +230,12 @@ angular.module('connectApp')
                 User.getRequested();
             },
             function(error){
-                deferred.reject("Could not send contact request: " + error.data.user_msg);
+                if(error.data.code == "1800-1029"){
+                    //connection request already exists
+                    deferred.reject("Connection request already exists, please check your inbox");
+                }
+                else
+                    deferred.reject("Could not send contact request: " + error.data.user_msg);
             });
 
             return deferred.promise;
