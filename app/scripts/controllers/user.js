@@ -276,6 +276,15 @@ angular.module('connectApp')
         });
     };   
 
+    $scope.getEventById = function(eid){
+        var retval = false;
+        angular.forEach($scope.events.data, function(val, key){
+            if(val.id == eid) retval = val;
+        });
+
+        return retval;
+    };
+
   })
 .directive('requestbtn', function(){
   return {
