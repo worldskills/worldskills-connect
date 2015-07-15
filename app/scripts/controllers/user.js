@@ -23,8 +23,8 @@ angular.module('connectApp')
     $scope.stateName = $state.current.name;
     $scope.profileImage = false;
     $scope.imageWarning = false;
-    $scope.MIN_WIDTH = 100;
-    $scope.MIN_HEIGHT = 100; //temporary
+    $scope.MIN_WIDTH = 600;
+    $scope.MIN_HEIGHT = 800; //temporary
     $scope.sizeWarning = "Warning: Picture is too small (minimum size: " + $scope.MIN_WIDTH + " x " + $scope.MIN_HEIGHT + ") px";
     $scope.uploadWarning = "Warning: You don't have permissions to upload an image";
     $scope.cropImage = false;
