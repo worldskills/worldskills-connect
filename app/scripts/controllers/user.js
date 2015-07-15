@@ -91,7 +91,7 @@ angular.module('connectApp')
             $scope.init();
         },
         function(error){
-            WSAlert.danger(error);
+            WSAlert.warning(error);
             $scope.loading.request_contact = false;
         });
     };
