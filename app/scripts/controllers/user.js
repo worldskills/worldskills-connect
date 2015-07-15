@@ -52,6 +52,10 @@ angular.module('connectApp')
                 $scope.request_status = (User.getRequestStatus($scope.userId));
 
                 $scope.loading.request_contact = false;
+            },
+            function(error){
+                //also on error, finish loading
+              $scope.loading.request_contact = false;  
             });            
         },
         function(error){
