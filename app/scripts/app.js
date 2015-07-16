@@ -134,6 +134,16 @@ angular
     }
    })
 
+
+   .state('terms', {
+    url: '/terms',
+    controller: 'TermsCtrl',
+    templateUrl: 'views/terms.html',
+    data: {
+      requireLoggedIn: false
+    }
+   })
+
    .state('signupConfirmed', {
     url: '/signupConfirmed',
     controller: 'SignupConfirmedCtrl',
