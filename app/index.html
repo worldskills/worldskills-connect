@@ -65,23 +65,23 @@
                             <li ui-sref-active="active"><a ui-sref="assessmentCriteria.menu({stepName:'02'})">Assessment Criteria</a></li>
                         </ul></li>
                 </ul> -->
-                <ul class="nav navbar-nav navbar-right">                                
-                    <li ng-hide='auth.loggedIn'><a href='{{auth.loginUrl}}'>Login</a></li>                    
-                    <li ng-hide='auth.loggedIn'><a ui-sref="signup">Sign Up</a></li>
+                <ul class="nav navbar-nav navbar-right" ng-cloak>                                
+                    <li ng-hide='auth.loggedIn'><a href='{{auth.loginUrl}}' ng-cloak translate>LOGIN</a></li>                    
+                    <li ng-hide='auth.loggedIn'><a ui-sref="signup" ng-cloak translate>SIGNUP</a></li>
 
-                    <li ng-show='auth.loggedIn'><a ui-sref="event({eventId:1})">Home</a></li>
+                    <li ng-show='auth.loggedIn'><a ui-sref="event({eventId:1})" ng-cloak translate>HOME</a></li>
                     <li ng-show='auth.loggedIn' class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">
                             {{user.data.first_name + " " + user.data.last_name}}&nbsp;<span ng-show="user.data.inbox.total_count > 0" class="label label-danger label-xs">{{user.data.inbox.total_count}}</span>&nbsp;<b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a ui-sref-active='active' ui-sref='user.profile({userId:user.data.id})' href="#">Profile</a></li>
-                            <li><a ui-sref-active='active' ui-sref='user.inbox({userId:user.data.id})' href="#">Inbox <span ng-show="user.data.inbox.total_count > 0" class="label label-danger">{{user.data.inbox.total_count}}</span></a></li>
-                            <li><a ui-sref-active='active' ui-sref='user.sent({userId:user.data.id})' href="#">Sent requests</a></li>
-                            <li><a ui-sref-active='active' ui-sref='user.connections({userId:user.data.id})' href="#">Connections</a></li>
-                            <li><a ui-sref-active='active' ui-sref='user.events({userId:user.data.id})' href="#">Events</a></li>
-                            <li><a ui-sref-active='active' ui-sref='user.password({userId:user.data.id})' href="#">Password</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.profile({userId:user.data.id})' href="#" ng-cloak translate>PROFILE</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.inbox({userId:user.data.id})' href="#"><span ng-cloak translate>INBOX</span> <span ng-show="user.data.inbox.total_count > 0" class="label label-danger">{{user.data.inbox.total_count}}</span></a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.sent({userId:user.data.id})' href="#" ng-cloak translate>SENT_REQUESTS</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.connections({userId:user.data.id})' href="#" ng-cloak translate>CONNECTIONS</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.events({userId:user.data.id})' href="#" ng-cloak translate>EVENTS</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.password({userId:user.data.id})' href="#" ng-cloak translate>PASSWORD</a></li>
                             <!-- <li><a ui-sref-active='active' ui-sref='user.privacy({userId:user.data.id})' href="#">Privacy</a></li>  -->                           
-                            <li><a ng-click="logout()">Logout</a></li>                            
+                            <li><a ng-click="logout()" ng-cloak translate>LOGOUT</a></li>                            
                     </ul></li>                    
                 </ul>
                 <!-- <form class="navbar-form    navbar-right" role="search">
@@ -105,7 +105,7 @@
                 <div class="col-xs-6 col-sm-4">
                     <div class="dropdown" ng-controller="TranslateCtrl">                      
                       <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="languageSelect" data-toggle="dropdown">
-                        Switch language <small class='label'>{{selectedLanguage}}</small>
+                        Language: <small class='label'>{{available_languages[selectedLanguage]}}</small>
                         <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu" role="menu" aria-labelledby="languageSelect">
@@ -123,7 +123,7 @@
                 <div class="clearfix visible-md col-md-4"></div>
                 <div class="clearfix visible-lg col-lg-4"></div>
                 <div class="col-xs-6 col-sm-4 text-right">
-                    <small><a ui-sref='terms'>Terms of Use &amp; Privacy Policy</a></small>                    
+                    <small><a ui-sref='terms' ng-cloak translate>TERMS_PRIVACY</a></small>                    
                 </div>
             </div>
 

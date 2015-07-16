@@ -1,4 +1,52 @@
 {
 	"APP_NAME":"WorldSkills Connect",
-	"APP_TITLE":"Lorem Ipsum"
+	"LOGIN":"Login",
+	"SIGNUP":"Signup",
+	"HOME":"Home",
+	"PROFILE": "Profile",
+	"INBOX": "Inbox",
+	"SENT_REQUESTS": "Sent requests",
+	"CONNECTIONS": "Connections",
+	"EVENTS": "Events",
+	"PASSWORD": "Password",
+	"LOGOUT":"Logout",
+	"SWITCH_LANGUAGE":"Switch Language",
+	"TERMS_PRIVACY":"Terms of Use &amp; Privacy Policy",
+	
+
+	"TEXT_MAIN":"<h2>What is WorldSkills Connect</h2>",
+	"TEXT_MAIN_LINE1":"<p>WorldSkills Connect is an online tool for people at a WorldSkills event to find other people with similar interests and arrange to meet!",
+	"TEXT_MAIN_LINE2":"It serves as a basic web-based event registration.</p>",
+	"TEXT_MAIN_LINE3":"<p>You can quickly sign up and then search for all the other people attending the same event. When you find someone you would like to ‘connect’ with, you simply send them a ‘connect request’.</p>",
+	"TEXT_MAIN_LINE4":"<p>Once you have ‘connected’, you can exchange contact information and arrange to meet onsite at the event. The great thing about WorldSkills Connect, the networking power is all in your hands, you decide who you connect with. </p>",
+	"FEATURED_EVENTS":"Featured Events",
+
+	"MY_ATTENDANCE":"My Attendance",
+	"ATTENDANCE_TXT":"<p>By 'attending' an event, you will be listed under the event, and other people can request your contact details.<br />Please only do so if you are going to physically attend the event.</p>",
+	"EVENT_PARTICIPANTS":"Event Participants",
+	"PARTICIPANTS_TXT":"Find the participant you'd like to connect with, and click on 'request contact'.<br />The person will be sent an email asking for approval, if they approve your request, you both get each others contact details",
+	"POPULAR_AT":"Popular connections at",
+	"EDIT_MY_PROFILE":"Edit my profile",
+	"CROPPING":"Cropping",
+	"UPLOAD":"Upload",
+	"CROP_IMAGE":"Crop image",
+	"INBOX":"Inbox",
+
+	"DESCRIPTION":"Description",
+	"COMPANY_INFORMATION":"Company Information",
+	"PERSONAL_INFORMATION":"Personal Information",
+	"NAME":"Name",
+	"GENDER":"Gender",
+	"COUNTRY":"Country",
+	"DESCRIPTION":"Description",
+	"COMPANY":"Company",
+	"JOB_TITLE":"Job title",
+	"EMAIL":"Email",
+	"PHONE":"Phone",
+	"CONNECT_STATUS_NONE_PROFILE":"You need to send a contact request to this person in order to view their contact details",
+	"CONNECT_STATUS_RECEIVED_PROFILE":"You have sent this person a contact request, but they have not yet accepted it.<br />You will receive an email notification if this user accepts the request.",
+	"CONNECT_STATUS_DENIED_PROFILE":"&nbsp;Previous connection request has been denied.",
+	"CONNECT_STATUS_REQUESTED_PROFILE":"You have received a contact request from this user, but you haven't accepted it yet.&nbsp;",
+	"GOTO_INBOX":"Go to your inbox"
+
 }
