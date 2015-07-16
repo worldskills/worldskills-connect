@@ -10,9 +10,8 @@
                 	<p>{{event.event.description}}</p>
                 </div>
                 <p>&nbsp;</p>                
-                <fieldset><legend>My Attendance</legend>
-                    <p>By "attending" an event, you will be listed under the event, and other people can request your contact details.<br />
-                    Please only do so if you are going to physically attend the event.</p>                
+                <fieldset><legend  ng-cloak translate>MY_ATTENDANCE</legend>
+                    <p ng-cloak translate>ATTENDANCE_TXT</p>                
                     <ws-spinner ng-show='loading.event'></ws-spinner>
                     <div class="btn-group" dropdown dropdown-append-to-body>
                         <button ng-class="{
@@ -34,9 +33,8 @@
 
                 
                 <p>&nbsp;</p>                
-                <fieldset><legend>Event Participants</legend>
-                <p>Find the participant you'd like to connect with, and click on "request contact".<br />
-                The person will be sent an email asking for approval, if they approve your request, you both get each others contact details</p>
+                <fieldset><legend ng-cloak translate>EVENT_PARTICIPANTS</legend>
+                <p ng-cloak translate>PARTICIPANTS_TXT</p>
                 
                 <p>&nbsp</p>
                 <!-- contacts -->
@@ -137,7 +135,7 @@
         </div>
         
         <div class='col-xs-12 col-sm-2 sidebar'>
-            <h5 class='text-center'>Popular connections at<br /><small>WorldSkills Sao Paulo 2015</small></h5>
+            <h5 class='text-center'><span ng-cloak translate>POPULAR_AT</span><br /><small>{{event.event.name}}</small></h5>
             <popular ng-repeat='u in popularConnections'></popular>            
         </div>       
     </div>    

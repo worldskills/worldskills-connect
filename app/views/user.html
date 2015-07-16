@@ -6,7 +6,7 @@
     <button ng-show="showActions" ng-click="reset();" class='btn btn-warning'>Reset</button> -->    
     <!-- //TODO if not own profile --> 
     <requestbtn></requestbtn>
-    <button ng-show='myProfile' class="btn btn-primary" ui-sref="user.edit({userId:userId})">Edit my profile<spinner ng-show="loading.request" class="ng-hide"></spinner></button>
+    <button ng-show='myProfile' class="btn btn-primary" ui-sref="user.edit({userId:userId})"><span ng-cloak translate>EDIT_MY_PROFILE</span><spinner ng-show="loading.request" class="ng-hide"></spinner></button>
 </p>
 </div>
 
@@ -22,7 +22,7 @@
 
             <!-- profile image -->            
             <div ng-if="stateName == 'user.image'" class='uploadProgress center'>
-                <span ng-show='!loading.crop'>Cropping</span>
+                <span ng-show='!loading.crop' ng-cloak translate>CROPPING</span>
                 <ws-spinner class='bigSpinner' ng-show='loading.crop'></ws-spinner>
             </div>        
             <div ng-if="stateName != 'user.image'" class='list-group-item profileImage' ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="profileImageUploadHover">    
@@ -35,24 +35,24 @@
                 <img ng-if='!uploading && profileImage' ng-src="{{profileImage}}" alt="User Image" />
                 <div ng-if='!uploading' class='actions'>
                     <!-- <span ng-if="canUploadImages === false" ng-click="restrictedUploadWarning()">upload</span> -->
-                    <span ng-if="canUploadImages" ng-file-select="onFileSelect($files)">upload</span>
-                    <span ng-if="canUploadImages" ng-click="reCrop($event);">crop image</span>
+                    <span ng-if="canUploadImages" ng-file-select="onFileSelect($files)" ng-cloak translate>UPLOAD</span>
+                    <span ng-if="canUploadImages" ng-click="reCrop($event);" ng-cloak translate>CROP_IMAGE</span>
                 </div>
             </div>
             <!-- /profile image -->
 
-    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.profile'>My Profile</a>
-    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.inbox'>Inbox <span ng-show="user.data.inbox.total_count > 0" class="badge">{{user.data.inbox.total_count}}</span></a>   	 			
-    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.sent'>Sent requests</a>   
-    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.connections'>Connections</a>   	
-    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.events'>Events</a>   	 	
-    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.password'>Password</a>
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.profile' ng-cloak translate>PROFILE</a>
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.inbox'><span ng-cloak translate>INBOX</span> <span ng-show="user.data.inbox.total_count > 0" class="badge">{{user.data.inbox.total_count}}</span></a>   	 			
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.sent' ng-cloak translate>SENT_REQUESTS</a>   
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.connections' ng-cloak translate>CONNECTIONS</a>   	
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.events' ng-cloak translate>EVENTS</a>   	 	
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.password' ng-cloak translate>PASSWORD</a>
     	 	<!-- <a ui-sref-active='active' class="list-group-item" ui-sref='user.privacy'>Privacy</a>   	 --> 	     	 	
     	 </div>
          <div ng-hide="myProfile" class="list-group">                              
             <!-- profile image -->            
             <div ng-if="stateName == 'user.image'" class='uploadProgress center'>
-                <span ng-show='!loading.crop'>Cropping</span>
+                <span ng-show='!loading.crop' ng-cloak translate>CROPPING</span>
                 <ws-spinner class='bigSpinner' ng-show='loading.crop'></ws-spinner>
             </div>        
             <div ng-if="stateName != 'user.image'" class='list-group-item profileImage' ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="profileImageUploadHover">    
@@ -65,13 +65,13 @@
                 <img ng-if='!uploading && profileImage' ng-src="{{profileImage}}" alt="User Image" />
                 <div ng-if='!uploading' class='actions'>
                     <!-- <span ng-if="canUploadImages === false" ng-click="restrictedUploadWarning()">upload</span> -->
-                    <span ng-if="canUploadImages" ng-file-select="onFileSelect($files)">upload</span>
-                    <span ng-if="canUploadImages" ng-click="reCrop($event);">crop image</span>
+                    <span ng-if="canUploadImages" ng-file-select="onFileSelect($files)" ng-cloak translate>UPLOAD</span>
+                    <span ng-if="canUploadImages" ng-click="reCrop($event);" ng-cloak translate>CROP_IMAGE</span>
                 </div>
             </div>
             <!-- /profile image -->
-            <a ui-sref-active='active' class="list-group-item" ui-sref='user.profile'>Profile</a>                    
-            <a ui-sref-active='active' class="list-group-item" ui-sref='user.events'>Events</a>                        
+            <a ui-sref-active='active' class="list-group-item" ui-sref='user.profile' ng-cloak translate>PROFILE</a>                    
+            <a ui-sref-active='active' class="list-group-item" ui-sref='user.events' ng-cloak translate>EVENTS</a>                        
          </div>
      </div>
 

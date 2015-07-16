@@ -1,8 +1,8 @@
 <fieldset>	
-	<legend>Personal Information</legend>	
+	<legend ng-cloak translate>PERSONAL_INFORMATION</legend>	
 		<div class='row contentRow'>
 			<div class='col-xs-4 col-md-3 col-lg-2'>
-				<strong>Name</strong>
+				<strong ng-cloak translate>NAME</strong>
 			</div>
 			<div class='col-xs-3 col-md-4 col-lg-4'>
 				<input type='text' name='first' required placeholder="First" ng-model='tmp_user.first_name' class='form-control input-sm' />
@@ -13,7 +13,7 @@
 		</div>
 		<div class='row contentRow'>
 			<div class='col-xs-4 col-md-3 col-lg-2'>
-				<strong>Gender</strong>
+				<strong ng-cloak translate>GENDER</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
 				<div class="radio-inline">
@@ -30,7 +30,7 @@
 		</div>	
 		<div class='row contentRow'>
 			<div class='col-xs-4 col-md-3 col-lg-2'>
-				<strong>Country</strong>
+				<strong ng-cloak translate>COUNTRY</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>				
 
@@ -45,16 +45,16 @@
 		</div>					
 </fieldset>
 
-<fieldset><legend>Description</legend>
+<fieldset><legend ng-cloak translate>DESCRIPTION</legend>
 <textarea ng-model="user.data.profile_description" name="description" ng-minlength='10' rows='5' required class="form-control" placeholder='Lorem ipsum, dolor sit amet...'></textarea>	  
 </fieldset>
 
 <fieldset>	
-	<legend>Company Information</legend>	
+	<legend ng-cloak translate>COMPANY_INFORMATION</legend>	
 
 		<div class='row contentRow'>
 			<div class='col-xs-4 col-md-3 col-lg-2'>
-				<strong>Company</strong>
+				<strong ng-cloak translate>COMPANY</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
 				<input type='text' name='company' required placeholder="Company name" ng-model='tmp_user.company' class='form-control input-sm' />
@@ -62,7 +62,7 @@
 		</div>
 		<div class='row contentRow'>
 			<div class='col-xs-4 col-md-3 col-lg-2'>
-				<strong>Job Title</strong>
+				<strong ng-cloak translate>JOB_TITLE</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
 				<input type='text' name='company' required placeholder="Job title" ng-model='tmp_user.job_title' class='form-control input-sm' />
@@ -75,7 +75,7 @@
 	<legend>Contact Details</legend>	
 		<div class='row contentRow'>
 			<div class='col-xs-4 col-md-3 col-lg-2'>
-				<strong>Email</strong>
+				<strong ng-cloak translate>EMAIL</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
 				<input type='text' name='email' required placeholder="firstname.lastname@domain.net" ng-model='tmp_user.email_address' class='form-control input-sm' />
@@ -83,7 +83,7 @@
 		</div>					
 		<div class='row contentRow'>
 			<div class='col-xs-4 col-md-3 col-lg-2'>
-				<strong>Phone</strong>
+				<strong ng-cloak translate>PHONE</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
 				<input type='text' name='phone' required placeholder="+358 123 4567" ng-model='tmp_user.phone_number' class='form-control input-sm' />
