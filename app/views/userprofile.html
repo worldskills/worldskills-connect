@@ -7,7 +7,7 @@
 
 		<div class='row contentRow'>
 			<div class='col-xs-4 col-md-3 col-lg-2'>
-				<strong>Company</strong>
+				<strong ng-cloak translate>COMPANY</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
 				{{profile.company}}
@@ -15,7 +15,7 @@
 		</div>
 		<div class='row contentRow'>
 			<div class='col-xs-4 col-md-3 col-lg-2'>
-				<strong>Job Title</strong>
+				<strong ng-cloak translate>JOB_TITLE</strong>
 			</div>
 			<div class='col-xs-8 col-md-9 col-lg-10'>
 				{{profile.job_title}}
@@ -24,15 +24,15 @@
 </fieldset>
 
 <fieldset>	
-	<legend>Contact Details</legend>	
+	<legend ng-cloak translate>CONTACT_DETAILS</legend>	
 		<div>
-			<div class='alert-success alert' ng-show='request_status == REQUEST_STATUS.REQUESTED && !myProfile'><span class='glyphicon glyphicon-ok-circle'></span>&nbsp;You have received a contact request from this user, but you haven't accepted it yet.<br /><a ui-sref='user.inbox({userId: user.data.id})'>Go to your inbox</a></div>
-			<div class='alert-danger alert' ng-show='request_status == REQUEST_STATUS.DENIED && !myProfile'><span class='glyphicon glyphicon-ban-circle'></span>&nbsp;Previous connection request has been denied.</div>
-			<div class='alert-warning alert' ng-show='request_status == REQUEST_STATUS.RECEIVED && !myProfile'><p>You have sent this person a contact request, but they have not yet accepted it.<br />You will receive an email notification if this user accepts the request.</p><br />
+			<div class='alert-success alert' ng-show='request_status == REQUEST_STATUS.REQUESTED && !myProfile'><span class='glyphicon glyphicon-ok-circle'></span><span ng-cloak translate>CONNECT_STATUS_REQUESTED_PROFILE</span><br /><a ui-sref='user.inbox({userId: user.data.id})'><span ng-cloak translate>GOTO_INBOX</span></a></div>
+			<div class='alert-danger alert' ng-show='request_status == REQUEST_STATUS.DENIED && !myProfile'><span class='glyphicon glyphicon-ban-circle'></span><span ng-cloak translate>CONNECT_STATUS_DENIED_PROFILE</span></div>
+			<div class='alert-warning alert' ng-show='request_status == REQUEST_STATUS.RECEIVED && !myProfile'><p ng-cloak translate>CONNECT_STATUS_RECEIVED_PROFILE</p><br />
 				<requestbtn></requestbtn>
 			</div>
 			<div ng-show='request_status == REQUEST_STATUS.NONE && !myProfile'>
-				<p>You need to send a contact request to this person in order to view their contact details</p><br />
+				<p ng-cloak translate>CONNECT_STATUS_NONE_PROFILE</p><br />
 				<requestbtn></requestbtn>
 			</div>
 
@@ -40,7 +40,7 @@
 		<div ng-show='request_status == REQUEST_STATUS.CONNECTED || myProfile'>
 			<div class='row contentRow'>
 				<div class='col-xs-4 col-md-3 col-lg-2'>
-					<strong>Email</strong>
+					<strong ng-cloak translate>EMAIL</strong>
 				</div>
 				<div class='col-xs-8 col-md-9 col-lg-10'>
 					{{profile.email_address}}
@@ -48,7 +48,7 @@
 			</div>					
 			<div class='row contentRow'>
 				<div class='col-xs-4 col-md-3 col-lg-2'>
-					<strong>Phone</strong>
+					<strong ng-cloak translate>PHONE</strong>
 				</div>
 				<div class='col-xs-8 col-md-9 col-lg-10'>
 					{{profile.phone_number}}
