@@ -1,21 +1,21 @@
         <div class="row">
 
         	<div ng-show='loading.signupExisting' class='col-xs-12 col-sm-9'>
-        		<h2>Creating your profile</h2>
-                <p>Please wait while we are creating your new connect profile, you will be redirected automatically in a few seconds...</p>
+        		<h2 ng-cloak translate>SIGNUP_CREATING</h2>
+                <p ng-cloak translate>SIGNUP_CREATING_TEXT</p>
                 <ws-spinner class='bigSpinner' ng-show='loading.signupExisting'></ws-spinner>
         	</div>
             <div ng-hide='loading.signupExisting' class='col-xs-12 col-sm-9'>
-                <h2>We need some more information</h2>
-                <p>We need you to include some extra information in order to use WorldSkills Connect.<br/>Please fill in the details below.</p>
+                <h2 ng-cloak translate>SIGNUP_MORE_INFO</h2>
+                <p ng-cloak translate>SIGNUP_MORE_INFO_TXT</p>
                 <p>&nbsp;</p>
                 <form class="peopleForm form-horizontal" name="form.extra" novalidate focus-error>
                 <fieldset>	
-					<legend>Connect related information</legend>	
+					<legend ng-cloak translate>CONNECT_RELATED_INFO</legend>	
 										
 					<div class='row contentRow'>
 						<div class='col-xs-4 col-md-3 col-lg-2'>
-							<strong>Phone <span class="required">*</span></strong>
+							<strong><span ng-cloak translate>PHONE</span> <span class="required">*</span></strong>
 						</div>
 						<div class='col-xs-6 col-md-6 col-lg-5'>
 							<input type='text' name='phone_number' required placeholder="+358 123 4567" ng-model='tmp_user.phone_number' class='form-control input-sm' />
@@ -24,7 +24,7 @@
 			
 					<div class='row contentRow'>
 						<div class='col-xs-4 col-md-3 col-lg-2'>
-							<strong>Company <span class="required">*</span></strong>
+							<strong><span ng-cloak translate>COMPANY</span> <span class="required">*</span></strong>
 						</div>
 						<div class='col-xs-6 col-md-6 col-lg-5'>
 							<input type='text' name='company' required placeholder="Company name" ng-model='tmp_user.company' class='form-control input-sm' />
@@ -32,7 +32,7 @@
 					</div>
 					<div class='row contentRow'>
 						<div class='col-xs-4 col-md-3 col-lg-2'>
-							<strong>Job Title <span class="required">*</span></strong>
+							<strong><span ng-cloak translate>JOB_TITLE</span> <span class="required">*</span></strong>
 						</div>
 						<div class='col-xs-6 col-md-6 col-lg-5'>
 							<input type='text' name='job_title' required placeholder="Job title" ng-model='tmp_user.job_title' class='form-control input-sm' />
@@ -63,7 +63,7 @@
             </div>
 
             <div class='col-xs-12 col-sm-3 sidebar'>
-                <h4>Featured Events</h4>                
+                <h4 ng-cloak translate>FEATURED_EVENTS</h4>                
                 <featured ng-repeat="event in events.data"></featured>
             </div>
         </div>

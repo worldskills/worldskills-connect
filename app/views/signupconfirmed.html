@@ -1,10 +1,10 @@
         <div class="row">
 
             <div class='col-xs-12 col-sm-9'>
-                <h2>Thank you for signing up!</h2>
+                <h2 ng-cloak translate>SIGNUP_THANKS</h2>
                 <!-- <p>You can now login and start connecting.</p>                 -->
                 <p>&nbsp;</p>
-                <a href="{{auth.loginUrl}}" class='btn btn-success btn-md'>Login and start Connecting</a>
+                <a href="{{auth.loginUrl}}" class='btn btn-success btn-md' ng-cloak translate>LOGIN_START</a>
                 <p>&nbsp;</p>
                 <div class='text-center'>
                     
@@ -14,7 +14,7 @@
             </div>
 
             <div class='col-xs-12 col-sm-3 sidebar'>
-                <h4>Featured Events</h4>                
+                <h4 ng-cloak translate>FEATURED_EVENTS</h4>                
                 <featured ng-repeat="event in events.data"></featured>
 
             </div>
