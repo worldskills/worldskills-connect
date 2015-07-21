@@ -1,6 +1,6 @@
-<fieldset><legend>My Connections</legend>
-<p>Below is a list of all of your accepted connections</p>
-<p><button ng-click="downloadXLSX();" class='btn btn-info btn-sm'>Download Excel spreadsheet</button>&nbsp;
+<fieldset><legend ng-cloak translate>MY_CONNECTIONS</legend>
+<p ng-cloak translate>MY_CONNECTIONS_TXT</p>
+<p><button ng-click="downloadXLSX();" class='btn btn-info btn-sm' ng-cloak translate>DOWNLOAD_EXCEL</button>&nbsp;
 <!-- <button    ng-click="downloadVCF();"  class='btn btn-info btn-sm'>Download VCF - Outlook</button></p> -->
 <p>&nbsp;</p>
 				  <form>
@@ -28,7 +28,7 @@
   			  <h4 class="media-heading"><a ui-sref='user.profile({userId:connection.id})'>{{connection.first_name + " " + connection.last_name}}</a></h4>
   			  	<div class='row contentRow'>
 					<div class='col-xs-4 col-md-3 col-lg-2'>
-						<strong>Company</strong>
+						<strong ng-cloak translate>COMPANY</strong>
 					</div>
 					<div class='col-xs-8 col-md-9 col-lg-10'>
 						{{connection.company}}
@@ -36,7 +36,7 @@
 				</div>
 				<div class='row contentRow'>
 					<div class='col-xs-4 col-md-3 col-lg-2'>
-						<strong>Job Title</strong>
+						<strong ng-cloak translate>JOB_TITLE</strong>
 					</div>
 					<div class='col-xs-8 col-md-9 col-lg-10'>
 						{{connection.job_title}}
@@ -44,7 +44,7 @@
 				</div>	
 				<div class='row contentRow'>
 					<div class='col-xs-4 col-md-3 col-lg-2'>
-						<strong>Country</strong>
+						<strong ng-cloak translate>COUNTRY</strong>
 					</div>
 					<div class='col-xs-8 col-md-9 col-lg-10'>
 						{{connection.country.name.text}}
@@ -53,8 +53,8 @@
   			</div>
   		</div>
   		<div class='inboxActions col-xs-12 col-sm-2'>
-  			<button ng-click="download(connection.connection_id, connection.first_name, connection.last_name)" class='fullWidth btn btn-info btn-sm'>Download as vCard</button>
-  			<button ng-click="removeConnection(connection.connection_id, $index);" class='fullWidth btn btn-danger btn-sm'>Remove Connection</button>
+  			<button ng-click="download(connection.connection_id, connection.first_name, connection.last_name)" class='fullWidth btn btn-info btn-sm' ng-cloak translate>DOWNLOAD_VCARD</button>
+  			<button ng-click="removeConnection(connection.connection_id, $index);" class='fullWidth btn btn-danger btn-sm' ng-cloak translate>CONNECTION_REMOVE</button>
   		</div>
   	</div>
 </div>

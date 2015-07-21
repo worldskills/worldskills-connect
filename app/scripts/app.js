@@ -57,14 +57,18 @@ angular
           Called when another XHR request returns with
           an error status code.          
         */
-        if(rejection.status == 400 && rejection.data.code == "1800-1012"){
+        if(
+            (rejection.status == 400 && rejection.data.code == "1800-1012") ||            
+            (rejection.status == 401 && rejection.data.code == "100-101")
+          )
+          {
           WSAlert.danger(rejection.data.user_msg + ". Redirecting to login...");
           var refreshLogin = function(){ 
             //FIXME - figure out a way to redirect to login directly without a refresh
             window.history.go(0); 
           };
           //redirect to login after 2.5 second timeout
-          $timeout(refreshLogin, 2500);
+          $timeout(refreshLogin, 500);
         }
         return $q.reject(rejection);
       }
@@ -198,11 +202,7 @@ angular
     controller: 'UserProfileCtrl',
     data: {
       requireLoggedIn: true,
-        requiredRoles: [
-          {code: 1800, role: APP_ROLES.ADMIN},
-          {code: 1800, role: APP_ROLES.MANAGER},
-          {code: 1800, role: APP_ROLES.USER}
-        ]
+        
       }
    })
 

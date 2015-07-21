@@ -1,5 +1,5 @@
-<fieldset><legend>Sent Connection Requests</legend>
-<p>Below are the connection requests you have sent, and which are still pending for acceptance by the other user.</p>
+<fieldset><legend ng-cloak translate>SENT_REQ</legend>
+<p ng-cloak translate>SENT_REQ_TITLE</p>
 <p>&nbsp;</p>
 <ws-spinner class='bigSpinner' ng-show='loading.sent'></ws-spinner>
 <div ng-hide='loading.sent' class="media media-inbox" ng-repeat="connection in user.data.sent.connections">
@@ -16,7 +16,7 @@
   			  <h4 class="media-heading"><a ui-sref='user.profile({userId:connection.to.id})'>{{connection.to.first_name + " " + connection.to.first_name}}</a></h4>
   			  	<div class='row contentRow'>
 					<div class='col-xs-4 col-md-3 col-lg-2'>
-						<strong>Company</strong>
+						<strong ng-cloak translate>COMPANY</strong>
 					</div>
 					<div class='col-xs-8 col-md-9 col-lg-10'>
 						{{connection.to.company}}
@@ -24,7 +24,7 @@
 				</div>
 				<div class='row contentRow'>
 					<div class='col-xs-4 col-md-3 col-lg-2'>
-						<strong>Job Title</strong>
+						<strong ng-cloak translate>JOB_TITLE</strong>
 					</div>
 					<div class='col-xs-8 col-md-9 col-lg-10'>
 						{{connection.to.job_title}}
@@ -32,7 +32,7 @@
 				</div>	
 				<div class='row contentRow'>
 					<div class='col-xs-4 col-md-3 col-lg-2'>
-						<strong>Country</strong>
+						<strong ng-cloak translate>COUNTRY</strong>
 					</div>
 					<div class='col-xs-8 col-md-9 col-lg-10'>
 						{{connection.to.country.name.text}}
@@ -41,7 +41,7 @@
   			</div>
   		</div>
   		<div class='inboxActions col-xs-12 col-sm-2'>
-  			<button ng-click="cancelRequest(connection.id, $index);" class='fullWidth btn btn-warning btn-sm'>Cancel request</button>
+  			<button ng-click="cancelRequest(connection.id, $index);" class='fullWidth btn btn-warning btn-sm' ng-cloak translate>REQUEST_CANCEL</button>
   		</div>
   	</div>
 </div>
