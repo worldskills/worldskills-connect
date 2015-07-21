@@ -61,7 +61,9 @@
 	"SIGNUP_CREATING_TEXT":"Please wait while we are creating your new connect profile, you will be redirected automatically in a few seconds...",
 	"SIGNUP_MORE_INFO":"We need some more information",
 	"SIGNUP_MORE_INFO_TXT":"We need you to include some extra information in order to use WorldSkills Connect.<br/>Please fill in the details below.",
-	"CONNECT_RELATED_INFO":"Connect related information"
+	"CONNECT_RELATED_INFO":"Connect related information",
+
+	"CONTACT_DETAILS":"Contact details"
 
 
 
