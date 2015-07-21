@@ -1,5 +1,8 @@
-<fieldset><legend>Inbox - Received Connection Requests</legend>
-<ws-spinner class='bigSpinner' ng-show='loading.inbox'></ws-spinner>  
+<fieldset><legend  ng-cloak translate>INBOX_TITLE</legend>
+<ws-spinner class='bigSpinner' ng-show='loading.inbox'></ws-spinner>
+<div ng-hide='loading.inbox' ng-if='user.data.inbox.connections.length == 0'>
+	<p ng-cloak translate>INBOX_EMPTY</p>
+</div>  
 <div ng-hide='loading.inbox' class="media media-inbox" ng-repeat="connection in user.data.inbox.connections">
 	<ws-spinner ng-show='loading.inboxItem[connection.id]'></ws-spinner>
 	<div class='row' ng-hide='loading.inboxItem[connection.id]'>

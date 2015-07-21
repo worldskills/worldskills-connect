@@ -63,7 +63,38 @@
 	"SIGNUP_MORE_INFO_TXT":"We need you to include some extra information in order to use WorldSkills Connect.<br/>Please fill in the details below.",
 	"CONNECT_RELATED_INFO":"Connect related information",
 
-	"CONTACT_DETAILS":"Contact details"
+	"CONTACT_DETAILS":"Contact details",
+	"INBOX_TITLE":"Inbox - Received Connection Requests",
+	"INBOX_EMPTY":"Your inbox is empty.",
+	"MY_CONNECTIONS":"My Connections",
+	"MY_CONNECTIONS_TXT":"Below is a list of all of your accepted connections",
+	"DOWNLOAD_EXCEL":"Download Excel spreadsheet",
+	"DOWNLOAD_VCARD":"Download as vCard",
+	"CONNECTION_REMOVE":"Remove connection",
+
+	"REQUEST_CANCEL":"Cancel request",
+	"SENT_REQ":"Sent Connection Requests",
+	"SENT_REQ_TITLE":"Below are the connection requests you have sent, and which are still pending for acceptance by the other user.",
+
+	"MY_EVENTS":"My Events",
+	"MY_EVENTS_BODY":"By <b><i>attending</i></b> an event, you will be listed under the event, and other people can request your contact details.<br />Please only do so if you are going to <b>physically attend</b> the event.",
+
+	"PASSWORD":"Password",
+	"PASSWORD_CURRENT":"Current password",
+	"PASSWORD_CHANGE":"Change password",
+	"PASSWORD_NOTE":"Please note that this will also change your WorldSkills.org password",
+	"CONTINUE":"Continue",
+	"PASSWORD_NEW":"New Password",
+	"PASSWORD_SET_NEW":"Set new password",
+	"PASSWORD_ERROR_01":"Please a valid password (minimum of 6 characters)!",
+	"PASSWORD_ERROR_02":"Please make sure the passwords match!"
+
+
+
+
+
+
+
 
 
 

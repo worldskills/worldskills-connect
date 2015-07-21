@@ -1,10 +1,11 @@
 
-                <h2>My Events</h2>
-                <p>By <b><i>attending</i></b> an event, you will be listed under the event, and other people can request your contact details.<br />
-                Please only do so if you are going to <b>physically attend</b> the event.</p>
+                <fieldset><legend ng-cloak translate>MY_EVENTS</legend>
+
+                <p ng-cloak translate>MY_EVENTS_BODY</p>
+                </fieldset>
+
                 
-                <p>&nbsp;</p>  
-                <fieldset><legend>Events I'm attending</legend>
+                
                 <div class='events cf'>                                
                     <userevents ng-repeat="userevent in profile.subscriptions" class='event' />
                 </div>
