@@ -81,9 +81,15 @@ angular.module('connectApp')
 	                        // Prepare a blob URL
 	                        // Use application/octet-stream when using window.location to force download
 	                        //console.log("Trying download link method with window.location ...");
-	                        var blob = new Blob([data], { type: octetStreamMime });
+	                        var blob = new Blob([data], { type: contentType });
 	                        var url = urlCreator.createObjectURL(blob);
-	                        window.location = url;
+	                        // use data: url instead of blob
+	                        var reader = new FileReader;
+	                        reader.onload = function() {
+	                          var blobAsDataUrl = reader.result;
+	                          window.location = blobAsDataUrl;
+	                        };
+	                        reader.readAsDataURL(blob);
 	                        console.log("Download link method with window.location succeeded");
 	                        saved = true;
 	                    } catch(ex) {
