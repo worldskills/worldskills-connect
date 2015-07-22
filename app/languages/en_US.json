@@ -88,7 +88,9 @@
 	"PASSWORD_NEW":"New Password",
 	"PASSWORD_SET_NEW":"Set new password",
 	"PASSWORD_ERROR_01":"Please a valid password (minimum of 6 characters)!",
-	"PASSWORD_ERROR_02":"Please make sure the passwords match!"
+	"PASSWORD_ERROR_02":"Please make sure the passwords match!",
+
+	"MATCHMAKING_INTRO":"Try the new matchmaking service! Fill in more information about yourself, and who you want to meet, and our WorldSkills Connect facilitators will help you to find people to connect with."
 
 
 
