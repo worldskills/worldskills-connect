@@ -15,10 +15,10 @@
 	
 
 	"TEXT_MAIN":"<h2>What is WorldSkills Connect</h2>",
-	"TEXT_MAIN_LINE1":"<p>WorldSkills Connect is an online tool for people at a WorldSkills event to find other people with similar interests and arrange to meet!",
-	"TEXT_MAIN_LINE2":"It serves as a basic web-based event registration.</p>",
+	"TEXT_MAIN_LINE1":"<p>WorldSkills Connect is an online tool for people at a WorldSkills event to find other people with similar interests and arrange to meet!</p>",
+	"TEXT_MAIN_LINE2":"<p>It serves as a basic web-based event attendance list.</p>",
 	"TEXT_MAIN_LINE3":"<p>You can quickly sign up and then search for all the other people attending the same event. When you find someone you would like to ‘connect’ with, you simply send them a ‘connect request’.</p>",
-	"TEXT_MAIN_LINE4":"<p>Once you have ‘connected’, you can exchange contact information and arrange to meet onsite at the event. The great thing about WorldSkills Connect, the networking power is all in your hands, you decide who you connect with. </p>",
+	"TEXT_MAIN_LINE4":"<p>Once you have ‘connected’, you can exchange contact information and arrange to meet onsite at the event. The great thing about WorldSkills Connect is the networking power is all in your hands. You decide who you connect with.</p>",
 	"FEATURED_EVENTS":"Featured Events",
 
 	"MY_ATTENDANCE":"My Attendance",
