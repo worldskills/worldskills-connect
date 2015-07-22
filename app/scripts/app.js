@@ -202,7 +202,26 @@ angular
     controller: 'UserProfileCtrl',
     data: {
       requireLoggedIn: true,
+      requiredRoles: [
+          {code: 1800, role: APP_ROLES.ADMIN},
+          {code: 1800, role: APP_ROLES.MANAGER},
+          {code: 1800, role: APP_ROLES.USER}
+        ]
         
+      }
+   })
+
+  .state('user.matchmaking', {
+    url: '/matchmaking',
+    templateUrl: 'views/usermatchmaking.html',
+    controller: 'UserMatchMakingCtrl',
+    data: {
+      requireLoggedIn: true,
+      requiredRoles: [
+          {code: 1800, role: APP_ROLES.ADMIN},
+          {code: 1800, role: APP_ROLES.MANAGER},
+          {code: 1800, role: APP_ROLES.USER}
+        ]        
       }
    })
 

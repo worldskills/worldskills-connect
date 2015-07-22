@@ -1,0 +1,131 @@
+<fieldset><legend>Match Making <span class='label label-small label-default'>beta</span></legend>
+<p>Matchmaking profile is used by <b>WorldSkills Connect Facilitators</b> at the event to manually match you with people who have matching interests</p>
+
+<ws-spinner class='bigSpinner' ng-show='loading.matchmaking'></ws-spinner>
+
+<div ng-if="!loading.matchmaking">
+<div class='alert alert-warning' ng-show="!matchMakingEnabled" >
+	Matchmaking service disabled&nbsp;&nbsp;&nbsp;&nbsp;
+	<button ng-click="switchMatchMaking();" class='btn btn-success btn-xs'>Click to enable</button>
+</div>
+<div ng-show="matchMakingEnabled" class='alert alert-success'>
+	Matchmaking service enabled&nbsp;&nbsp;&nbsp;&nbsp;
+	<button ng-click="switchMatchMaking();" class='btn btn-danger btn-xs'>Click to disable</button>
+</div>
+</fieldset>
+<fieldset ng-show="matchMakingEnabled"><legend>Match Making Preferences</legend>
+
+		<div class='row contentRow'>
+			<div class='col-xs-5 col-md-5 col-lg-5'>
+				<strong>Days of visit WorldSkills São Paulo 2015</strong>
+			</div>
+			<div class='col-xs-7 col-md-7 col-lg-7'>
+				<input date-range-picker class="form-control date-picker" type="text" options='dateRangePickerOptions' ng-model="matchmaking.dates"/>
+			</div>
+		</div>	
+
+		<p>&nbsp;</p>
+
+		<div class='row contentRow'>
+			<div class='col-xs-5 col-md-5 col-lg-5'>
+				<strong>Language preference</strong>
+			</div>
+			<div class='col-xs-7 col-md-7 col-lg-7'>
+				<ui-select ng-model="matchmaking.lang_code" theme="bootstrap">
+		          <ui-select-match placeholder="Select or search language...">{{$select.selected.name}} - {{$select.selected.code}}</ui-select-match>
+		          <ui-select-choices repeat="language in languages | filter: $select.search">
+		            <div ng-bind-html="language.name | highlight: $select.search"></div>
+		          </ui-select-choices>
+		        </ui-select>
+			</div>
+		</div>
+
+		<p>&nbsp;</p>
+
+		<div class='row contentRow'>
+			<div class='col-xs-5 col-md-5 col-lg-5'>
+				<strong>Type of contacts and topics you would like to connect on</strong>
+			</div>
+			<div class='col-xs-7 col-md-7 col-lg-7'>
+				<ui-select multiple ng-model="user_interests.contact_types" theme="bootstrap">
+		          <ui-select-match placeholder="Select or search...">{{$item.description.text}}</ui-select-match>
+		          <ui-select-choices repeat="type in interests_contact_types | filter: $select.search">
+		            <div ng-bind-html="type.description.text | highlight: $select.search"></div>
+		          </ui-select-choices>
+		        </ui-select>			
+			</div>
+		</div>
+
+		<p>&nbsp;</p>
+
+		<div class='row contentRow'>
+			<div class='col-xs-5 col-md-5 col-lg-5'>
+				<strong>Interest areas related to the skill sectors shown onsite</strong>
+			</div>
+			<div class='col-xs-7 col-md-7 col-lg-7'>
+				<ui-select multiple ng-model="user_interests.skills" theme="bootstrap">
+		          <ui-select-match placeholder="Select or search...">{{$item.description.text}}</ui-select-match>
+		          <ui-select-choices repeat="skill in interests_skills | filter: $select.search">
+		            <div ng-bind-html="skill.description.text | highlight: $select.search"></div>
+		          </ui-select-choices>
+		        </ui-select>			
+			</div>
+		</div>
+
+		<p>&nbsp;</p>
+
+		<div class='row contentRow'>
+			<div class='col-xs-12 col-sm-12 col-md-5 col-lg-5'>
+				<strong>Who would you like to connect with?</strong>				
+			</div>
+			<!-- 	@XmlElement(name="members")
+	private Boolean members;
+	@XmlElement(name="members_which")
+	private String members_which;
+
+	@XmlElement(name="foundation")
+	private Boolean foundation;
+	@XmlElement(name="international")
+	private Boolean  international;
+	@XmlElement(name="international_organizations")
+	private Boolean international_organizations;
+	@XmlElement(name="international_organizations_which")
+	private String international_organizations_which;
+	@XmlElement(name="training")
+	private Boolean  training;
+	@XmlElement(name="training_which")
+	private String training_which;
+	@XmlElement(name="government")
+	private Boolean government;
+	@XmlElement(name="government_which")
+	private String government_which;
+	@XmlElement(name="companies_sponsors")
+	private Boolean companies_sponsors;
+	@XmlElement(name="companies_sponsors_which")
+	private String companies_sponsors_which; -->
+			<div class='col-xs-12 col-sm-12 col-md-7 col-lg-7'>
+				<div class="checkbox"><label><input type="checkbox" value='1' ng-model="matchmaking.members">Members (Official or Technical Delegates)</label>
+				<div ng-show="matchmaking.members"><input type='text' class='form-control input-sm' placeholder="Which members" ng-model='matchmaking.members_which' /></div>
+				<div class="checkbox"><label><input type="checkbox" value='1' ng-model="matchmaking.foundation">WorldSkills Foundation</label></div>
+				<div class="checkbox"><label><input type="checkbox" value='1' ng-model="matchmaking.international">WorldSkills International</label></div>
+				<div class="checkbox"><label><input type="checkbox" value='1' ng-model="matchmaking.international_organizations">International Organizations</label></div>
+				<div ng-show="matchmaking.international_organizations"><input type='text' class='form-control input-sm' placeholder="Which organizations?" ng-model='matchmaking.international_organizations_which' /></div>
+				<div class="checkbox"><label><input type="checkbox" value='1' ng-model="matchmaking.training">Technical Vocational Education and Training organizations and institutions</label></div>
+				<div ng-show="matchmaking.training"><input type='text' class='form-control input-sm' placeholder="Which organizations?" ng-model='matchmaking.training_which' /></div>
+				<div class="checkbox"><label><input type="checkbox" value='1' ng-model="matchmaking.government">Government representatives</label></div>
+				<div ng-show="matchmaking.government"><input type='text' class='form-control input-sm' placeholder="Which representatives?" ng-model='matchmaking.government_which' /></div>
+				<div class="checkbox"><label><input type="checkbox" value='1' ng-model="matchmaking.companies_sponsors">Companies / Sponsors</label></div>
+				<div ng-show="matchmaking.companies_sponsors"><input type='text' class='form-control input-sm' placeholder="Which companies / sponsors?" ng-model='matchmaking.companies_sponsors_which' /></div>
+			</div>
+		</div>	
+
+		<div class='row contentRow'>
+			<div class='col-xs-5 col-md-5 col-lg-5'>&nbsp;</div>
+			<div class='col-xs-7 col-md-7 col-lg-7'>
+				<p>&nbsp;</p>
+				<button ng-click="saveAll()" class='btn btn-success'>Save interests and matchmaking profile</button>
+			</div>
+		</div>			
+
+</fieldset>
+</div>
