@@ -35,8 +35,8 @@
                 <img ng-if='!uploading && profileImage' ng-src="{{profileImage}}" alt="User Image" />
                 <div ng-if='!uploading' class='actions'>
                     <!-- <span ng-if="canUploadImages === false" ng-click="restrictedUploadWarning()">upload</span> -->
-                    <span ng-if="canUploadImages" ng-file-select="onFileSelect($files)" ng-cloak translate>UPLOAD</span>
-                    <span ng-if="canUploadImages" ng-click="reCrop($event);" ng-cloak translate>CROP_IMAGE</span>
+                    <span ng-if="canUploadImages" ng-file-select="onFileSelect($files)"><span ng-cloak translate>UPLOAD</span></span>
+                    <span ng-if="canUploadImages" ng-click="reCrop($event);"><span ng-cloak translate>CROP_IMAGE</span></span>
                 </div>
             </div>
             <!-- /profile image -->
@@ -65,8 +65,8 @@
                 <img ng-if='!uploading && profileImage' ng-src="{{profileImage}}" alt="User Image" />
                 <div ng-if='!uploading' class='actions'>
                     <!-- <span ng-if="canUploadImages === false" ng-click="restrictedUploadWarning()">upload</span> -->
-                    <span ng-if="canUploadImages" ng-file-select="onFileSelect($files)" ng-cloak translate>UPLOAD</span>
-                    <span ng-if="canUploadImages" ng-click="reCrop($event);" ng-cloak translate>CROP_IMAGE</span>
+                    <span ng-if="canUploadImages" ng-file-select="onFileSelect($files)"><span ng-cloak translate>UPLOAD</span></span>
+                    <span ng-if="canUploadImages" ng-click="reCrop($event);"><span ng-cloak translate>CROP_IMAGE</span></span>
                 </div>
             </div>
             <!-- /profile image -->
