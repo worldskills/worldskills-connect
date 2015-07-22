@@ -41,7 +41,8 @@
             </div>
             <!-- /profile image -->
 
-    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.profile' ng-cloak translate>PROFILE</a>
+            <a ui-sref-active='active' class="list-group-item" ui-sref='user.profile' ng-cloak translate>PROFILE</a>
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.matchmaking'><span ng-cloak translate>MATCHMAKING</span> <span class='label label-info'><small>beta</small></span></a>
     	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.inbox'><span ng-cloak translate>INBOX</span> <span ng-show="user.data.inbox.total_count > 0" class="badge">{{user.data.inbox.total_count}}</span></a>   	 			
     	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.sent' ng-cloak translate>SENT_REQUESTS</a>   
     	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.connections' ng-cloak translate>CONNECTIONS</a>   	

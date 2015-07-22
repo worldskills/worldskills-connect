@@ -363,6 +363,115 @@ angular.module('connectApp')
             return User.subscriptions.promise;
         };
 
+        User.getMatchMaking = function(){
+            var deferred = $q.defer();
+
+            $http.get(API_CONNECT + "/matchmaking/user/" + User.data.id).then(function(result){
+                deferred.resolve(result.data);
+            },
+            function(error){
+                deferred.reject(error.data.user_msg);
+            });
+
+            return deferred.promise;
+        };
+
+        User.getUserInterests = function(){
+            var deferred = $q.defer();
+
+            $http.get(API_CONNECT + "/user/" + User.data.id + "/interests/").then(function(result){
+                deferred.resolve(result.data);
+            },
+            function(error){
+                deferred.reject(error.data.user_msg);
+            });
+
+            return deferred.promise;
+        };
+
+        User.getInterests = function(){
+            var deferred = $q.defer();
+
+            $http.get(API_CONNECT + "/interests").then(function(result){
+                deferred.resolve(result.data);
+            },
+            function(error){
+                deferred.reject(error.data.user_msg);
+            });
+
+            return deferred.promise;
+        };
+
+        User.saveInterest = function(interest){
+            var deferred = $q.defer();
+
+            var data = {
+                "user" : {"id": User.data.id },
+                "interest": {"id": interest.id }
+            };
+
+            $http.post(API_CONNECT + "/user/" + User.data.id + "/interests", data).then(function(result){
+                deferred.resolve(result.data);
+            },
+            function(error){
+                deferred.reject(error.data.user_msg);
+            })
+
+            return deferred.promise;
+        };
+
+        User.removeInterest = function(interestId){
+            var deferred = $q.defer();
+
+            $http.delete(API_CONNECT + "/user/" + User.data.id + "/interests/interestId/" + interestId).then(function(result){
+                deferred.resolve(result.data);
+            },
+            function(error){
+                deferred.reject(error.data.user_msg);
+            })
+
+            return deferred.promise;
+        };
+
+        User.switchMatchMaking = function(enabled){
+            var deferred = $q.defer();
+
+            var data = { 'user_id': User.data.id, 'enabled' : enabled };
+
+            $http.put(API_CONNECT + "/matchmaking/" + User.data.id, data).then(function(result){
+                deferred.resolve(result.data);
+            },
+            function(error){
+                deferred.reject(error.user_msg);
+            });
+
+            return deferred.promise;
+        };
+
+        User.saveMatchmaking = function(profile){
+            var deferred = $q.defer();
+
+            //cleanup profile
+
+            //dates
+            profile.date_start = profile.dates.startDate;
+            profile.date_end = profile.dates.endDate;
+            delete profile.dates;
+
+            //languages
+            profile.lang_code = profile.lang_code.code;
+
+
+            $http.put(API_CONNECT + "/matchmaking/" + User.data.id, profile).then(function(result){
+                deferred.resolve(result.data);
+            },
+            function(error){
+                deferred.reject(error.user_msg);
+            });
+
+            return deferred.promise;
+        };
+
 
 
 

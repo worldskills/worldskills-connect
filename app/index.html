@@ -79,6 +79,7 @@
                             <li><a ui-sref-active='active' ui-sref='user.sent({userId:user.data.id})' href="#" ng-cloak translate>SENT_REQUESTS</a></li>
                             <li><a ui-sref-active='active' ui-sref='user.connections({userId:user.data.id})' href="#" ng-cloak translate>CONNECTIONS</a></li>
                             <li><a ui-sref-active='active' ui-sref='user.events({userId:user.data.id})' href="#" ng-cloak translate>EVENTS</a></li>
+                            <li><a ui-sref-active='active' ui-sref='user.matchmaking({userId:user.data.id})' href="#"><span ng-cloak translate>MATCHMAKING</span> <span class='label label-info'><small>beta</small></span></a></li>
                             <li><a ui-sref-active='active' ui-sref='user.password({userId:user.data.id})' href="#" ng-cloak translate>PASSWORD</a></li>
                             <!-- <li><a ui-sref-active='active' ui-sref='user.privacy({userId:user.data.id})' href="#">Privacy</a></li>  -->                           
                             <li><a ng-click="logout()" ng-cloak translate>LOGOUT</a></li>                            
@@ -229,6 +230,7 @@
         <script src="scripts/controllers/signupexisting.js"></script>
         <script src="scripts/controllers/signupconfirmed.js"></script>
         <script src="scripts/controllers/terms.js"></script>
+        <script src="scripts/controllers/usermatchmaking.js"></script>
         <!-- endbuild -->
 </body>
 </html>
