@@ -8,7 +8,7 @@
  * Service in the connectApp.
  */
 angular.module('connectApp')
-  .factory('User', function ($q, $http, API_CONNECT, auth, APP_ID, APP_ROLES, $timeout, API_AUTH, Downloader, REQUEST_STATUS) {  	
+  .factory('User', function ($q, $filter, $http, API_CONNECT, auth, APP_ID, APP_ROLES, $timeout, API_AUTH, Downloader, REQUEST_STATUS) {
 
   		var User = {
             data: $q.defer(),
@@ -454,8 +454,8 @@ angular.module('connectApp')
             //cleanup profile
 
             //dates
-            profile.date_start = profile.dates.startDate;
-            profile.date_end = profile.dates.endDate;
+            profile.date_start = $filter('date')(profile.dates.startDate, 'yyyy-MM-dd');
+            profile.date_end = $filter('date')(profile.dates.endDate, 'yyyy-MM-dd');
             delete profile.dates;
 
             //languages
