@@ -454,8 +454,8 @@ angular.module('connectApp')
             //cleanup profile
 
             //dates
-            profile.date_start = $filter('date')(profile.dates.startDate, 'yyyy-MM-dd');
-            profile.date_end = $filter('date')(profile.dates.endDate, 'yyyy-MM-dd');
+            profile.date_start = profile.dates.startDate.format('YYYY-MM-DD');
+            profile.date_end = profile.dates.endDate.format('YYYY-MM-DD');
             delete profile.dates;
 
             //languages
