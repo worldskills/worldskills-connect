@@ -22,6 +22,7 @@
 	"TEXT_MAIN_LINE4":"<p>Once you have ‘connected’, you can exchange contact information and arrange to meet onsite at the event. The great thing about WorldSkills Connect is the networking power is all in your hands. You decide who you connect with.</p>",
 	"FEATURED_EVENTS":"Featured Events",
 
+	"NOT_ATTENDING_WARNING":"<strong>Your status for this event is currently set to Not Attending.</strong> To allow people to find and connect with you set your status to Attending in the section My&nbsp;Attendance&nbsp;below.",
 	"MY_ATTENDANCE":"My Attendance",
 	"ATTENDANCE_TXT":"By 'attending' an event, you will be listed under the event, and other people can request your contact details.<br /><br />Please only do so if you are going to physically attend the event.",
 	"EVENT_PARTICIPANTS":"Event Participants",

@@ -2,8 +2,11 @@
 
             <div class='col-xs-12 col-sm-10'>
                 <h2>{{event.event.name}}</h2>
-                    
-                
+
+                <div ng-if="user.subscriptions[eventId].status.id == STATUS.NO" class="alert alert-danger" role="alert">
+                    <p translate>NOT_ATTENDING_WARNING</p>
+                </div>
+
                 <div class='event-highligh cf'>
                 	<img ng-if="eventImage != false" class='event-picture-full thumbnail' ng-src="{{eventImage}}" alt='sao paulo' />
                 	
