@@ -23,7 +23,7 @@
 	"FEATURED_EVENTS":"Featured Events",
 
 	"MY_ATTENDANCE":"My Attendance",
-	"ATTENDANCE_TXT":"<p>By 'attending' an event, you will be listed under the event, and other people can request your contact details.<br />Please only do so if you are going to physically attend the event.</p>",
+	"ATTENDANCE_TXT":"By 'attending' an event, you will be listed under the event, and other people can request your contact details.<br /><br />Please only do so if you are going to physically attend the event.",
 	"EVENT_PARTICIPANTS":"Event Participants",
 	"PARTICIPANTS_TXT":"Find the participant you'd like to connect with, and click on 'request contact'.<br />The person will be sent an email asking for approval, if they approve your request, you both get each others contact details",
 	"POPULAR_AT":"Popular connections at",
