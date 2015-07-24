@@ -13,7 +13,6 @@
 	"LOGOUT":"Logout",
 	"SWITCH_LANGUAGE":"Switch Language",
 	"TERMS_PRIVACY":"Terms of Use &amp; Privacy Policy",
-	
 
 	"TEXT_MAIN":"<h2>What is WorldSkills Connect</h2>",
 	"TEXT_MAIN_LINE1":"<p>WorldSkills Connect is an online tool for people at a WorldSkills event to find other people with similar interests and arrange to meet!</p>",
@@ -92,19 +91,4 @@
 	"PASSWORD_ERROR_02":"Please make sure the passwords match!",
 
 	"MATCHMAKING_INTRO":"Try the new matchmaking service! Fill in more information about yourself, and who you want to meet, and our WorldSkills Connect facilitators will help you to find people to connect with."
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
