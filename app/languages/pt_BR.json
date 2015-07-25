@@ -21,6 +21,7 @@
 	"TEXT_MAIN_LINE4":"<p>Uma vez ‘conectado’, você poderá trocar informações e marcar um encontro no local do evento. O melhor do WorldSkills Conect é que o poder de conectar-se está em suas mãos! Você decide com que se conectar. </p>",
 	"FEATURED_EVENTS":" Eventos indicados ",
 
+	"NOT_ATTENDING_WARNING":"<strong>Seu atual status para este evento é “Não comparecer”.</strong> Para permitir que as pessoas se encontrem e se conectarem com você, defina seu status para Comparecer na seção Meu comparecimento abaixo.",
 	"MY_ATTENDANCE":"Minha participação",
 	"ATTENDANCE_TXT":"<p>Ao ‘participar’ de um evento, você entrará na lista desse evento, e outras pessoas poderão solicitar suas informações para contato. <br/>Inscreva-se apenas se for comparecer ao evento. </p>",
 	"EVENT_PARTICIPANTS":" Participantes do evento ",
