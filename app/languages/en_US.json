@@ -1,7 +1,7 @@
 {
 	"APP_NAME":"WorldSkills Connect",
 	"LOGIN":"Login",
-	"SIGNUP":"Signup",
+	"SIGNUP":"Sign up",
 	"HOME":"Home",
 	"PROFILE": "Profile",
 	"INBOX": "Inbox",
@@ -50,7 +50,7 @@
 	"CONNECT_STATUS_REQUESTED_PROFILE":"You have received a contact request from this user, but you haven't accepted it yet.&nbsp;",
 	"GOTO_INBOX":"Go to your inbox",
 
-	"SIGNUP_REGISTER":"Signup / Register",
+	"SIGNUP_REGISTER":"Sign up / Register",
 	"ACCOUNT_ALREADY_1":"If you already have a WorldSkills account, you can ",
 	"LOGIN_HERE":"login here",
 	"SIGNUP_WSCONNECT":"Sign up for WorldSkills Connect",
