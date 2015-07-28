@@ -11,7 +11,7 @@ angular.module('connectApp')
   .controller('UserMatchMakingCtrl', function ($scope, $q, $http, User, WSAlert) {
 
   	$scope.matchMakingEnabled = false;
-  	$scope.dateRangePickerOptions = {format: "DD.MM.YYYY", startDate: '12.08.2015', endDate: '17.08.2015', minDate: '12.08.2015', maxDate: '17.08.2015'};
+  	$scope.dateRangePickerOptions = {format: "DD.MM.YYYY", startDate: '12.08.2015', endDate: '17.08.2015', minDate: '01.08.2015', maxDate: '31.08.2015'};
 
     
     $scope.languages = [
