@@ -44,7 +44,7 @@ angular.module('connectApp')
       });
     });
 
-    Events.getSubscriptions($scope.eventId).then(function(result){
+    Events.getSubscriptions($scope.eventId, 0, 99999).then(function(result){
       $scope.subscriptions = result;  
 
       $scope.totalItems = ($scope.subscriptions.total_count - 1); //minus my own profile
@@ -88,11 +88,11 @@ angular.module('connectApp')
   
 	$scope.search = function (contact) {
         return (
-             angular.lowercase(contact.user.first_name).indexOf(angular.lowercase($scope.searchContact) || '') !== -1 
-          || angular.lowercase(contact.user.last_name).indexOf(angular.lowercase($scope.searchContact) || '') !== -1 
-        	|| angular.lowercase(contact.user.company).indexOf(angular.lowercase($scope.searchContact) || '') !== -1
-        	|| angular.lowercase(contact.user.job_title).indexOf(angular.lowercase($scope.searchContact) || '') !== -1
-        	|| angular.lowercase(contact.user.country.name.text).indexOf(angular.lowercase($scope.searchContact) || '') !== -1
+             (typeof contact.user.first_name != 'undefined' && angular.lowercase(contact.user.first_name).indexOf(angular.lowercase($scope.searchContact) || '') !== -1 )
+          || (typeof contact.user.last_name != 'undefined' && angular.lowercase(contact.user.last_name).indexOf(angular.lowercase($scope.searchContact) || '') !== -1 )
+        	|| (typeof contact.user.company != 'undefined' && angular.lowercase(contact.user.company).indexOf(angular.lowercase($scope.searchContact) || '') !== -1)
+        	|| (typeof contact.user.job_title != 'undefined' && angular.lowercase(contact.user.job_title).indexOf(angular.lowercase($scope.searchContact) || '') !== -1)
+        	|| (typeof contact.user.country != 'undefined' && angular.lowercase(contact.user.country.name.text).indexOf(angular.lowercase($scope.searchContact) || '') !== -1)
         	);
     };
 
