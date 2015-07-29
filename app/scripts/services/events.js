@@ -27,9 +27,9 @@ angular.module('connectApp')
         return Events.data.promise;
     };    
 
-    Events.getSubscriptions = function(eventId){
+    Events.getSubscriptions = function(eventId, offsetVal, limitVal){
         var deferred = $q.defer();
-        $http.get(API_CONNECT + "/subscriptions/events/" + eventId).then(function(result){
+        $http.get(API_CONNECT + "/subscriptions/events/" + eventId, {params: {offset: offsetVal, limit: limitVal} }).then(function(result){
             deferred.resolve(result.data);
         },
         function(error){
