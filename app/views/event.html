@@ -52,7 +52,7 @@
                 
                 <p>&nbsp</p>
                 <!-- contacts -->
-				  <!-- <form>
+				  <form>
 				    <div class="form-group">
 				      <div class="input-group">
 				        <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
@@ -61,11 +61,11 @@
 				
 				      </div>      
 				    </div>
-				  </form> -->
+				  </form> 				                 
 
 				  <table class="table table-responsive table-striped">				    
 				    <thead>
-				      <!-- <tr>
+				      <tr>
 				        <td>				        
 				            <a ng-click="sortType = 'user.last_name'; sortReverse = !sortReverse">
 				            Name
@@ -101,23 +101,6 @@
         					<span ng-show="sortType == 'requested' && sortReverse" class="caret-reverse"></span>
 				             </a>
 				        </td>
-				      </tr>-->
-				      <tr>
-				        <td>				        
-				            Name
-				        </td>
-				        <td>
-				            Company
-				        </td>
-				        <td>
-				            Job title
-				        </td>
-				        <td>
-				            Country
-				        </td>
-				        <td class='text-center'>
-				            Request status
-				        </td>
 				      </tr>
 				    </thead>
 				    
@@ -145,7 +128,7 @@
 				  <pagination 
             total-items="totalItems" 
             ng-model="bigCurrentPage" 
-            ng-change="fetchSubscriptions()"
+            ng-change="pageChanged()"
             items-per-page="itemsPerPage"
             max-size="maxSize" 
             class="pagination-sm pull-right" 
