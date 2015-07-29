@@ -8,11 +8,12 @@
  * Controller of the connectApp
  */
 angular.module('connectApp')
-  .controller('UserCtrl', function ($q, $http, $scope, $upload, $state, $interval, Language, Auth, APP_ROLES, API_IMAGES, $timeout, User, auth, WSAlert, REQUEST_STATUS) {
+  .controller('UserCtrl', function ($q, $http, $scope, $upload, $state, $interval, Language, Auth, APP_ROLES, API_IMAGES, $timeout, User, FORCED_EVENT_ID, auth, WSAlert, REQUEST_STATUS) {
     $scope.loading = {};    
     $scope.userId = $state.params.userId;
     $scope.myProfile = false;
     $scope.profile = {}; 
+    $scope.FORCED_EVENT_ID = FORCED_EVENT_ID;
     
     $scope.request_status = false;  
     $scope.REQUEST_STATUS = REQUEST_STATUS;  

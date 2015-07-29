@@ -7,7 +7,7 @@
     <!-- //TODO if not own profile --> 
     <requestbtn></requestbtn>
     <button ng-show='myProfile' class="btn btn-primary" ui-sref="user.edit({userId:userId})"><span ng-cloak translate>EDIT_MY_PROFILE</span><spinner ng-show="loading.request" class="ng-hide"></spinner></button>
-    <button class="btn btn-info" ui-sref="events"><span ng-cloak translate>BACK_TO_PARTICIPANTS</span></button>
+    <button class="btn btn-info" ui-sref="event({eventId:FORCED_EVENT_ID})"><span ng-cloak translate>BACK_TO_PARTICIPANTS</span></button>
 </p>
 </div>
 
