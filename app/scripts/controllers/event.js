@@ -47,7 +47,8 @@ angular.module('connectApp')
     Events.getSubscriptions($scope.eventId, 0, 99999).then(function(result){
       $scope.subscriptions = result;  
 
-      $scope.totalItems = ($scope.subscriptions.total_count - 1); //minus my own profile
+      $scope.totalItems = ($scope.subscriptions.total_count); //minus my own profile
+      //$scope.totalItems = ($scope.subscriptions.total_count - 1); //minus my own profile
 
       $scope.setActioned();
     },
