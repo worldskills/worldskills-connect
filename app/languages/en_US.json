@@ -1,4 +1,5 @@
 {
+
 	"APP_NAME":"WorldSkills Connect",
 	"LOGIN":"Login",
 	"SIGNUP":"Sign up",
@@ -90,5 +91,6 @@
 	"PASSWORD_ERROR_01":"Please a valid password (minimum of 6 characters)!",
 	"PASSWORD_ERROR_02":"Please make sure the passwords match!",
 
-	"MATCHMAKING_INTRO":"Try the new matchmaking service! Fill in more information about yourself, and who you want to meet, and our WorldSkills Connect facilitators will help you to find people to connect with."
+	"MATCHMAKING_INTRO":"Try the new matchmaking service! Fill in more information about yourself, and who you want to meet, and our WorldSkills Connect facilitators will help you to find people to connect with.",
+	"BACK_TO_PARTICIPANTS":"Back to event participants"
 }
