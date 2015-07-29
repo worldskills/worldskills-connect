@@ -27,14 +27,16 @@ angular.module('connectApp')
         return Events.data.promise;
     };    
 
-    Events.getSubscriptions = function(eventId, offsetVal, limitVal){
+    Events.getSubscriptions = function(eventId, offsetVal, limitVal, searchVal, sortVal, sortReverseVal, canceler){
     	var deferred = $q.defer();
 
-        $http.get(API_CONNECT + "/subscriptions/events/" + eventId, {params: {offset: offsetVal, limit: limitVal} }).then(function(result){
+        $http.get(API_CONNECT + "/subscriptions/events/" + eventId, {timeout: canceler.promise, params: {offset: offsetVal, limit: limitVal, search: searchVal, sort: sortVal, sortReverse: sortReverseVal} }).then(function(result){
             deferred.resolve(result.data);
         },
         function(error){
-            deferred.reject("Could not get event subscriptions: " + error.data.user_msg);
+            //only send error if not a cancelled request
+            if(error.data != null && error.status == 0)
+                deferred.reject("Could not get event subscriptions: " + error.data.user_msg);
         });
 
         return deferred.promise;

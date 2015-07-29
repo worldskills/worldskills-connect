@@ -8,7 +8,7 @@
  * Controller of the connectApp
  */
 angular.module('connectApp')
-  .controller('EventCtrl', function ($scope, $http, Statuses, User, Events, $state, $q, WSAlert, REQUEST_STATUS) {
+  .controller('EventCtrl', function ($scope, $http, Statuses, User, Events, $state, $q, WSAlert, $timeout, REQUEST_STATUS) {
 	
 	$scope.sortType     = 'user.last_name'; // set the default sort type
 	$scope.sortReverse  = false;  // set the default sort order
@@ -18,11 +18,13 @@ angular.module('connectApp')
 	$scope.STATUS = Statuses.status();
   $scope.loading.event = false;
 	$scope.loading.contact = {};
+  $scope.loading.contacts = false;
   $scope.subscriptions = {};
   $scope.REQUEST_STATUS = REQUEST_STATUS;
   $scope.popularConnections = {};
   $scope.event = {};
   $scope.eventImage = false;
+  $scope.requestCanceler = false;
 
   //Pagination
   $scope.totalItems = 0 //Total number of items in all pages
@@ -56,17 +58,41 @@ angular.module('connectApp')
   };
   
   $scope.fetchSubscriptions = function() {
-	  Events.getSubscriptions($scope.eventId, ($scope.bigCurrentPage-1) * $scope.itemsPerPage, $scope.itemsPerPage).then(function(result){
+    //check if a request exists, if so, cancel
+    if($scope.requestCanceler !== false){
+      $scope.requestCanceler.resolve();
+    }
+
+
+    $scope.requestCanceler = $q.defer();
+
+    $scope.loading.contacts = true;
+    
+	  Events.getSubscriptions($scope.eventId, ($scope.bigCurrentPage-1) * $scope.itemsPerPage, $scope.itemsPerPage, $scope.searchContact, $scope.sortType, $scope.sortReverse, $scope.requestCanceler).then(function(result){
 	      $scope.subscriptions = result;  
 	      
 	      $scope.totalItems = ($scope.subscriptions.total_count); 
 
 	      $scope.setActioned();
+        $scope.loading.contacts = false;
+        $scope.requestCanceler = false;
 	    },
 	    function(error){
 	      WSAlert.danger(error);
+        $scope.loading.contacts = false;
 	    });
   }
+
+  //trigger from UI
+  $scope.doSearch = function(){
+      //if forced (= from sort) or at least 3 characters in search
+      //if(forced === true || $scope.searchContact.length > 2) $scope.fetchSubscriptions();
+
+      //just do it always for now - it will cancel precious request automatically
+      $scope.fetchSubscriptions();
+  };
+
+
 
   $scope.init();
 
@@ -90,15 +116,15 @@ angular.module('connectApp')
   		});
   	};
   
-	$scope.search = function (contact) {
-        return (
-             (typeof contact.user.first_name != 'undefined' && angular.lowercase(contact.user.first_name).indexOf(angular.lowercase($scope.searchContact) || '') !== -1 )
-          || (typeof contact.user.last_name != 'undefined' && angular.lowercase(contact.user.last_name).indexOf(angular.lowercase($scope.searchContact) || '') !== -1 )
-        	|| (typeof contact.user.company != 'undefined' && angular.lowercase(contact.user.company).indexOf(angular.lowercase($scope.searchContact) || '') !== -1)
-        	|| (typeof contact.user.job_title != 'undefined' && angular.lowercase(contact.user.job_title).indexOf(angular.lowercase($scope.searchContact) || '') !== -1)
-        	|| (typeof contact.user.country != 'undefined' && angular.lowercase(contact.user.country.name.text).indexOf(angular.lowercase($scope.searchContact) || '') !== -1)
-        	);
-    };
+	// $scope.search = function (contact) {
+ //        return (
+ //             (typeof contact.user.first_name != 'undefined' && angular.lowercase(contact.user.first_name).indexOf(angular.lowercase($scope.searchContact) || '') !== -1 )
+ //          || (typeof contact.user.last_name != 'undefined' && angular.lowercase(contact.user.last_name).indexOf(angular.lowercase($scope.searchContact) || '') !== -1 )
+ //        	|| (typeof contact.user.company != 'undefined' && angular.lowercase(contact.user.company).indexOf(angular.lowercase($scope.searchContact) || '') !== -1)
+ //        	|| (typeof contact.user.job_title != 'undefined' && angular.lowercase(contact.user.job_title).indexOf(angular.lowercase($scope.searchContact) || '') !== -1)
+ //        	|| (typeof contact.user.country != 'undefined' && angular.lowercase(contact.user.country.name.text).indexOf(angular.lowercase($scope.searchContact) || '') !== -1)
+ //        	);
+ //    };
 
 
 
