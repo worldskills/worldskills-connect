@@ -44,16 +44,7 @@ angular.module('connectApp')
       });
     });
 
-    Events.getSubscriptions($scope.eventId, 0, 99999).then(function(result){
-      $scope.subscriptions = result;  
-
-      $scope.totalItems = ($scope.subscriptions.total_count - 1); //minus my own profile
-
-      $scope.setActioned();
-    },
-    function(error){
-      WSAlert.danger(error);
-    });
+    $scope.fetchSubscriptions();
 
 
     User.getPopularByEvent($scope.eventId).then(function(result){
@@ -63,6 +54,19 @@ angular.module('connectApp')
       WSAlert.danger(error);
     });
   };
+  
+  $scope.fetchSubscriptions = function() {
+	  Events.getSubscriptions($scope.eventId, ($scope.bigCurrentPage-1) * $scope.itemsPerPage, $scope.itemsPerPage).then(function(result){
+	      $scope.subscriptions = result;  
+	      
+	      $scope.totalItems = ($scope.subscriptions.total_count); 
+
+	      $scope.setActioned();
+	    },
+	    function(error){
+	      WSAlert.danger(error);
+	    });
+  }
 
   $scope.init();
 
@@ -109,7 +113,7 @@ angular.module('connectApp')
   //sets connection requested tag in items dynamically
   $scope.setActioned = function(){ 
     $q.all([User.connections.promise, User.requested.promise]).then(function(){
-      $scope.startFrom = (($scope.bigCurrentPage - 1 ) * $scope.itemsPerPage);
+      $scope.startFrom = 0;//(($scope.bigCurrentPage - 1 ) * $scope.itemsPerPage);
   
       //go through visible contacts and set connection request status    
       for(var i = $scope.startFrom ; i < ($scope.startFrom + $scope.itemsPerPage) ; i++){
