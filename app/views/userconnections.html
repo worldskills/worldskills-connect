@@ -53,6 +53,7 @@
   			</div>
   		</div>
   		<div class='inboxActions col-xs-12 col-sm-2'>
+  			<button ui-sref="user.profile({userId:connection.id})" class='fullWidth btn btn-primary btn-sm' ng-cloak translate>VIEW_PROFILE</button>
   			<button ng-click="download(connection.connection_id, connection.first_name, connection.last_name)" class='fullWidth btn btn-info btn-sm' ng-cloak translate>DOWNLOAD_VCARD</button>
   			<button ng-click="removeConnection(connection.connection_id, $index);" class='fullWidth btn btn-danger btn-sm' ng-cloak translate>CONNECTION_REMOVE</button>
   		</div>
