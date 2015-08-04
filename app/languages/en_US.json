@@ -92,5 +92,6 @@
 	"PASSWORD_ERROR_02":"Please make sure the passwords match!",
 
 	"MATCHMAKING_INTRO":"Try the new matchmaking service! Fill in more information about yourself, and who you want to meet, and our WorldSkills Connect facilitators will help you to find people to connect with.",
-	"BACK_TO_PARTICIPANTS":"Back to event participants"
+	"BACK_TO_PARTICIPANTS":"Back to event participants",
+	"VIEW_PROFILE":"View profile"
 }
