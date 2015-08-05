@@ -1,0 +1,29 @@
+<ol class="breadcrumb" id='alertScrollAnchor'>
+    <li><a ui-sref="people">Connect</a></li>
+    <li><a ui-sref="admin">Admin</a></li>
+    <li class="active">{{title || " "}}</li>
+</ol>
+
+<alerts />        
+
+<div id='peopleActions'>
+<p class="pull-right">    
+    <!-- <button ng-click="deletePerson()" class="btn btn-danger" id="deleteEntry">Delete Person<spinner ng-show="loading.delete" class="ng-hide"></spinner></button> -->
+</p>
+</div>
+
+<h1>{{title || " "}}</h1>
+<div class='row'>
+	<div class="col-sm-3 col-md-2 sidebar">        
+		<div class="list-group">			                  
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='admin.overview'>Overview</a>    	 	
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='admin.export'>Export data</a>    	 	
+    	 </div>
+     </div>
+    <ws-spinner ng-show='loading.initial'></ws-spinner>
+    <div ng-hide='loading.initial' class="col-sm-9 col-md-10" id="content" ui-view=""></div>            
+</div>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr>

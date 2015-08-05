@@ -1,0 +1,11 @@
+<fieldset><legend>Featured Events</legend>
+	<div class='events cf'>                                
+		<export ng-repeat="event in events.data" class='event' ng-if="event.featured == true"  />
+	</div>
+</fieldset>
+
+<fieldset><legend>Upcoming Events</legend>
+	<div class='events cf'>
+		<export ng-repeat="event in events.data" class='event' ng-if="event.featured == false"  />
+	</div>
+</fieldset>

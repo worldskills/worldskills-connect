@@ -323,6 +323,40 @@ angular
       }
    })
 
+    //admin
+
+  .state('admin', {
+    url: '/admin',
+    abstract: true,
+    templateUrl: 'views/admin.html',
+    controller: 'AdminCtrl',
+    data:{
+        requireLoggedIn: true,        
+        forbiddenCallback: function(auth, $state){
+          //state passed from $rootScope.$state
+          alert("You do not have access to this view");
+          $state.go('home');
+        },
+        requiredRoles: [
+          {code: 1800, role: APP_ROLES.ADMIN},
+          {code: 1800, role: APP_ROLES.MANAGER},
+        ]
+      }
+  })
+
+  //below admin views inherit the required roles as they are children of the 'admin' state
+  .state('admin.overview', {
+    url: '/overview',
+    templateUrl: 'views/admin.overview.html',
+    controller: 'AdminOverviewCtrl'
+  })
+
+  .state('admin.export', {
+    url: '/export',
+    templateUrl: 'views/admin.export.html',
+    controller: 'AdminExportCtrl'
+  })
+
    ;
 
   })
