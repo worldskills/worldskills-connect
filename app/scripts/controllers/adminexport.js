@@ -8,7 +8,7 @@
  * Controller of the connectApp
  */
 angular.module('connectApp')
-  .controller('AdminExportCtrl', function ($scope, API_CONNECT, $q, $http, Events, Downloader) {
+  .controller('AdminExportCtrl', function ($scope, API_CONNECT, $q, $http, Events, Downloader, WSAlert) {
 
   	$scope.events = Events;
 
