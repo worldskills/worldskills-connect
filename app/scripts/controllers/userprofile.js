@@ -8,9 +8,10 @@
  * Controller of the connectApp
  */
 angular.module('connectApp')
-  .controller('UserProfileCtrl', function ($scope, User, WSAlert, $q, $state, Resources, Person) {
+  .controller('UserProfileCtrl', function ($scope, User, WSAlert, $q, $state, Resources, Person, APP_ROLES) {
 
   	$scope.tmp_user = {};
+    $scope.app_roles = APP_ROLES;
     $scope.countries = Resources.countries;
     $scope.dateRangePickerOptions = {format: "DD.MM.YYYY", startDate: '12.08.2015', endDate: '17.08.2015', minDate: '12.08.2015', maxDate: '17.08.2015'};
     $scope.interests = {
