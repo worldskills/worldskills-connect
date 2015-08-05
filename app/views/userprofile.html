@@ -25,7 +25,7 @@
 
 <fieldset>	
 	<legend ng-cloak translate>CONTACT_DETAILS</legend>	
-		<div>
+		<div ng-hide="role == app_roles.ADMIN || role == app_roles.MANAGER">
 			<div class='alert-success alert' ng-show='request_status == REQUEST_STATUS.REQUESTED && !myProfile'><span class='glyphicon glyphicon-ok-circle'></span><span ng-cloak translate>CONNECT_STATUS_REQUESTED_PROFILE</span><br /><a ui-sref='user.inbox({userId: user.data.id})'><span ng-cloak translate>GOTO_INBOX</span></a></div>
 			<div class='alert-danger alert' ng-show='request_status == REQUEST_STATUS.DENIED && !myProfile'><span class='glyphicon glyphicon-ban-circle'></span><span ng-cloak translate>CONNECT_STATUS_DENIED_PROFILE</span></div>
 			<div class='alert-warning alert' ng-show='request_status == REQUEST_STATUS.RECEIVED && !myProfile'><p ng-cloak translate>CONNECT_STATUS_RECEIVED_PROFILE</p><br />
@@ -37,7 +37,7 @@
 			</div>
 
 		</div>
-		<div ng-show='request_status == REQUEST_STATUS.CONNECTED || myProfile'>
+		<div ng-show='request_status == REQUEST_STATUS.CONNECTED || myProfile || (role == app_roles.ADMIN || role == app_roles.MANAGER)'>
 			<div class='row contentRow'>
 				<div class='col-xs-4 col-md-3 col-lg-2'>
 					<strong ng-cloak translate>EMAIL</strong>

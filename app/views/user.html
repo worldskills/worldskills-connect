@@ -6,7 +6,7 @@
     <button ng-show="showActions" ng-click="reset();" class='btn btn-warning'>Reset</button> -->    
     <!-- //TODO if not own profile --> 
     <requestbtn class='ml10 pull-right'></requestbtn>
-    <button ng-show='myProfile' class="ml10 pull-rightbtn btn-primary" ui-sref="user.edit({userId:userId})"><span ng-cloak translate>EDIT_MY_PROFILE</span><spinner ng-show="loading.request" class="ng-hide"></spinner></button>
+    <button ng-show='myProfile' class="ml10 pull-right btn btn-primary" ui-sref="user.edit({userId:userId})"><span ng-cloak translate>EDIT_MY_PROFILE</span><spinner ng-show="loading.request" class="ng-hide"></spinner></button>
     <button class="ml10 pull-right btn btn-info" ui-sref="event({eventId:FORCED_EVENT_ID})"><span ng-cloak translate>BACK_TO_PARTICIPANTS</span></button>
 </p>
 </div>
