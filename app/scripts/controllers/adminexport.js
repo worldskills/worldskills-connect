@@ -35,7 +35,7 @@ angular.module('connectApp')
           WSAlert.success("Download started... (" + filename + ")");
         })
           .error(function(data, status) {
-              console.log("Request failed with status: " + status);
+              //console.log("Request failed with status: " + status);
               WSAlert.danger("Request failed with status: " + status);
           });
     };
