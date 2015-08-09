@@ -8,7 +8,7 @@
  * Controller of the connectApp
  */
 angular.module('connectApp')
-  .controller('EventCtrl', function ($scope, $http, Statuses, User, Events, $state, $q, WSAlert, REQUEST_STATUS) {
+  .controller('EventCtrl', function ($scope, $http, Statuses, User, Events, $state, $q, $stateParams, WSAlert, REQUEST_STATUS) {
 	
 	$scope.sortType     = 'user.last_name'; // set the default sort type
 	$scope.sortReverse  = false;  // set the default sort order

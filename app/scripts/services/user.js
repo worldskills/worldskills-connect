@@ -19,7 +19,7 @@ angular.module('connectApp')
 
   		User.init = function(){
     		// var featuredOnly = (featured) ? "?featured=" + featured : "";
-            if(typeof User.data.promise == 'undefined') User.data = $q.defer();
+            User.data = $q.defer();
 
             //wait for auth.user to resolve                    
             $q.when(auth.user.$promise).then(function(){                                
@@ -170,7 +170,7 @@ angular.module('connectApp')
     			
     		})
     	    .error(function(data, status) {
-    	        console.log("Request failed with status: " + status);
+    	        //console.log("Request failed with status: " + status);
     	    });
         }
 
@@ -333,7 +333,7 @@ angular.module('connectApp')
     			
     		})
     	    .error(function(data, status) {
-    	        console.log("Request failed with status: " + status);
+    	        //console.log("Request failed with status: " + status);
     	    });
         };
 

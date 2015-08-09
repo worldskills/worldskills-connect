@@ -25,8 +25,10 @@ angular.module('connectApp')
           
           //refresh auth roles
           auth.refreshRoles().then(function(result){
-            $scope.$parent.reloadUser(); // no need to wait for execution
             $scope.loading.signupExisting = false;
+
+            $scope.reloadUser(); //no need to wait
+
             $state.go('event', {eventId : FORCED_EVENT_ID});            
           },
           function(error){
