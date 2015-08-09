@@ -1,0 +1,13 @@
+<fieldset><legend>Featured Events</legend>
+	<ws-spinner ng-show="loading.events_init" class='bigSpinner'></ws-spinner>
+	<div ng-hide="loading.events_init" class='events cf'>                                
+		<exportparticipants ng-repeat="event in events.data" class='event' ng-if="event.featured == true"  />
+	</div>
+</fieldset>
+
+<fieldset><legend>Upcoming Events</legend>
+	<ws-spinner ng-show="loading.events_init" class='bigSpinner'></ws-spinner>
+	<div ng-hide="loading.events_init" class='events cf'>
+		<exportparticipants ng-repeat="event in events.data" class='event' ng-if="event.featured == false"  />
+	</div>
+</fieldset>
