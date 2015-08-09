@@ -12,6 +12,7 @@ angular.module('connectApp')
     
     
     $scope.reloadUser = function(){
+
         //loading scope variables that can be used throughout the app
         $scope.user = User;        
         $scope.resources = Resources;
@@ -31,7 +32,7 @@ angular.module('connectApp')
                 //console.log('loaded external resources');
                 //User.data.subscriptions = result[1];
                 //User.data.connections = result[2];
-                //User.data.requested = result[3];
+                //User.data.requested = result[3]; 
             },
             function(error){
                 WSAlert.danger("Error loading user resources, please refresh your browser: " + error);
@@ -56,9 +57,11 @@ angular.module('connectApp')
         function(error){
             //WSAlert.danger("", error);
         });
+
     };     
 
-    $scope.reloadUser();   
+    $scope.reloadUser();
+
     
     //load events
     $scope.loading.events_init = true;
