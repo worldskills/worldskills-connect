@@ -357,6 +357,12 @@ angular
     controller: 'AdminExportCtrl'
   })
 
+  .state('admin.exportParticipants', {
+    url: '/exportParticipants',
+    templateUrl: 'views/admin.exportparticipants.html',
+    controller: 'AdminExportParticipantsCtrl'
+  })
+
    ;
 
   })

@@ -1,0 +1,12 @@
+<div class='event'> 
+	<div><a ui-sref='event({eventId:event.id})'>{{event.event.name}}</a></div>
+	<div class='event-image'>
+	    <a ui-sref='event({eventId:event.id})'><img class='thumbnail' ng-src="{{getImage(event.icon)}}" ng-if="event.icon" alt='{{event.event.name}}' /></a>	    
+	</div>
+	<div class='event-attendance text-center'>                  
+	    <ws-spinner class='smallSpinner' ng-show='loading.events[event.id]'></ws-spinner>          	    
+	    <div ng-hide="loading.events[event.id]">
+	    	<button ng-click="exportParticipantsData(event.id)" class='btn btn-primary btn-sm'>Export participant data</button>
+	    </div>
+	</div>
+</div>
