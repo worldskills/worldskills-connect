@@ -106,11 +106,11 @@ angular.module('connectApp')
     $scope.original_user_interests = {};
 
   		$scope.loading.matchmaking = true;
-
+      console.log($scope.matchmaking);
   		$q.when(User.data.promise).then(function(){
   			User.getMatchMaking().then(function(result){
   				$scope.matchmaking = result;
-  				$scope.matchMakingEnabled = true;
+  				$scope.matchMakingEnabled = result.enabled;
 
   				//set date picker
   				$scope.matchmaking.dates = {};
