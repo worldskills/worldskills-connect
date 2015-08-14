@@ -1,16 +1,16 @@
 <fieldset><legend>Match Making <span class='label label-small label-default'>beta</span></legend>
-<p>Matchmaking profile is used by <b>WorldSkills Connect Facilitators</b> at the event to manually match you with people who have matching interests</p>
+<p>Your match making profile is used at <strong>WorldSkills São Paulo 2015</strong> to match you with other people with similar interests.</p>
 
 <ws-spinner class='bigSpinner' ng-show='loading.matchmaking'></ws-spinner>
 
 <div ng-if="!loading.matchmaking">
-<div class='alert alert-warning' ng-show="!matchMakingEnabled" >
+<div class='alert alert-danger' ng-show="!matchMakingEnabled" >
 	Matchmaking service disabled&nbsp;&nbsp;&nbsp;&nbsp;
-	<button ng-click="switchMatchMaking();" class='btn btn-success btn-xs'>Click to enable</button>
+	<button ng-click="switchMatchMaking();" class='btn btn-primary btn-xs'>Click to enable</button>
 </div>
 <div ng-show="matchMakingEnabled" class='alert alert-success'>
 	Matchmaking service enabled&nbsp;&nbsp;&nbsp;&nbsp;
-	<button ng-click="switchMatchMaking();" class='btn btn-danger btn-xs'>Click to disable</button>
+	<button ng-click="switchMatchMaking();" class='btn btn-primary btn-xs'>Click to disable</button>
 </div>
 </fieldset>
 <fieldset ng-show="matchMakingEnabled"><legend>Match Making Preferences</legend>
