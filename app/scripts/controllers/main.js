@@ -84,25 +84,17 @@ angular.module('connectApp')
 
     $scope.getProfileImage = function(image, type){
         var retval = false;
-        if(typeof image == 'undefined' || typeof image.links == 'undefined') return false;
-        type = (typeof type == 'undefined') ? "" : "_"+type;
-        angular.forEach(image.links, function(val, key){
-            if(val.rel == 'alternate'){ 
-                retval = val.href + type;
-            }
-        });
+        if(typeof image == 'undefined' || typeof image.thumbnail == 'undefined') return false;
+        type = (typeof type == 'undefined') ? "" : "_"+type; 
+        retval = image.thumbnail + type;
         return retval;
     };
 
     $scope.getImage = function(image){
         var retval = false;
 
-        if(typeof image == 'undefined' || typeof image.links == 'undefined') return false;        
-        angular.forEach(image.links, function(val, key){
-            if(val.rel == 'alternate'){ 
-                retval = val.href;
-            }
-        });
+        if(typeof image == 'undefined' || typeof image.thumbnail == 'undefined') return false;
+        retval = image.thumbnail;
         return retval;
     };
 
