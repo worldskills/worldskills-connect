@@ -233,13 +233,9 @@ angular.module('connectApp')
     $scope.getImageThumbnail = function(type){
         var retval = false;
 
-        if(typeof $scope.profile.image == 'undefined' || typeof $scope.profile.image.links == 'undefined') return false;
+        if(typeof $scope.profile.image == 'undefined' || typeof $scope.profile.image.thumbnail == 'undefined') return false;
         type = (typeof type == 'undefined') ? "" : "_"+type;
-        angular.forEach($scope.profile.image.links, function(val, key){
-            if(val.rel == 'alternate'){ 
-                retval = val.href + type;
-            }
-        });
+        retval = $scope.profile.image.thumbnail + type;
         return retval;
     };
 
