@@ -3,8 +3,8 @@
     <!-- <button ng-click="saveEvent()" class="btn btn-success" id="deleteEntry">Save changes<spinner ng-show="saveLoading" class="ng-hide"></spinner></button>
     <button ng-click="saveEvent()" class="btn btn-warning" id="deleteEntry">Reset changes<spinner ng-show="saveLoading" class="ng-hide"></spinner></button> -->
     <!-- <button ng-show="showActions" ng-disabled="!validateForm();" ng-click="save();" class="btn btn-success" id="saveEntry">Save all changes<spinner ng-show="loading.initial" class="ng-hide"></spinner></button>
-    <button ng-show="showActions" ng-click="reset();" class='btn btn-warning'>Reset</button> -->    
-    <!-- //TODO if not own profile --> 
+    <button ng-show="showActions" ng-click="reset();" class='btn btn-warning'>Reset</button> -->
+    <!-- //TODO if not own profile -->
     <requestbtn class='ml10 pull-right'></requestbtn>
     <button ng-show='myProfile' class="ml10 pull-right btn btn-primary" ui-sref="user.edit({userId:userId})"><span ng-cloak translate>EDIT_MY_PROFILE</span><spinner ng-show="loading.request" class="ng-hide"></spinner></button>
     <button class="ml10 pull-right btn btn-info" ui-sref="event({eventId:FORCED_EVENT_ID})"><span ng-cloak translate>BACK_TO_PARTICIPANTS</span></button>
@@ -14,25 +14,25 @@
 <h1>{{profile.first_name + " " + profile.last_name}}</h1>
 <hr class='cb' />
 <div class='row'>
-	<div class="col-sm-3 col-md-2 sidebar-right">        
-		<div ng-show="myProfile" class="list-group">			                  
+	<div class="col-sm-3 col-md-2 sidebar-right">
+		<div ng-show="myProfile" class="list-group">
 
             <!-- <div class='list-group-item profileImage'>
                 <img src='http://lorempixel.com/400/400/people' alt='user' />
             </div> -->
 
-            <!-- profile image -->            
+            <!-- profile image -->
             <div ng-if="stateName == 'user.image'" class='uploadProgress center'>
                 <span ng-show='!loading.crop' ng-cloak translate>CROPPING</span>
                 <ws-spinner class='bigSpinner' ng-show='loading.crop'></ws-spinner>
-            </div>        
-            <div ng-if="stateName != 'user.image'" class='list-group-item profileImage' ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="profileImageUploadHover">    
+            </div>
+            <div ng-if="stateName != 'user.image'" class='list-group-item profileImage' ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="profileImageUploadHover">
                 <div class='imageWarning' ng-if="(role.name == app_roles.ADMIN || role.name == app_roles.MANAGER) && imageWarning && !uploading"><span tooltip-placement="bottom" tooltip-html="{{sizeWarning}}" class='glyphicon glyphicon-warning-sign'></span></div><!-- {{state}} -->
                 <div ng-show='uploading' class='uploadProgress center'>
                     <span ng-if='!loading.processing'>{{progress}}</span>
                     <ws-spinner class='bigSpinner' ng-if="loading.processing"></ws-spinner>
                 </div>
-                <img ng-if="!uploading && !profileImage" src='images/user.png' alt='No Image' />                
+                <img ng-if="!uploading && !profileImage" src='images/user.png' alt='No Image' />
                 <img ng-if='!uploading && profileImage' ng-src="{{profileImage}}" alt="User Image" />
                 <div ng-if='!uploading' class='actions'>
                     <!-- <span ng-if="canUploadImages === false" ng-click="restrictedUploadWarning()">upload</span> -->
@@ -43,27 +43,27 @@
             <!-- /profile image -->
 
             <a ui-sref-active='active' class="list-group-item" ui-sref='user.profile' ng-cloak translate>PROFILE</a>
-    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.matchmaking'><span ng-cloak translate>MATCHMAKING</span> <span class='label label-info'><small>beta</small></span></a>
-    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.inbox'><span ng-cloak translate>INBOX</span> <span ng-show="user.data.inbox.total_count > 0" class="badge">{{user.data.inbox.total_count}}</span></a>   	 			
-    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.sent' ng-cloak translate>SENT_REQUESTS</a>   
-    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.connections' ng-cloak translate>CONNECTIONS</a>   	
-    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.events' ng-cloak translate>EVENTS</a>   	 	
+    	 	<!-- <a ui-sref-active='active' class="list-group-item" ui-sref='user.matchmaking'><span ng-cloak translate>MATCHMAKING</span> <span class='label label-info'><small>beta</small></span></a> -->
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.inbox'><span ng-cloak translate>INBOX</span> <span ng-show="user.data.inbox.total_count > 0" class="badge">{{user.data.inbox.total_count}}</span></a>
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.sent' ng-cloak translate>SENT_REQUESTS</a>
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.connections' ng-cloak translate>CONNECTIONS</a>
+    	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.events' ng-cloak translate>EVENTS</a>
     	 	<a ui-sref-active='active' class="list-group-item" ui-sref='user.password' ng-cloak translate>PASSWORD</a>
-    	 	<!-- <a ui-sref-active='active' class="list-group-item" ui-sref='user.privacy'>Privacy</a>   	 --> 	     	 	
+    	 	<!-- <a ui-sref-active='active' class="list-group-item" ui-sref='user.privacy'>Privacy</a>   	 -->
     	 </div>
-         <div ng-hide="myProfile" class="list-group">                              
-            <!-- profile image -->            
+         <div ng-hide="myProfile" class="list-group">
+            <!-- profile image -->
             <div ng-if="stateName == 'user.image'" class='uploadProgress center'>
                 <span ng-show='!loading.crop' ng-cloak translate>CROPPING</span>
                 <ws-spinner class='bigSpinner' ng-show='loading.crop'></ws-spinner>
-            </div>        
-            <div ng-if="stateName != 'user.image'" class='list-group-item profileImage' ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="profileImageUploadHover">    
+            </div>
+            <div ng-if="stateName != 'user.image'" class='list-group-item profileImage' ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="profileImageUploadHover">
                 <div class='imageWarning' ng-if="(role.name == app_roles.ADMIN || role.name == app_roles.MANAGER) && imageWarning && !uploading"><span tooltip-placement="bottom" tooltip-html="{{sizeWarning}}" class='glyphicon glyphicon-warning-sign'></span></div><!-- {{state}} -->
                 <div ng-show='uploading' class='uploadProgress center'>
                     <span ng-if='!loading.processing'>{{progress}}</span>
                     <ws-spinner class='bigSpinner' ng-if="loading.processing"></ws-spinner>
                 </div>
-                <img ng-if="!uploading && !profileImage" src='images/user.png' alt='No Image' />                
+                <img ng-if="!uploading && !profileImage" src='images/user.png' alt='No Image' />
                 <img ng-if='!uploading && profileImage' ng-src="{{profileImage}}" alt="User Image" />
                 <div ng-if='!uploading' class='actions'>
                     <!-- <span ng-if="canUploadImages === false" ng-click="restrictedUploadWarning()">upload</span> -->
@@ -72,13 +72,13 @@
                 </div>
             </div>
             <!-- /profile image -->
-            <a ui-sref-active='active' class="list-group-item" ui-sref='user.profile' ng-cloak translate>PROFILE</a>                    
-            <a ui-sref-active='active' class="list-group-item" ui-sref='user.events' ng-cloak translate>EVENTS</a>                        
+            <a ui-sref-active='active' class="list-group-item" ui-sref='user.profile' ng-cloak translate>PROFILE</a>
+            <a ui-sref-active='active' class="list-group-item" ui-sref='user.events' ng-cloak translate>EVENTS</a>
          </div>
      </div>
 
     <!-- <ws-spinner ng-show='loading.initial'></ws-spinner> -->
-    <div class="col-sm-9 col-md-10" id="content" ui-view=""></div>            
+    <div class="col-sm-9 col-md-10" id="content" ui-view=""></div>
 </div>
 
 

@@ -2,8 +2,8 @@
     'use strict';
 
     //TODO update values when integrating with API
-    
-    var connectApp = angular.module('connectApp'); 
+
+    var connectApp = angular.module('connectApp');
     connectApp.constant('API_CONNECT', 'https://api.worldskills.org/connect');
     connectApp.constant('API_PEOPLE', 'https://api.worldskills.org/people');
     connectApp.constant('APP_ID', '1800');
@@ -20,11 +20,14 @@
     connectApp.constant('WORLDSKILLS_API_AUTH', 'https://api.worldskills.org/auth');
     connectApp.constant('WORLDSKILLS_AUTHORIZE_URL', 'https://auth.worldskills.org/oauth/authorize');
 
+    connectApp.constant('LOAD_CHILD_ENTITY_ROLES', false);
+    connectApp.constant('FILTER_AUTH_ROLES', [1800]);
+    
     connectApp.constant('APP_ROLES', {
         ADMIN: 'Admin',
         MANAGER: 'Manager',
-        USER: 'User'        
-    });    
+        USER: 'User'
+    });
 
     connectApp.constant("REQUEST_STATUS", {
         NONE: 0,
